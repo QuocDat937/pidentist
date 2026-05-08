@@ -1,0 +1,372 @@
+/* Pi Dentist — Single Service Detail
+   Styles for /dich-vu/{slug}/ single service page.
+   Uses tokens from tokens.css + base prose styles from base.css */
+
+/* ---------- Service Detail Article ---------- */
+.service-detail {
+  padding: 60px 0 0;
+}
+
+/* ---------- Quick Info Bar ---------- */
+.service-meta {
+  display: flex;
+  gap: 0;
+  background: var(--pi-off-white);
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  margin-bottom: 48px;
+  box-shadow: var(--pi-shadow-sm);
+}
+
+.meta-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px;
+  border-right: 1px solid var(--pi-light-gray);
+}
+
+.meta-item:last-child {
+  border-right: none;
+}
+
+.meta-icon {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.meta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pi-text-soft);
+}
+
+.meta-value {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.3;
+}
+
+/* ---------- Service Description (inherits .prose) ---------- */
+.service-description {
+  margin-bottom: 64px;
+}
+
+.service-description img {
+  border-radius: var(--pi-radius-card);
+  margin: 2em 0;
+}
+
+/* ---------- Pros / Cons Grid ---------- */
+.service-pros-cons {
+  padding: 64px 0;
+  border-top: 1px solid var(--pi-light-gray);
+}
+
+.service-pros-cons .section-heading {
+  margin-bottom: 8px;
+}
+
+.service-pros-cons .gold-line {
+  margin-bottom: 40px;
+}
+
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.pros h3,
+.cons h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pros h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 24px;
+  background: var(--pi-success);
+  border-radius: 2px;
+}
+
+.cons h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 24px;
+  background: #C94D4D;
+  border-radius: 2px;
+}
+
+/* Check list (Pros) — inherits from sections.css */
+.pros .check-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--pi-light-gray);
+}
+
+.pros .check-list li:last-child {
+  border-bottom: none;
+}
+
+/* Cross list (Cons) */
+.cross-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 15px;
+  color: var(--pi-text);
+  line-height: 1.6;
+  border-bottom: 1px solid var(--pi-light-gray);
+}
+
+.cross-list li:last-child {
+  border-bottom: none;
+}
+
+.cross-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(201, 77, 77, 0.1);
+  color: #C94D4D;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ---------- FAQ Section ---------- */
+.service-faq {
+  padding: 64px 0;
+  border-top: 1px solid var(--pi-light-gray);
+}
+
+.service-faq .section-heading {
+  margin-bottom: 8px;
+}
+
+.service-faq .gold-line {
+  margin-bottom: 40px;
+}
+
+.faq-list {
+  max-width: 760px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--pi-light-gray);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--pi-light-gray);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  cursor: pointer;
+  font-family: var(--pi-font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.5;
+  list-style: none;
+  transition: color var(--pi-transition);
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::marker {
+  display: none;
+  content: '';
+}
+
+.faq-question:hover {
+  color: var(--pi-gold);
+}
+
+.faq-q-text {
+  flex: 1;
+  padding-right: 16px;
+}
+
+.faq-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pi-off-white);
+  color: var(--pi-navy);
+  font-size: 20px;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: all var(--pi-transition);
+}
+
+.faq-item[open] .faq-toggle {
+  background: var(--pi-navy);
+  color: var(--pi-white);
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 0 24px;
+  font-size: 15px;
+  color: var(--pi-text-soft);
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.faq-answer p {
+  margin-bottom: 1em;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Related Sections ---------- */
+.service-related-doctors,
+.service-related-cases {
+  padding: 100px 0;
+}
+
+.service-related-doctors .section-header,
+.service-related-cases .section-header {
+  margin-bottom: 48px;
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .service-detail {
+    padding: 48px 0 0;
+  }
+
+  .service-meta {
+    margin-bottom: 40px;
+  }
+
+  .meta-item {
+    padding: 20px 24px;
+  }
+
+  .meta-value {
+    font-size: 18px;
+  }
+
+  .pros-cons-grid {
+    gap: 32px;
+  }
+
+  .service-description {
+    margin-bottom: 48px;
+  }
+
+  .service-related-doctors,
+  .service-related-cases {
+    padding: 80px 0;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .service-detail {
+    padding: 36px 0 0;
+  }
+
+  /* Stack meta items vertically */
+  .service-meta {
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+
+  .meta-item {
+    border-right: none;
+    border-bottom: 1px solid var(--pi-light-gray);
+    padding: 16px 20px;
+  }
+
+  .meta-item:last-child {
+    border-bottom: none;
+  }
+
+  .meta-icon {
+    font-size: 24px;
+  }
+
+  .meta-value {
+    font-size: 17px;
+  }
+
+  .meta-label {
+    font-size: 11px;
+  }
+
+  /* Pros/Cons stacked */
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .service-pros-cons,
+  .service-faq {
+    padding: 48px 0;
+  }
+
+  .service-description {
+    margin-bottom: 40px;
+  }
+
+  .faq-question {
+    font-size: 15px;
+    padding: 16px 0;
+  }
+
+  .faq-toggle {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+    padding-bottom: 20px;
+  }
+
+  .service-related-doctors,
+  .service-related-cases {
+    padding: 64px 0;
+  }
+}

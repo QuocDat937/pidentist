@@ -111,6 +111,15 @@ function pi_enqueue_styles() {
 			$ver
 		);
 	}
+
+	if ( is_singular( 'pi_service' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-single-service',
+			$uri . '/assets/css/patterns/single-service.css',
+			array( 'pi-tokens', 'pi-sections', 'pi-cards' ),
+			$ver
+		);
+	}
 }
 
 /**
