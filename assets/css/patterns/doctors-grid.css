@@ -1,0 +1,301 @@
+/* Pi Dentist — Doctors Grid & Doctor Card
+   Styles for /bac-si/ archive page and doctor cards.
+   Uses base card styles from cards.css + tokens from tokens.css */
+
+/* ---------- Archive Section ---------- */
+.doctors-archive {
+  padding: 80px 0;
+}
+
+/* ---------- Grid Layout ---------- */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+/* ---------- Doctor Thumbnail ---------- */
+.doctor-thumb-link {
+  display: block;
+  text-decoration: none;
+}
+
+.doctor-thumb {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--pi-radius-card) var(--pi-radius-card) 0 0;
+  overflow: hidden;
+}
+
+.doctor-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--pi-transition);
+}
+
+.doctor-card:hover .doctor-thumb img {
+  transform: scale(1.05);
+}
+
+/* ---------- Placeholder Avatar ---------- */
+.doctor-thumb-placeholder {
+  background: linear-gradient(135deg, var(--pi-navy-light), var(--pi-navy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctor-avatar-icon {
+  font-size: 64px;
+  opacity: 0.6;
+}
+
+/* ---------- Doctor Body ---------- */
+.doctor-body {
+  padding: 24px;
+}
+
+/* ---------- Doctor Name ---------- */
+.doctor-name {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+
+.doctor-name a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--pi-transition);
+}
+
+.doctor-name a:hover {
+  color: var(--pi-gold);
+}
+
+/* ---------- Doctor Title (Chức danh) ---------- */
+.doctor-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pi-gold);
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- Doctor Credentials ---------- */
+.doctor-credentials {
+  font-size: 14px;
+  color: var(--pi-text-soft);
+  line-height: 1.5;
+  margin: 0 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===========================================
+   SINGLE DOCTOR — Profile Layout
+   =========================================== */
+
+/* ---------- Detail Article ---------- */
+.doctor-detail {
+  padding: 60px 0 0;
+}
+
+/* ---------- Profile Grid ---------- */
+.doctor-profile {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+/* ---------- Photo Column ---------- */
+.doctor-photo {
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  box-shadow: var(--pi-shadow-md);
+}
+
+.doctor-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.doctor-photo-placeholder {
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(135deg, var(--pi-navy-light), var(--pi-navy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--pi-radius-card);
+}
+
+.doctor-avatar-icon-lg {
+  font-size: 96px;
+  opacity: 0.5;
+}
+
+/* ---------- Info Column ---------- */
+.doctor-info-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pi-gold);
+  margin: 0 0 8px;
+}
+
+.doctor-info-name {
+  font-family: var(--pi-font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.2;
+  margin: 0 0 4px;
+}
+
+.doctor-info-col .gold-line-left {
+  margin-bottom: 32px;
+}
+
+/* ---------- Info Blocks (Credentials, Specialties) ---------- */
+.doctor-info-block {
+  margin-bottom: 28px;
+}
+
+.doctor-info-block h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.doctor-info-block h3::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background: var(--pi-gold);
+  border-radius: 2px;
+}
+
+.doctor-info-content {
+  font-size: 15px;
+  color: var(--pi-text);
+  line-height: 1.7;
+}
+
+/* ---------- CV Section ---------- */
+.doctor-cv {
+  padding-top: 64px;
+  border-top: 1px solid var(--pi-light-gray);
+  margin-bottom: 0;
+}
+
+.doctor-cv .section-heading {
+  margin-bottom: 8px;
+}
+
+.doctor-cv .gold-line {
+  margin-bottom: 40px;
+}
+
+/* ---------- Related Sections ---------- */
+.doctor-related-services,
+.doctor-related-cases {
+  padding: 100px 0;
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .doctors-archive {
+    padding: 64px 0;
+  }
+
+  .doctors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .doctor-detail {
+    padding: 48px 0 0;
+  }
+
+  .doctor-profile {
+    grid-template-columns: 300px 1fr;
+    gap: 36px;
+    margin-bottom: 48px;
+  }
+
+  .doctor-info-name {
+    font-size: 30px;
+  }
+
+  .doctor-related-services,
+  .doctor-related-cases {
+    padding: 80px 0;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .doctors-archive {
+    padding: 48px 0;
+  }
+
+  .doctors-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .doctor-body {
+    padding: 20px;
+  }
+
+  .doctor-name {
+    font-size: 18px;
+  }
+
+  .doctor-detail {
+    padding: 36px 0 0;
+  }
+
+  /* Stack profile to single column on mobile */
+  .doctor-profile {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+
+  .doctor-photo {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .doctor-info-name {
+    font-size: 26px;
+  }
+
+  .doctor-cv {
+    padding-top: 40px;
+  }
+
+  .doctor-related-services,
+  .doctor-related-cases {
+    padding: 64px 0;
+  }
+}

@@ -1,0 +1,458 @@
+/* Pi Dentist — Cases Grid & Case Card
+   Styles for /case/ archive page, case cards, and single case detail.
+   Uses base card styles from cards.css + tokens from tokens.css */
+
+/* ---------- Archive Section ---------- */
+.cases-archive {
+  padding: 80px 0;
+}
+
+/* ---------- Tag Filter ---------- */
+.case-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.case-filter-tag {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pi-text-soft);
+  background: var(--pi-off-white);
+  border: 1px solid var(--pi-light-gray);
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all var(--pi-transition);
+}
+
+.case-filter-tag:hover {
+  color: var(--pi-navy);
+  border-color: var(--pi-navy);
+  background: var(--pi-white);
+}
+
+.case-filter-tag.active {
+  color: var(--pi-white);
+  background: var(--pi-navy);
+  border-color: var(--pi-navy);
+}
+
+/* ---------- Grid Layout ---------- */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+/* ---------- Case Thumbnail ---------- */
+.case-thumb-link {
+  display: block;
+  text-decoration: none;
+}
+
+.case-thumb {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--pi-radius-card) var(--pi-radius-card) 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.case-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--pi-transition);
+}
+
+.case-card:hover .case-thumb img {
+  transform: scale(1.05);
+}
+
+/* Before Badge */
+.case-thumb-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--pi-white);
+  background: rgba(0, 33, 71, 0.75);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Placeholder */
+.case-thumb-placeholder {
+  background: linear-gradient(135deg, var(--pi-light-gray), var(--pi-off-white));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-placeholder-icon {
+  font-size: 48px;
+  opacity: 0.4;
+}
+
+/* ---------- Case Body ---------- */
+.case-body {
+  padding: 24px;
+}
+
+/* ---------- Case Name ---------- */
+.case-name {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+
+.case-name a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--pi-transition);
+}
+
+.case-name a:hover {
+  color: var(--pi-gold);
+}
+
+/* ---------- Case Diagnosis ---------- */
+.case-diagnosis {
+  font-size: 14px;
+  color: var(--pi-text-soft);
+  line-height: 1.5;
+  margin: 0 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Case Duration ---------- */
+.case-duration {
+  font-size: 13px;
+  color: var(--pi-text-soft);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.case-duration-icon {
+  font-size: 14px;
+}
+
+/* ===========================================
+   SINGLE CASE — Detail Page
+   =========================================== */
+
+/* ---------- Detail Article ---------- */
+.case-detail {
+  padding: 60px 0 0;
+}
+
+/* ---------- Patient Info Bar ---------- */
+.case-patient-info {
+  display: flex;
+  gap: 0;
+  background: var(--pi-off-white);
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  margin-bottom: 48px;
+  box-shadow: var(--pi-shadow-sm);
+  flex-wrap: wrap;
+}
+
+.patient-info-item {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  border-right: 1px solid var(--pi-light-gray);
+}
+
+.patient-info-item:last-child {
+  border-right: none;
+}
+
+.patient-info-icon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.patient-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.patient-info-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pi-text-soft);
+}
+
+.patient-info-value {
+  font-family: var(--pi-font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.3;
+}
+
+.patient-info-value a {
+  color: var(--pi-navy);
+  text-decoration: none;
+  transition: color var(--pi-transition);
+}
+
+.patient-info-value a:hover {
+  color: var(--pi-gold);
+}
+
+/* ---------- Before/After Gallery ---------- */
+.case-gallery {
+  margin-bottom: 48px;
+}
+
+.case-gallery .section-heading {
+  margin-bottom: 8px;
+}
+
+.case-gallery .gold-line {
+  margin-bottom: 32px;
+}
+
+.case-before-after {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.case-before {
+  position: relative;
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  box-shadow: var(--pi-shadow-sm);
+}
+
+.case-before img {
+  width: 100%;
+  height: auto;
+}
+
+.case-ba-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--pi-white);
+  background: rgba(0, 33, 71, 0.8);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ---------- Case Content ---------- */
+.case-content {
+  margin-bottom: 48px;
+}
+
+.case-content img {
+  border-radius: var(--pi-radius-card);
+  margin: 1.5em 0;
+}
+
+/* ---------- Related Doctor & Service Links ---------- */
+.case-related-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 0;
+  padding: 48px 0;
+  border-top: 1px solid var(--pi-light-gray);
+}
+
+.case-related-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--pi-off-white);
+  border-radius: var(--pi-radius-card);
+  text-decoration: none;
+  transition: all var(--pi-transition);
+  box-shadow: var(--pi-shadow-sm);
+}
+
+.case-related-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pi-shadow-md);
+}
+
+.case-related-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.case-related-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.case-related-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pi-text-soft);
+}
+
+.case-related-name {
+  font-family: var(--pi-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  line-height: 1.3;
+}
+
+.case-related-sub {
+  font-size: 13px;
+  color: var(--pi-text-soft);
+  line-height: 1.4;
+}
+
+.case-related-arrow {
+  font-size: 20px;
+  color: var(--pi-gold);
+  transition: transform var(--pi-transition);
+  flex-shrink: 0;
+}
+
+.case-related-link:hover .case-related-arrow {
+  transform: translateX(4px);
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .cases-archive {
+    padding: 64px 0;
+  }
+
+  .cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .case-detail {
+    padding: 48px 0 0;
+  }
+
+  .case-patient-info {
+    margin-bottom: 40px;
+  }
+
+  .case-related-links {
+    padding: 40px 0;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .cases-archive {
+    padding: 48px 0;
+  }
+
+  .case-filter {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .case-filter-tag {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .cases-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .case-body {
+    padding: 20px;
+  }
+
+  .case-name {
+    font-size: 18px;
+  }
+
+  .case-detail {
+    padding: 36px 0 0;
+  }
+
+  /* Stack patient info */
+  .case-patient-info {
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+
+  .patient-info-item {
+    border-right: none;
+    border-bottom: 1px solid var(--pi-light-gray);
+    padding: 14px 20px;
+    min-width: 0;
+  }
+
+  .patient-info-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Stack related links */
+  .case-related-links {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 36px 0;
+  }
+
+  .case-related-link {
+    padding: 20px;
+  }
+
+  .case-related-name {
+    font-size: 16px;
+  }
+
+  .case-gallery {
+    margin-bottom: 36px;
+  }
+
+  .case-content {
+    margin-bottom: 36px;
+  }
+}

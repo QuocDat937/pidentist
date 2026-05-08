@@ -120,6 +120,57 @@ function pi_enqueue_styles() {
 			$ver
 		);
 	}
+
+	if ( is_post_type_archive( 'pi_doctor' ) || is_singular( 'pi_doctor' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-doctors-grid',
+			$uri . '/assets/css/patterns/doctors-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+	}
+
+	if ( is_post_type_archive( 'pi_case' ) || is_singular( 'pi_case' ) || is_tax( 'pi_case_tag' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-cases-grid',
+			$uri . '/assets/css/patterns/cases-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+	}
+
+	/* --- Cross-CPT: related sections on single templates --- */
+	// Single doctor shows related service-cards + case-cards.
+	if ( is_singular( 'pi_doctor' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-services-grid',
+			$uri . '/assets/css/patterns/services-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+		wp_enqueue_style(
+			'pi-pattern-cases-grid',
+			$uri . '/assets/css/patterns/cases-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+	}
+
+	// Single service shows related doctor-cards + case-cards.
+	if ( is_singular( 'pi_service' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-doctors-grid',
+			$uri . '/assets/css/patterns/doctors-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+		wp_enqueue_style(
+			'pi-pattern-cases-grid',
+			$uri . '/assets/css/patterns/cases-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+	}
 }
 
 /**
