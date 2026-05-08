@@ -267,3 +267,217 @@ section,
     font-size: 13px;
   }
 }
+
+
+/* ===========================================================
+   CAROUSEL — Pi Carousel Component
+   Used in doctors section (homepage #4) and archive-pi_doctor
+   =========================================================== */
+
+/* --- Container --- */
+.pi-carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 48px; /* space for dots */
+}
+
+/* --- Track --- */
+.pi-carousel-track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+  cursor: grab;
+}
+
+.pi-carousel-track.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.pi-carousel-track.is-dragging * {
+  pointer-events: none;
+}
+
+/* --- Cards inside track --- */
+.pi-carousel-track > * {
+  flex-shrink: 0;
+}
+
+/* --- Navigation Arrows --- */
+.pi-carousel-prev,
+.pi-carousel-next {
+  position: absolute;
+  top: calc(50% - 24px); /* offset for dots space */
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--pi-navy);
+  color: var(--pi-gold);
+  border: 2px solid var(--pi-navy-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition:
+    background var(--pi-transition),
+    border-color var(--pi-transition),
+    box-shadow var(--pi-transition),
+    opacity var(--pi-transition);
+  box-shadow: var(--pi-shadow-md);
+  opacity: 0.9;
+}
+
+.pi-carousel-prev {
+  left: -4px;
+}
+
+.pi-carousel-next {
+  right: -4px;
+}
+
+.pi-carousel-prev:hover,
+.pi-carousel-next:hover {
+  background: var(--pi-navy-light);
+  border-color: var(--pi-gold);
+  opacity: 1;
+  box-shadow: var(--pi-shadow-lg);
+}
+
+.pi-carousel-prev:focus-visible,
+.pi-carousel-next:focus-visible {
+  outline: 2px solid var(--pi-gold);
+  outline-offset: 2px;
+}
+
+.pi-carousel-prev svg,
+.pi-carousel-next svg {
+  stroke: var(--pi-gold);
+  width: 20px;
+  height: 20px;
+}
+
+/* Hidden when not enough cards */
+.pi-carousel-btn-disabled {
+  display: none;
+}
+
+/* --- Dots --- */
+.pi-carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 24px;
+}
+
+.pi-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--pi-light-gray);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background var(--pi-transition),
+    transform var(--pi-transition),
+    box-shadow var(--pi-transition);
+}
+
+.pi-carousel-dot:hover {
+  background: var(--pi-gold-light);
+  transform: scale(1.2);
+}
+
+.pi-carousel-dot.active {
+  background: var(--pi-gold);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.25);
+}
+
+.pi-carousel-dot:focus-visible {
+  outline: 2px solid var(--pi-gold);
+  outline-offset: 2px;
+}
+
+/* ===========================================
+   CAROUSEL — Responsive Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .pi-carousel-prev {
+    left: 4px;
+  }
+
+  .pi-carousel-next {
+    right: 4px;
+  }
+
+  .pi-carousel-prev,
+  .pi-carousel-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pi-carousel-prev svg,
+  .pi-carousel-next svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ===========================================
+   CAROUSEL — Responsive Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .pi-carousel-container {
+    padding-bottom: 40px;
+  }
+
+  .pi-carousel-prev,
+  .pi-carousel-next {
+    width: 36px;
+    height: 36px;
+    top: calc(50% - 20px);
+  }
+
+  .pi-carousel-prev svg,
+  .pi-carousel-next svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pi-carousel-prev {
+    left: 2px;
+  }
+
+  .pi-carousel-next {
+    right: 2px;
+  }
+
+  .pi-carousel-dots {
+    gap: 8px;
+    padding-top: 20px;
+  }
+
+  .pi-carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* ===========================================
+   A11Y — Reduced Motion
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .pi-carousel-track {
+    transition: none !important;
+  }
+
+  .pi-carousel-dot,
+  .pi-carousel-prev,
+  .pi-carousel-next {
+    transition: none;
+  }
+}
