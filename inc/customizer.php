@@ -1,2 +1,216 @@
 <?php
-defined( 'ABSPATH' ) || exit; // Pi Dentist — Customizer — Phase 1
+/**
+ * Pi Dentist — Customizer Settings
+ *
+ * Đăng ký 4 sections trong Customizer:
+ * 1. pi_general  — Thông tin chung (phone, email, address, hours)
+ * 2. pi_social   — Mạng xã hội (facebook, instagram, youtube, tiktok, zalo)
+ * 3. pi_promo    — Ưu đãi (banner toggle + text)
+ * 4. pi_map      — Bản đồ Google (iframe embed)
+ *
+ * Tất cả settings dùng sanitize_callback phù hợp.
+ * Truy cập trong template: get_theme_mod( 'pi_phone' ), etc.
+ *
+ * @package Pidentist
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+add_action( 'customize_register', 'pi_customize_register' );
+
+/**
+ * Đăng ký sections, settings, controls cho Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Customizer manager instance.
+ */
+function pi_customize_register( $wp_customize ) {
+
+	/* ═══════════════════════════════════════════════
+	 * SECTION 1: Pi - Thông tin chung (priority 30)
+	 * ═══════════════════════════════════════════════ */
+	$wp_customize->add_section( 'pi_general', array(
+		'title'    => 'Pi - Thông tin chung',
+		'priority' => 30,
+	) );
+
+	// --- Phone ---
+	$wp_customize->add_setting( 'pi_phone', array(
+		'default'           => '0909 XXX XXX',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage',
+	) );
+	$wp_customize->add_control( 'pi_phone', array(
+		'label'   => 'Hotline',
+		'section' => 'pi_general',
+		'type'    => 'text',
+	) );
+
+	// --- Email ---
+	$wp_customize->add_setting( 'pi_email', array(
+		'default'           => 'info@pidentist.vn',
+		'sanitize_callback' => 'sanitize_email',
+		'transport'         => 'postMessage',
+	) );
+	$wp_customize->add_control( 'pi_email', array(
+		'label'   => 'Email',
+		'section' => 'pi_general',
+		'type'    => 'email',
+	) );
+
+	// --- Address ---
+	$wp_customize->add_setting( 'pi_address', array(
+		'default'           => '',
+		'sanitize_callback' => 'wp_kses_post',
+		'transport'         => 'postMessage',
+	) );
+	$wp_customize->add_control( 'pi_address', array(
+		'label'   => 'Địa chỉ',
+		'section' => 'pi_general',
+		'type'    => 'textarea',
+	) );
+
+	// --- Working hours (3 fields) ---
+	$hours_fields = array(
+		'pi_hours_weekday'  => array(
+			'label'   => 'Giờ làm việc — Thứ 2 – Thứ 6',
+			'default' => '8:00 – 20:00',
+		),
+		'pi_hours_saturday' => array(
+			'label'   => 'Giờ làm việc — Thứ 7',
+			'default' => '8:00 – 17:00',
+		),
+		'pi_hours_sunday'   => array(
+			'label'   => 'Giờ làm việc — Chủ nhật',
+			'default' => 'Nghỉ',
+		),
+	);
+
+	foreach ( $hours_fields as $key => $field ) {
+		$wp_customize->add_setting( $key, array(
+			'default'           => $field['default'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'postMessage',
+		) );
+		$wp_customize->add_control( $key, array(
+			'label'   => $field['label'],
+			'section' => 'pi_general',
+			'type'    => 'text',
+		) );
+	}
+
+	/* ═══════════════════════════════════════════════
+	 * SECTION 2: Pi - Mạng xã hội (priority 31)
+	 * ═══════════════════════════════════════════════ */
+	$wp_customize->add_section( 'pi_social', array(
+		'title'    => 'Pi - Mạng xã hội',
+		'priority' => 31,
+	) );
+
+	$social_networks = array(
+		'pi_facebook_url'  => 'Facebook',
+		'pi_instagram_url' => 'Instagram',
+		'pi_youtube_url'   => 'YouTube',
+		'pi_tiktok_url'    => 'TikTok',
+		'pi_zalo_url'      => 'Zalo',
+	);
+
+	foreach ( $social_networks as $key => $label ) {
+		$wp_customize->add_setting( $key, array(
+			'default'           => '#',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'postMessage',
+		) );
+		$wp_customize->add_control( $key, array(
+			'label'   => $label,
+			'section' => 'pi_social',
+			'type'    => 'url',
+		) );
+	}
+
+	/* ═══════════════════════════════════════════════
+	 * SECTION 3: Pi - Ưu đãi (priority 32)
+	 * ═══════════════════════════════════════════════ */
+	$wp_customize->add_section( 'pi_promo', array(
+		'title'    => 'Pi - Ưu đãi',
+		'priority' => 32,
+	) );
+
+	// --- Promo active toggle ---
+	$wp_customize->add_setting( 'pi_promo_active', array(
+		'default'           => true,
+		'sanitize_callback' => 'pi_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'pi_promo_active', array(
+		'label'   => 'Bật banner ưu đãi',
+		'section' => 'pi_promo',
+		'type'    => 'checkbox',
+	) );
+
+	// --- Promo text ---
+	$wp_customize->add_setting( 'pi_promo_text', array(
+		'default'           => 'Ưu đãi khai trương: Scan 3D miễn phí + Giảm 20% phí điều trị',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'pi_promo_text', array(
+		'label'   => 'Nội dung ưu đãi',
+		'section' => 'pi_promo',
+		'type'    => 'textarea',
+	) );
+
+	/* ═══════════════════════════════════════════════
+	 * SECTION 4: Pi - Bản đồ Google (priority 33)
+	 * ═══════════════════════════════════════════════ */
+	$wp_customize->add_section( 'pi_map', array(
+		'title'    => 'Pi - Bản đồ Google',
+		'priority' => 33,
+	) );
+
+	$wp_customize->add_setting( 'pi_map_embed', array(
+		'default'           => '',
+		'sanitize_callback' => 'pi_sanitize_map_embed',
+	) );
+	$wp_customize->add_control( 'pi_map_embed', array(
+		'label'       => 'Iframe Google Maps embed',
+		'description' => 'Vào Google Maps → Share → Embed a map → copy iframe paste vào đây',
+		'section'     => 'pi_map',
+		'type'        => 'textarea',
+	) );
+}
+
+/* ───────────────────────────────────────────────
+ * SANITIZE CALLBACKS
+ * ─────────────────────────────────────────────── */
+
+/**
+ * Sanitize checkbox — trả về boolean.
+ *
+ * @param mixed $value Giá trị từ Customizer.
+ * @return bool
+ */
+function pi_sanitize_checkbox( $value ) {
+	return (bool) $value;
+}
+
+/**
+ * Sanitize Google Maps embed.
+ * Chỉ cho phép thẻ <iframe> với các attributes an toàn.
+ * Từ chối mọi HTML khác.
+ *
+ * @param string $value Raw embed code từ admin.
+ * @return string Sanitized iframe hoặc chuỗi rỗng.
+ */
+function pi_sanitize_map_embed( $value ) {
+	return wp_kses( $value, array(
+		'iframe' => array(
+			'src'             => true,
+			'width'           => true,
+			'height'          => true,
+			'style'           => true,
+			'allowfullscreen' => true,
+			'loading'         => true,
+			'referrerpolicy'  => true,
+			'frameborder'     => true,
+			'title'           => true,
+		),
+	) );
+}
