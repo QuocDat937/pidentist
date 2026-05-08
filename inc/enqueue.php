@@ -171,6 +171,19 @@ function pi_enqueue_styles() {
 			$ver
 		);
 	}
+
+	/* --- Blog, Search, 404, Page CSS --- */
+	if (
+		is_home() || is_archive() || is_singular( 'post' ) ||
+		is_search() || is_404() || is_page()
+	) {
+		wp_enqueue_style(
+			'pi-pattern-blog',
+			$uri . '/assets/css/patterns/blog.css',
+			array( 'pi-tokens', 'pi-cards', 'pi-sections' ),
+			$ver
+		);
+	}
 }
 
 /**

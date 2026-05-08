@@ -1,27 +1,66 @@
 <?php
 /**
- * Pi Dentist — Archive Template
+ * Pi Dentist — Archive: Blog (/kiến thức/)
+ *
+ * Listing bài viết blog tại /kien-thuc/.
+ * Layout: Page Hero → Posts Grid → Pagination → CTA Booking.
+ *
+ * @package Pidentist
  */
-defined( 'ABSPATH' ) || exit;
-get_header();
-?>
 
-<main id="primary" class="site-main" role="main">
-    <?php if ( have_posts() ) : ?>
-        <header class="page-header">
-            <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-        </header>
-        <?php
-        while ( have_posts() ) :
-            the_post();
-            get_template_part( 'template-parts/card/post-card' );
-        endwhile;
-        the_posts_pagination();
-    else :
-        echo '<p>Không tìm thấy bài viết nào.</p>';
-    endif;
-    ?>
+defined( 'ABSPATH' ) || exit;
+
+get_header(); ?>
+
+<main class="pi-archive pi-archive-blog" id="main-content">
+
+	<?php
+	// ─── Page Hero ────────────────────────────────────────────────────
+	get_template_part( 'template-parts/section/page-hero', null, array(
+		'label'      => 'KIẾN THỨC',
+		'heading'    => 'Blog chỉnh nha',
+		'sub'        => 'Cập nhật kiến thức chỉnh nha, chăm sóc răng miệng từ đội ngũ Pi Dentist',
+		'breadcrumb' => true,
+	) );
+	?>
+
+	<!-- ─── Posts Grid ──────────────────────────────────────────── -->
+	<section class="blog-archive">
+		<div class="container">
+
+			<?php if ( have_posts() ) : ?>
+
+				<div class="posts-grid">
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						get_template_part( 'template-parts/card/post-card' );
+					endwhile;
+					?>
+				</div>
+
+				<?php
+				the_posts_pagination( array(
+					'mid_size'  => 2,
+					'prev_text' => '&larr; Trước',
+					'next_text' => 'Tiếp &rarr;',
+				) );
+				?>
+
+			<?php else : ?>
+
+				<div class="pi-no-results">
+					<p>Chưa có bài viết nào. Vui lòng quay lại sau.</p>
+				</div>
+
+			<?php endif; ?>
+
+		</div>
+	</section>
+
+	<!-- ─── CTA Booking ──────────────────────────────────────────── -->
+	<?php get_template_part( 'template-parts/section/booking-cta' ); ?>
+
 </main>
 
-<?php
-get_footer();
+<?php get_footer();
