@@ -12,11 +12,16 @@
 /* ---------- 2-Column Grid ---------- */
 .philosophy .philosophy-grid {
   display: flex;
-  align-items: center;
+  align-items: center !important;
   gap: 80px;
   max-width: var(--pi-container);
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* Override WP .wp-block-columns flex defaults */
+.philosophy .philosophy-grid.wp-block-columns {
+  align-items: center !important;
 }
 
 /* ---------- Visual Column — Navy rectangle with π ---------- */
@@ -30,6 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
 }
 
 /* Override WP .wp-block-column defaults that may conflict */
@@ -37,6 +43,7 @@
   border-radius: 16px !important;
   overflow: hidden !important;
   background: linear-gradient(135deg, var(--pi-navy) 0%, var(--pi-navy-light) 100%) !important;
+  align-self: center !important;
 }
 
 /* π character inside navy box */
@@ -66,6 +73,12 @@
 /* ---------- Content Column ---------- */
 .philosophy .philosophy-content {
   flex: 1;
+  align-self: center;
+}
+
+/* Force WP column to center align */
+.philosophy .philosophy-content.wp-block-column {
+  align-self: center !important;
 }
 
 .philosophy .section-label {
