@@ -1,19 +1,30 @@
 <?php
 /**
- * Pi Dentist — Footer Template Override
- * Phase 1 sẽ triển khai footer 4 columns + legal links.
+ * footer.php — Pi Dentist
+ * Override GeneratePress footer with 4-column layout.
+ * Ref: PROJECT_SPEC_WP.md section 7.8
+ *
+ * @package Pidentist
  */
+
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<footer id="siteFooter" class="site-footer" role="contentinfo">
-    <div class="container">
-        <?php get_template_part( 'template-parts/footer/footer-brand' ); ?>
-        <?php get_template_part( 'template-parts/footer/footer-links' ); ?>
-        <?php get_template_part( 'template-parts/footer/footer-bottom' ); ?>
-    </div>
+<footer class="site-footer" id="siteFooter" role="contentinfo">
+	<div class="container">
+		<div class="footer-grid">
+			<?php
+			get_template_part( 'template-parts/footer/footer-brand' );
+			get_template_part( 'template-parts/footer/footer-links' );
+			?>
+		</div>
+		<?php get_template_part( 'template-parts/footer/footer-bottom' ); ?>
+	</div>
 </footer>
 
-<?php wp_footer(); ?>
+<?php
+// Floating elements are hooked into wp_footer via inc/floating-elements.php
+wp_footer();
+?>
 </body>
 </html>

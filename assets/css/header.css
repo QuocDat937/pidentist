@@ -1,1 +1,441 @@
-/* Pi Dentist — Header — Phase 1 */
+/* Pi Dentist — Header
+   Sticky header, transparent → navy on scroll, nav dropdown, hamburger
+   Ported from index.html → WordPress child theme
+   All values use CSS custom properties from tokens.css */
+
+/* ===========================================
+   SITE HEADER — Desktop-first sticky bar
+   =========================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: background var(--pi-transition),
+              box-shadow var(--pi-transition);
+}
+
+/* Scrolled state — JS adds .scrolled when scrollY > 50 */
+.site-header.scrolled {
+  background: var(--pi-navy);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Header Inner ---------- */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  transition: height var(--pi-transition);
+}
+
+.site-header.scrolled .header-inner {
+  height: 70px;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-symbol {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--pi-gold);
+  line-height: 1;
+  transition: transform var(--pi-transition);
+}
+
+.logo:hover .logo-symbol {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pi-white);
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- Main Nav ---------- */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---------- Nav Item (depth 0 wrapper) ---------- */
+.nav-item {
+  position: relative;
+}
+
+/* ---------- Nav Link (depth 0) ---------- */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 8px 16px;
+  font-family: var(--pi-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--pi-radius-btn);
+  transition: color var(--pi-transition),
+              background var(--pi-transition);
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--pi-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Chevron for parent items */
+.nav-link .chevron {
+  font-size: 10px;
+  margin-left: 2px;
+  opacity: 0.6;
+  transition: transform var(--pi-transition),
+              opacity var(--pi-transition);
+}
+
+.nav-item:hover .nav-link .chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* ---------- Dropdown (depth 1) ---------- */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: var(--pi-white);
+  border-radius: 12px;
+  box-shadow: var(--pi-shadow-lg);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--pi-transition),
+              visibility var(--pi-transition),
+              transform var(--pi-transition);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Show dropdown on hover */
+.nav-item:hover > .dropdown,
+.nav-item:focus-within > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Invisible bridge to prevent gap flickering */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+/* ---------- Dropdown Item (depth 1 links) ---------- */
+.dropdown-item {
+  display: block;
+  padding: 12px 20px;
+  color: var(--pi-text);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--pi-transition),
+              color var(--pi-transition);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus-visible {
+  background: var(--pi-off-white);
+  color: var(--pi-navy);
+}
+
+/* ---------- Header CTA ---------- */
+.header-cta {
+  flex-shrink: 0;
+}
+
+.header-cta .btn {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* ---------- Hamburger — Mobile Only ---------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--pi-white);
+  border-radius: 2px;
+  transition: all var(--pi-transition);
+  transform-origin: center;
+}
+
+/* Hamburger → X animation when mobile-nav-open */
+body.mobile-nav-open .hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+body.mobile-nav-open .hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+body.mobile-nav-open .hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile Nav Overlay ---------- */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 33, 71, 0.97);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--pi-transition),
+              visibility var(--pi-transition);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.mobile-nav-open .mobile-nav-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Lock body scroll when mobile nav is open */
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
+/* ---------- Mobile Nav Inner ---------- */
+.mobile-nav-inner {
+  text-align: center;
+  padding: 80px 24px 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Mobile nav menu list */
+.mobile-nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.mobile-nav-menu li {
+  margin-bottom: 8px;
+}
+
+.mobile-nav-menu a {
+  display: block;
+  color: var(--pi-white);
+  font-family: var(--pi-font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  padding: 12px 0;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--pi-transition),
+              color var(--pi-transition);
+}
+
+.mobile-nav-menu a:hover,
+.mobile-nav-menu a:focus-visible {
+  opacity: 1;
+  color: var(--pi-gold);
+}
+
+/* Sub-menu in mobile */
+.mobile-nav-menu .sub-menu {
+  list-style: none;
+  padding: 0 0 0 20px;
+  margin: 0;
+}
+
+.mobile-nav-menu .sub-menu a {
+  font-size: 18px;
+  font-family: var(--pi-font-body);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.mobile-nav-menu .sub-menu a:hover {
+  opacity: 1;
+}
+
+/* Mobile CTA */
+.mobile-nav-cta {
+  margin-bottom: 32px;
+}
+
+.mobile-nav-cta .btn {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px 32px;
+}
+
+/* Mobile social icons */
+.mobile-nav-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--pi-gold);
+  font-size: 18px;
+  text-decoration: none;
+  transition: all var(--pi-transition);
+}
+
+.mobile-nav-social a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .main-nav {
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .header-cta .btn {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 991px)
+   =========================================== */
+@media (max-width: 991px) {
+  .header-inner {
+    height: 70px;
+  }
+
+  .site-header.scrolled .header-inner {
+    height: 64px;
+  }
+
+  /* Hide desktop nav & CTA on mobile */
+  .main-nav,
+  .header-cta {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Smaller logo on mobile */
+  .logo-symbol {
+    font-size: 30px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Small Mobile (max-width: 479px)
+   =========================================== */
+@media (max-width: 479px) {
+  .header-inner {
+    height: 60px;
+  }
+
+  .logo-symbol {
+    font-size: 28px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .mobile-nav-menu a {
+    font-size: 20px;
+    padding: 10px 0;
+  }
+
+  .mobile-nav-menu .sub-menu a {
+    font-size: 16px;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .header-inner,
+  .dropdown,
+  .hamburger span,
+  .mobile-nav-overlay,
+  .nav-link,
+  .dropdown-item {
+    transition: none;
+  }
+
+  .logo:hover .logo-symbol {
+    transform: none;
+  }
+}
