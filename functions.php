@@ -26,3 +26,4 @@ require_once PIDENTIST_DIR . '/inc/gp-hooks.php';
 require_once PIDENTIST_DIR . '/inc/floating-elements.php';
 require_once PIDENTIST_DIR . '/inc/shortcodes.php';
 require_once PIDENTIST_DIR . '/inc/rank-math-defaults.php';
+require_once PIDENTIST_DIR . '/inc/seed-data.php';
