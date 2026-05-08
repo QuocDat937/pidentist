@@ -1,0 +1,3126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pi Dentist — Kỷ nguyên mới của chỉnh nha chính xác. Chính xác như hằng số Pi, mỗi ca chỉnh nha được tính toán tỉ mỉ đến từng milimet.">
+  <meta name="keywords" content="chỉnh nha, niềng răng, nha khoa, Pi Dentist, niềng trong suốt, mắc cài sứ">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pi Dentist — Kỷ nguyên mới của chỉnh nha chính xác">
+  <meta property="og:description" content="Nơi mỗi nụ cười được thiết kế với độ chính xác tuyệt đối — như hằng số π">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pidentist.vn">
+
+  <title>Pi Dentist — Kỷ nguyên mới của chỉnh nha chính xác</title>
+
+  <!-- Inline Styles -->
+  <style>
+/* ========================================
+   PI DENTIST — Design System & Styles
+   Medical Premium Orthodontic Clinic
+   ======================================== */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Primary */
+  --navy:            #002147;
+  --navy-light:      #003366;
+  --navy-dark:       #001a33;
+
+  /* Accent */
+  --gold:            #C9A96E;
+  --gold-light:      #E8D5A8;
+  --gold-hover:      #b8944f;
+
+  /* Neutrals */
+  --white:           #FFFFFF;
+  --off-white:       #F8F7F4;
+  --light-gray:      #EDECEA;
+  --dark:            #1A1A1A;
+  --medium:          #666666;
+  --success:         #2E7D5B;
+
+  /* Typography */
+  --font-heading:    'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --section-py:      100px;
+  --container-max:   1200px;
+  --container-px:    24px;
+
+  /* Transitions */
+  --ease-out:        cubic-bezier(0.22, 1, 0.36, 1);
+  --transition:      0.3s var(--ease-out);
+
+  /* Shadows */
+  --shadow-sm:       0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:       0 8px 30px rgba(0,0,0,0.08);
+  --shadow-lg:       0 16px 48px rgba(0,0,0,0.12);
+  --shadow-card:     0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark);
+  background: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ---------- Utility ---------- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  width: 100%;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--medium);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-header .section-sub {
+  margin: 0 auto;
+}
+
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 24px auto 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: 6px;
+  transition: all var(--transition);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-gold:hover {
+  background: var(--gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,169,110,0.35);
+}
+
+.btn-outline-white {
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: var(--white);
+  background: transparent;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--white);
+}
+
+.btn-outline-navy {
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+.btn-outline-navy:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn-ghost-white {
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  backdrop-filter: blur(4px);
+}
+.btn-ghost-white:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.text-link {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition);
+}
+.text-link:hover {
+  gap: 10px;
+  color: var(--gold-hover);
+}
+.text-link-navy {
+  color: var(--navy);
+}
+.text-link-navy:hover {
+  color: var(--gold);
+}
+
+/* ---------- Scroll Animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* =========================================
+   HEADER / NAVIGATION
+   ========================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+  padding: 20px 0;
+}
+
+.site-header.scrolled {
+  background: var(--navy);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  padding: 12px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
+}
+.logo-symbol {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+/* Desktop Nav */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  border-radius: 6px;
+  transition: all var(--transition);
+}
+.nav-link:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.08);
+}
+
+.nav-link .chevron {
+  font-size: 10px;
+  transition: transform 0.3s;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 240px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s var(--ease-out);
+  padding: 8px;
+  border: 1px solid var(--light-gray);
+}
+
+.nav-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--dark);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+.dropdown-item:hover {
+  background: var(--off-white);
+  color: var(--navy);
+  padding-left: 20px;
+}
+
+/* Header CTA */
+.header-cta .btn {
+  font-size: 13px;
+  padding: 10px 24px;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  z-index: 1001;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+  display: none;
+}
+
+/* =========================================
+   SECTION 1 — HERO BANNER
+   ========================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #002147 0%, #003366 40%, #002147 100%);
+  z-index: 0;
+}
+
+/* Subtle π pattern overlay */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(201,169,110,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(201,169,110,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 60% 80%, rgba(255,255,255,0.03) 0%, transparent 35%);
+}
+
+.hero-bg::after {
+  content: 'π';
+  position: absolute;
+  right: -5%;
+  bottom: -10%;
+  font-family: var(--font-heading);
+  font-size: clamp(300px, 40vw, 600px);
+  color: rgba(201,169,110,0.04);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.hero-content {
+  max-width: 680px;
+}
+
+.hero-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: block;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out) 0.2s forwards;
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out) 0.4s forwards;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 1.5vw, 19px);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 520px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out) 0.6s forwards;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out) 0.8s forwards;
+}
+
+.hero-ctas .btn {
+  font-size: 16px;
+  padding: 16px 36px;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out) 1.2s forwards;
+}
+.scroll-indicator span {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid rgba(255,255,255,0.4);
+  border-bottom: 2px solid rgba(255,255,255,0.4);
+  transform: rotate(45deg);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(8px); }
+}
+
+/* =========================================
+   SECTION 2 — CAM KẾT
+   ========================================= */
+.commitments {
+  padding: var(--section-py) 0;
+  background: var(--white);
+  border-top: 1px solid var(--gold-light);
+  border-bottom: 1px solid var(--gold-light);
+}
+
+.commitments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.commitment-item {
+  text-align: center;
+  padding: 32px 20px;
+  position: relative;
+}
+
+.commitment-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.commitment-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 24px;
+}
+
+.commitment-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.commitment-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.commitment-desc {
+  font-size: 14px;
+  color: var(--medium);
+  line-height: 1.7;
+}
+
+/* =========================================
+   SECTION 3 — TRIẾT LÝ PI
+   ========================================= */
+.philosophy {
+  padding: var(--section-py) 0;
+  background: var(--off-white);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.philosophy-visual {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-visual .pi-symbol {
+  font-family: var(--font-heading);
+  font-size: 200px;
+  color: rgba(201,169,110,0.15);
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+.philosophy-visual::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,33,71,0.6), transparent);
+}
+
+.philosophy-content .section-label {
+  text-align: left;
+}
+
+.philosophy-content .section-heading {
+  text-align: left;
+}
+
+.philosophy-text {
+  font-size: 16px;
+  color: var(--medium);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   SECTION 4 — ĐỘI NGŨ BÁC SĨ
+   ========================================= */
+.doctors {
+  padding: var(--section-py) 0;
+  background: var(--white);
+}
+
+.doctors-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.doctors-track {
+  display: flex;
+  gap: 32px;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.doctor-card {
+  min-width: calc(33.333% - 22px);
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--light-gray);
+  transition: all var(--transition);
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold-light);
+}
+
+.doctor-photo {
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctor-photo svg {
+  width: 72px;
+  height: 72px;
+  stroke: rgba(255,255,255,0.15);
+  fill: none;
+  stroke-width: 1;
+}
+
+.doctor-info {
+  padding: 28px;
+}
+
+.doctor-name {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.doctor-title {
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.doctor-credentials {
+  font-size: 13px;
+  color: var(--medium);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.doctor-credentials li {
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.doctor-credentials li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-light);
+}
+
+.doctor-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap var(--transition);
+}
+.doctor-link:hover {
+  gap: 10px;
+}
+
+/* Carousel nav */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  transition: all var(--transition);
+  background: transparent;
+}
+.carousel-btn:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--light-gray);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+}
+.carousel-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* =========================================
+   SECTION 5 — CÔNG NGHỆ
+   ========================================= */
+.technology {
+  padding: var(--section-py) 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.technology::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.technology .section-label {
+  color: var(--gold);
+}
+.technology .section-heading {
+  color: var(--white);
+}
+.technology .section-sub {
+  color: rgba(255,255,255,0.6);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.tech-card {
+  padding: 40px 32px;
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  transition: all var(--transition);
+  backdrop-filter: blur(4px);
+}
+.tech-card:hover {
+  border-color: var(--gold);
+  background: rgba(201,169,110,0.06);
+  transform: translateY(-4px);
+}
+
+.tech-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 24px;
+  color: var(--gold);
+}
+.tech-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+}
+
+.tech-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.tech-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+.technology .cta-center {
+  text-align: center;
+}
+
+/* =========================================
+   SECTION 6 — DỊCH VỤ
+   ========================================= */
+.services {
+  padding: var(--section-py) 0;
+  background: var(--off-white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid transparent;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.service-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-thumb {
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+}
+.service-thumb.metal {
+  background: linear-gradient(135deg, #6B8CC7 0%, #4A6FA5 100%);
+}
+.service-thumb.ceramic {
+  background: linear-gradient(135deg, #D4C5A9 0%, #B8A88A 100%);
+}
+.service-thumb.clear {
+  background: linear-gradient(135deg, #A8D8EA 0%, #7EC8E3 100%);
+}
+.service-thumb.lingual {
+  background: linear-gradient(135deg, #002147 0%, #003366 100%);
+}
+
+.service-thumb-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-thumb-icon svg {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: rgba(255,255,255,0.4);
+  stroke-width: 1.5;
+}
+
+.service-body {
+  padding: 28px;
+}
+
+.service-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.service-tagline {
+  font-size: 14px;
+  color: var(--medium);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.service-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.service-target {
+  font-size: 13px;
+  color: var(--medium);
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold-light);
+}
+
+.service-card .text-link {
+  font-size: 14px;
+}
+
+.services .compare-link {
+  text-align: center;
+}
+
+/* =========================================
+   SECTION 7 — MÔ PHỎNG KẾT QUẢ
+   ========================================= */
+.simulation {
+  padding: var(--section-py) 0;
+  background: var(--white);
+}
+
+.simulation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.simulation-visual {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #002147 0%, #003366 50%, #002147 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3D teeth mock */
+.simulation-visual::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 50%;
+  border: 2px solid rgba(201,169,110,0.2);
+  border-radius: 50%;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.simulation-visual::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 35%;
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 50%;
+  animation: pulseGlow 3s ease-in-out 0.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.simulation-visual .scan-label {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.simulation-content .section-label,
+.simulation-content .section-heading {
+  text-align: left;
+}
+
+.simulation-text {
+  font-size: 16px;
+  color: var(--medium);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.check-list {
+  margin-bottom: 36px;
+}
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 15px;
+  color: var(--dark);
+}
+.check-list li .check-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.12);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* =========================================
+   SECTION 8 — HÀNH TRÌNH ĐIỀU TRỊ
+   ========================================= */
+.journey {
+  padding: var(--section-py) 0;
+  background: var(--off-white);
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 20px;
+}
+
+/* connector line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: var(--gold-light);
+}
+
+.timeline-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+  transition: all var(--transition);
+}
+
+.timeline-step:hover .step-number {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.step-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: var(--medium);
+  line-height: 1.7;
+}
+
+/* =========================================
+   SECTION 9 — BẢNG GIÁ
+   ========================================= */
+.pricing {
+  padding: var(--section-py) 0;
+  background: var(--white);
+}
+
+/* Desktop Table */
+.pricing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.pricing-table thead {
+  background: var(--navy);
+}
+.pricing-table th {
+  padding: 18px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.pricing-table tbody tr {
+  transition: background var(--transition);
+  border-bottom: 1px solid var(--light-gray);
+}
+.pricing-table tbody tr:last-child {
+  border-bottom: none;
+}
+.pricing-table tbody tr:hover {
+  background: var(--off-white);
+}
+
+.pricing-table td {
+  padding: 20px 24px;
+  font-size: 15px;
+  color: var(--dark);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--light-gray);
+}
+.pricing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-table .price-cell {
+  font-weight: 600;
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.pricing-table .btn {
+  padding: 8px 20px;
+  font-size: 13px;
+}
+
+/* Mobile pricing cards */
+.pricing-cards-mobile {
+  display: none;
+}
+
+.pricing-card-m {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 16px;
+  transition: all var(--transition);
+}
+.pricing-card-m:hover {
+  border-color: var(--gold-light);
+  box-shadow: var(--shadow-sm);
+}
+.pricing-card-m .method-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.pricing-card-m .method-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.pricing-card-m .method-detail {
+  font-size: 14px;
+  color: var(--medium);
+  margin-bottom: 6px;
+}
+.pricing-card-m .btn {
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* Highlight box */
+.promo-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.promo-box h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.promo-box p {
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+}
+.promo-box .gold-highlight {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Trust badges */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.trust-badge .badge-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(46,125,91,0.1);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* =========================================
+   SECTION 10 — KIẾN THỨC
+   ========================================= */
+.knowledge {
+  padding: var(--section-py) 0;
+  background: var(--off-white);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.blog-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-thumb {
+  aspect-ratio: 16/10;
+  position: relative;
+}
+.blog-thumb.thumb-1 {
+  background: linear-gradient(135deg, #E8D5A8 0%, #C9A96E 100%);
+}
+.blog-thumb.thumb-2 {
+  background: linear-gradient(135deg, #A8D8EA 0%, #7EC8E3 100%);
+}
+.blog-thumb.thumb-3 {
+  background: linear-gradient(135deg, #002147 0%, #003366 100%);
+}
+
+.blog-thumb .blog-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--navy);
+  border-radius: 4px;
+}
+
+.blog-body {
+  padding: 28px;
+}
+
+.blog-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-excerpt {
+  font-size: 14px;
+  color: var(--medium);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card .text-link {
+  font-size: 14px;
+}
+
+.knowledge .all-posts {
+  text-align: center;
+}
+
+/* =========================================
+   SECTION 11 — CTA + BOOKING FORM
+   ========================================= */
+.cta-booking {
+  padding: var(--section-py) 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-booking::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.cta-form-side h2 {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(201,169,110,0.15);
+  border: 1px solid rgba(201,169,110,0.3);
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin-bottom: 32px;
+  font-size: 15px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.promo-badge .promo-emoji {
+  font-size: 20px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(201,169,110,0.2);
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 15px;
+  transition: all var(--transition);
+}
+
+.form-group input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+.form-group select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+.form-group select option {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+}
+
+.booking-form .btn-gold {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.form-note {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+.form-note a {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* CTA info side */
+.cta-info {
+  padding-top: 20px;
+}
+
+.info-block {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 10px;
+  background: rgba(201,169,110,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.info-block h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.info-block p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.08) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.2);
+  font-size: 14px;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+  background: var(--navy-dark);
+  padding: 80px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand .logo {
+  margin-bottom: 16px;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 18px;
+  transition: all var(--transition);
+}
+.social-link:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: all var(--transition);
+}
+.footer-links a:hover {
+  color: var(--gold);
+  padding-left: 4px;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+}
+.footer-contact li .fc-icon {
+  color: var(--gold);
+  min-width: 18px;
+  margin-top: 2px;
+}
+
+.footer-bottom {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+.footer-legal a {
+  color: rgba(255,255,255,0.3);
+  transition: color var(--transition);
+}
+.footer-legal a:hover {
+  color: var(--gold);
+}
+
+/* =========================================
+   FLOATING ELEMENTS
+   ========================================= */
+
+/* Sticky CTA (appears after hero) */
+.floating-cta {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s var(--ease-out);
+}
+.floating-cta.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-cta .btn {
+  box-shadow: 0 8px 32px rgba(201,169,110,0.4);
+  font-size: 14px;
+  padding: 14px 28px;
+}
+
+/* Contact widgets */
+.contact-widgets {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s var(--ease-out);
+}
+.contact-widgets.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.widget-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition);
+  border: none;
+  cursor: pointer;
+}
+.widget-btn:hover {
+  transform: scale(1.1);
+}
+
+.widget-zalo {
+  background: #0068FF;
+  color: white;
+}
+.widget-phone {
+  background: var(--success);
+  color: white;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  right: 28px;
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s var(--ease-out);
+  box-shadow: var(--shadow-md);
+}
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* =========================================
+   RESPONSIVE — Tablet (≤1199px)
+   ========================================= */
+@media (max-width: 1199px) {
+  :root {
+    --section-py: 80px;
+  }
+
+  .section-heading {
+    font-size: 36px;
+  }
+
+  .commitments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .philosophy-grid {
+    gap: 48px;
+  }
+
+  .doctor-card {
+    min-width: calc(50% - 16px);
+  }
+
+  .tech-grid {
+    gap: 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .simulation-grid {
+    gap: 48px;
+  }
+
+  .timeline {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .timeline::before {
+    display: none;
+  }
+  .timeline-step {
+    flex: 0 0 calc(33.333% - 30px);
+  }
+
+  .cta-grid {
+    gap: 48px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE — Mobile (≤767px)
+   ========================================= */
+@media (max-width: 767px) {
+  :root {
+    --section-py: 64px;
+    --container-px: 20px;
+  }
+
+  .section-heading {
+    font-size: 28px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  /* Header Mobile */
+  .main-nav,
+  .header-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--navy);
+    z-index: 999;
+    padding: 100px var(--container-px) 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease-out);
+    overflow-y: auto;
+  }
+  .mobile-nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .mobile-nav-overlay .mobile-nav-link {
+    display: block;
+    padding: 16px 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mobile-nav-overlay .mobile-sub-menu {
+    padding-left: 20px;
+  }
+  .mobile-nav-overlay .mobile-sub-link {
+    display: block;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+  }
+  .mobile-nav-overlay .mobile-cta {
+    margin-top: 32px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100svh;
+  }
+  .hero .container {
+    padding-top: 100px;
+  }
+  .hero-ctas {
+    flex-direction: column;
+  }
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* Commitments */
+  .commitments-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .commitment-item {
+    padding: 24px 16px;
+  }
+
+  /* Philosophy */
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .philosophy-visual {
+    aspect-ratio: 16/10;
+  }
+  .philosophy-visual .pi-symbol {
+    font-size: 120px;
+  }
+
+  /* Doctor carousel */
+  .doctor-card {
+    min-width: 100%;
+  }
+
+  /* Tech */
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Simulation */
+  .simulation-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .simulation-visual {
+    order: -1;
+  }
+
+  /* Timeline */
+  .timeline {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 28px;
+    right: auto;
+    width: 2px;
+    height: 100%;
+  }
+  .timeline-step {
+    flex: none;
+    text-align: left;
+    padding: 0 0 40px 0;
+  }
+  .step-number {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    margin: 0;
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  /* Pricing table → cards */
+  .pricing-table {
+    display: none;
+  }
+  .pricing-cards-mobile {
+    display: block;
+  }
+
+  /* Blog */
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CTA */
+  .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* Floating */
+  .floating-cta {
+    bottom: 16px;
+    right: 16px;
+  }
+  .contact-widgets {
+    bottom: 16px;
+    left: 16px;
+  }
+  .back-to-top {
+    bottom: 80px;
+    right: 16px;
+  }
+}
+
+  </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Pi Dentist",
+    "description": "Chỉnh nha chuyên sâu — Chính xác như hằng số Pi",
+    "url": "https://pidentist.vn",
+    "telephone": "0909 XXX XXX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Đường ABC",
+      "addressLocality": "Quận XYZ",
+      "addressRegion": "TP.HCM",
+      "addressCountry": "VN"
+    },
+    "openingHours": ["Mo-Fr 08:00-20:00", "Sa 08:00-17:00"],
+    "priceRange": "$$$$"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo" aria-label="Pi Dentist trang chủ">
+          <span class="logo-symbol">π</span>
+          <span class="logo-text">Pi Dentist</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Menu chính">
+          <div class="nav-item">
+            <a href="#philosophy" class="nav-link">Về Pi</a>
+          </div>
+          <div class="nav-item">
+            <a href="#services" class="nav-link">
+              Dịch vụ <span class="chevron">▼</span>
+            </a>
+            <div class="dropdown" role="menu">
+              <a href="#services" class="dropdown-item" role="menuitem">Niềng mắc cài kim loại</a>
+              <a href="#services" class="dropdown-item" role="menuitem">Niềng mắc cài sứ</a>
+              <a href="#services" class="dropdown-item" role="menuitem">Niềng trong suốt</a>
+              <a href="#services" class="dropdown-item" role="menuitem">Niềng mặt trong</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="#doctors" class="nav-link">Bác sĩ</a>
+          </div>
+          <div class="nav-item">
+            <a href="#simulation" class="nav-link">Case</a>
+          </div>
+          <div class="nav-item">
+            <a href="#pricing" class="nav-link">Bảng giá</a>
+          </div>
+          <div class="nav-item">
+            <a href="#knowledge" class="nav-link">Kiến thức</a>
+          </div>
+          <div class="nav-item">
+            <a href="#contact" class="nav-link">Liên hệ</a>
+          </div>
+        </nav>
+
+        <div class="header-cta">
+          <a href="#contact" class="btn btn-gold">Đặt lịch tư vấn</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Mở menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <a href="#philosophy" class="mobile-nav-link">Về Pi</a>
+    <a href="#services" class="mobile-nav-link">Dịch vụ</a>
+    <div class="mobile-sub-menu">
+      <a href="#services" class="mobile-sub-link">Niềng mắc cài kim loại</a>
+      <a href="#services" class="mobile-sub-link">Niềng mắc cài sứ</a>
+      <a href="#services" class="mobile-sub-link">Niềng trong suốt</a>
+      <a href="#services" class="mobile-sub-link">Niềng mặt trong</a>
+    </div>
+    <a href="#doctors" class="mobile-nav-link">Bác sĩ</a>
+    <a href="#simulation" class="mobile-nav-link">Case</a>
+    <a href="#pricing" class="mobile-nav-link">Bảng giá</a>
+    <a href="#knowledge" class="mobile-nav-link">Kiến thức</a>
+    <a href="#contact" class="mobile-nav-link">Liên hệ</a>
+    <div class="mobile-cta">
+      <a href="#contact" class="btn btn-gold" style="width:100%;text-align:center;">Đặt lịch tư vấn miễn phí</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======== SECTION 1 — HERO ======== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label">CHỈNH NHA CHUYÊN SÂU</span>
+          <h1 class="hero-heading">Kỷ nguyên mới<br>của chỉnh nha chính xác</h1>
+          <p class="hero-sub">Nơi mỗi nụ cười được thiết kế với độ chính xác tuyệt đối — như hằng số π</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-gold">Đặt lịch tư vấn miễn phí</a>
+            <a href="#philosophy" class="btn btn-outline-white">Khám phá Pi Dentist</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Cuộn xuống</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 2 — CAM KẾT ======== -->
+    <section class="commitments" id="commitments">
+      <div class="container">
+        <div class="commitments-grid">
+          <div class="commitment-item reveal">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z" stroke="currentColor" fill="none" stroke-width="1.5"/><circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="commitment-title">Chỉ chuyên chỉnh nha</h3>
+            <p class="commitment-desc">100% tập trung vào chỉnh nha — không dàn trải, không đa khoa. Mỗi ca là một tác phẩm.</p>
+          </div>
+          <div class="commitment-item reveal delay-1">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="commitment-title">Bác sĩ đào tạo quốc tế</h3>
+            <p class="commitment-desc">Đội ngũ bác sĩ được đào tạo tại các trung tâm chỉnh nha hàng đầu thế giới.</p>
+          </div>
+          <div class="commitment-item reveal delay-2">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="commitment-title">Công nghệ số 100%</h3>
+            <p class="commitment-desc">CBCT 3D, scan kỹ thuật số, phần mềm AI lập kế hoạch — chính xác đến từng milimet.</p>
+          </div>
+          <div class="commitment-item reveal delay-3">
+            <div class="commitment-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="commitment-title">Theo dõi trọn đời</h3>
+            <p class="commitment-desc">Cam kết đồng hành từ ngày đầu đến khi hoàn tất — và theo dõi kết quả trọn đời.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 3 — TRIÊT LÝ PI ======== -->
+    <section class="philosophy" id="philosophy">
+      <div class="container">
+        <div class="philosophy-grid">
+          <div class="philosophy-visual reveal-left">
+            <span class="pi-symbol" aria-hidden="true">π</span>
+          </div>
+          <div class="philosophy-content reveal-right">
+            <span class="section-label">VỀ PI DENTIST</span>
+            <h2 class="section-heading">Chính xác như hằng số π</h2>
+            <p class="philosophy-text">
+              Pi (π) là hằng số vô tỉ, vô hạn — nhưng chính xác tuyệt đối. Pi Dentist mang triết lý đó vào từng ca chỉnh nha: mỗi milimet dịch chuyển, mỗi góc nghiêng răng đều được tính toán bằng công nghệ số hiện đại nhất.
+            </p>
+            <p class="philosophy-text">
+              Chúng tôi tin rằng một nụ cười đẹp không đến từ may mắn — mà đến từ sự chính xác trong từng bước điều trị, từ chẩn đoán đến hoàn thiện.
+            </p>
+            <a href="#" class="text-link">Tìm hiểu thêm về Pi →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 4 — ĐỘI NGŨ BÁC SĨ ======== -->
+    <section class="doctors" id="doctors">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">ĐỘI NGŨ CHUYÊN GIA</span>
+          <h2 class="section-heading">Bác sĩ chuyên sâu chỉnh nha</h2>
+          <p class="section-sub">Được đào tạo tại các trường đại học và trung tâm chỉnh nha hàng đầu</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="doctors-carousel reveal" id="doctorsCarousel">
+          <div class="doctors-track" id="doctorsTrack">
+            <!-- Doctor 1 -->
+            <article class="doctor-card">
+              <div class="doctor-photo">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1"/></svg>
+              </div>
+              <div class="doctor-info">
+                <h3 class="doctor-name">BS. Nguyễn Văn A</h3>
+                <p class="doctor-title">Bác sĩ chỉnh nha</p>
+                <ul class="doctor-credentials">
+                  <li>Thạc sĩ Chỉnh nha — ĐH Y Dược TP.HCM</li>
+                  <li>Chứng chỉ Invisalign Provider</li>
+                  <li>Chuyên sâu: Ca phức tạp, phẫu thuật chỉnh hàm</li>
+                </ul>
+                <a href="#" class="doctor-link">Xem hồ sơ →</a>
+              </div>
+            </article>
+            <!-- Doctor 2 -->
+            <article class="doctor-card">
+              <div class="doctor-photo">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1"/></svg>
+              </div>
+              <div class="doctor-info">
+                <h3 class="doctor-name">BS. Trần Thị B</h3>
+                <p class="doctor-title">Bác sĩ chỉnh nha</p>
+                <ul class="doctor-credentials">
+                  <li>Tiến sĩ Răng Hàm Mặt — ĐH Quốc gia Seoul</li>
+                  <li>Chứng chỉ Damon System Certified</li>
+                  <li>Chuyên sâu: Chỉnh nha trẻ em và thanh thiếu niên</li>
+                </ul>
+                <a href="#" class="doctor-link">Xem hồ sơ →</a>
+              </div>
+            </article>
+            <!-- Doctor 3 -->
+            <article class="doctor-card">
+              <div class="doctor-photo">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1"/></svg>
+              </div>
+              <div class="doctor-info">
+                <h3 class="doctor-name">BS. Lê Hoàng C</h3>
+                <p class="doctor-title">Bác sĩ chỉnh nha</p>
+                <ul class="doctor-credentials">
+                  <li>Chuyên khoa II Chỉnh nha — ĐH Y Hà Nội</li>
+                  <li>Đào tạo tại Tokyo Dental College, Nhật Bản</li>
+                  <li>Chuyên sâu: Niềng mặt trong, thẩm mỹ nụ cười</li>
+                </ul>
+                <a href="#" class="doctor-link">Xem hồ sơ →</a>
+              </div>
+            </article>
+            <!-- Doctor 4 (for carousel) -->
+            <article class="doctor-card">
+              <div class="doctor-photo">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1"/></svg>
+              </div>
+              <div class="doctor-info">
+                <h3 class="doctor-name">BS. Phạm Minh D</h3>
+                <p class="doctor-title">Bác sĩ chỉnh nha</p>
+                <ul class="doctor-credentials">
+                  <li>Thạc sĩ Chỉnh nha — University of Melbourne</li>
+                  <li>Chứng chỉ ClearCorrect Advanced</li>
+                  <li>Chuyên sâu: Niềng trong suốt, digital smile design</li>
+                </ul>
+                <a href="#" class="doctor-link">Xem hồ sơ →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="carouselPrev" aria-label="Trước">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="carousel-dots" id="carouselDots">
+            <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+          </div>
+          <button class="carousel-btn" id="carouselNext" aria-label="Sau">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 5 — CÔNG NGHỆ ======== -->
+    <section class="technology" id="technology">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">TIÊU CHUẨN QUỐC TẾ</span>
+          <h2 class="section-heading">Đầu tư từ ngày đầu —<br>không thỏa hiệp về tiêu chuẩn</h2>
+          <p class="section-sub">Trang thiết bị hiện đại nhất, đáp ứng chuẩn quốc tế về chẩn đoán và điều trị chỉnh nha</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-card reveal delay-1">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z" stroke-width="1.5"/><path d="M2 12h20" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="tech-title">CBCT 3D</h3>
+            <p class="tech-desc">Chụp X-quang 3 chiều toàn hàm, chẩn đoán chính xác tuyệt đối cấu trúc xương, chân răng và đường thở.</p>
+          </div>
+          <div class="tech-card reveal delay-2">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" stroke-width="1.5"/><path d="M7 8h4M7 12h10M7 16h6" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="tech-title">Scan kỹ thuật số</h3>
+            <p class="tech-desc">Lấy dấu không cần bột, thoải mái và chính xác hơn 10 lần so với phương pháp truyền thống.</p>
+          </div>
+          <div class="tech-card reveal delay-3">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke-width="1.5"/><path d="M2 17l10 5 10-5" stroke-width="1.5"/><path d="M2 12l10 5 10-5" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="tech-title">Phần mềm lập kế hoạch AI</h3>
+            <p class="tech-desc">Mô phỏng kết quả trước khi bắt đầu điều trị. Bạn thấy trước nụ cười tương lai ngay tại phòng khám.</p>
+          </div>
+        </div>
+
+        <div class="cta-center">
+          <a href="#contact" class="btn btn-ghost-white">Tham quan phòng khám →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 6 — DỊCH VỤ ======== -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">DỊCH VỤ</span>
+          <h2 class="section-heading">Phương pháp chỉnh nha phù hợp cho bạn</h2>
+          <p class="section-sub">Mỗi phương pháp được tối ưu cho từng nhu cầu và lối sống khác nhau</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-thumb metal">
+              <div class="service-thumb-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 8V6a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Mắc cài kim loại</h3>
+              <p class="service-tagline">Hiệu quả cao, chi phí hợp lý — giải pháp kinh điển cho mọi trường hợp</p>
+              <p class="service-price">Từ XX triệu</p>
+              <p class="service-target">Phù hợp: Mọi trường hợp chỉnh nha</p>
+              <a href="#" class="text-link">Tìm hiểu thêm →</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal delay-1">
+            <div class="service-thumb ceramic">
+              <div class="service-thumb-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 8V6a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Mắc cài sứ</h3>
+              <p class="service-tagline">Thẩm mỹ hơn, hiệu quả tương đương — lựa chọn tinh tế cho người đi làm</p>
+              <p class="service-price">Từ XX triệu</p>
+              <p class="service-target">Phù hợp: Người lớn đi làm cần thẩm mỹ</p>
+              <a href="#" class="text-link">Tìm hiểu thêm →</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal delay-2">
+            <div class="service-thumb clear">
+              <div class="service-thumb-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/></svg>
+              </div>
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Niềng trong suốt</h3>
+              <p class="service-tagline">Gần như vô hình, thoải mái tối đa — công nghệ chỉnh nha hiện đại nhất</p>
+              <p class="service-price">Từ XX triệu</p>
+              <p class="service-target">Phù hợp: Yêu cầu thẩm mỹ cao</p>
+              <a href="#" class="text-link">Tìm hiểu thêm →</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal delay-3">
+            <div class="service-thumb lingual">
+              <div class="service-thumb-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10z" stroke="currentColor" stroke-width="1.5"/><path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Niềng mặt trong</h3>
+              <p class="service-tagline">Hoàn toàn ẩn, không ai biết bạn niềng — bí mật tuyệt đối</p>
+              <p class="service-price">Từ XX triệu</p>
+              <p class="service-target">Phù hợp: Muốn bí mật tuyệt đối</p>
+              <a href="#" class="text-link">Tìm hiểu thêm →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="compare-link">
+          <a href="#pricing" class="text-link text-link-navy">So sánh các phương pháp →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 7 — MÔ PHỎNG KẾT QUẢ ======== -->
+    <section class="simulation" id="simulation">
+      <div class="container">
+        <div class="simulation-grid">
+          <div class="simulation-visual reveal-left">
+            <span class="scan-label">3D Scan Preview</span>
+          </div>
+          <div class="simulation-content reveal-right">
+            <span class="section-label">CÔNG NGHỆ DỰ ĐOÁN</span>
+            <h2 class="section-heading">Xem trước nụ cười tương lai của bạn</h2>
+            <p class="simulation-text">
+              Với công nghệ scan kỹ thuật số và phần mềm mô phỏng AI, bạn sẽ thấy được kết quả chỉnh nha trước khi bắt đầu điều trị. Không phỏng đoán — chỉ có dữ liệu chính xác.
+            </p>
+            <ul class="check-list">
+              <li>
+                <span class="check-icon">✓</span>
+                Scan kỹ thuật số không đau, chỉ 60 giây
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                Xem mô phỏng 3D kết quả ngay tại phòng khám
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                Lập kế hoạch điều trị cá nhân hóa từng milimet
+              </li>
+            </ul>
+            <a href="#contact" class="btn btn-gold">Đặt lịch scan miễn phí</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 8 — HÀNH TRÌNH ======== -->
+    <section class="journey" id="journey">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">QUY TRÌNH</span>
+          <h2 class="section-heading">Hành trình đến nụ cười hoàn hảo</h2>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step reveal delay-1">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Tư vấn miễn phí</h3>
+            <p class="step-desc">Bác sĩ phân tích tình trạng và tư vấn phương pháp phù hợp nhất</p>
+          </div>
+          <div class="timeline-step reveal delay-2">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Scan & Chẩn đoán 3D</h3>
+            <p class="step-desc">Chụp CBCT, scan kỹ thuật số, phân tích dữ liệu chính xác</p>
+          </div>
+          <div class="timeline-step reveal delay-3">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Lập kế hoạch cá nhân</h3>
+            <p class="step-desc">Thiết kế lộ trình điều trị riêng, xem mô phỏng kết quả</p>
+          </div>
+          <div class="timeline-step reveal delay-4">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Bắt đầu điều trị</h3>
+            <p class="step-desc">Gắn khí cụ chỉnh nha, hướng dẫn chăm sóc chi tiết</p>
+          </div>
+          <div class="timeline-step reveal delay-5">
+            <div class="step-number">5</div>
+            <h3 class="step-title">Theo dõi trọn đời</h3>
+            <p class="step-desc">Tái khám định kỳ, chăm sóc và duy trì kết quả vĩnh viễn</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 9 — BẢNG GIÁ ======== -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">BẢNG GIÁ</span>
+          <h2 class="section-heading">Minh bạch từ chi phí đến kết quả</h2>
+          <p class="section-sub">Cam kết không phát sinh — giá niêm yết là giá cuối cùng</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <!-- Desktop Table -->
+        <table class="pricing-table reveal">
+          <thead>
+            <tr>
+              <th>Phương pháp</th>
+              <th>Giá từ</th>
+              <th>Thời gian</th>
+              <th>Đặc điểm nổi bật</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mắc cài kim loại</strong></td>
+              <td class="price-cell">XX triệu</td>
+              <td>18–24 tháng</td>
+              <td>Hiệu quả cao nhất, phù hợp mọi ca</td>
+              <td><a href="#contact" class="btn btn-gold">Đặt lịch</a></td>
+            </tr>
+            <tr>
+              <td><strong>Mắc cài sứ</strong></td>
+              <td class="price-cell">XX triệu</td>
+              <td>18–24 tháng</td>
+              <td>Thẩm mỹ hơn, ít nhìn thấy</td>
+              <td><a href="#contact" class="btn btn-gold">Đặt lịch</a></td>
+            </tr>
+            <tr>
+              <td><strong>Niềng trong suốt</strong></td>
+              <td class="price-cell">XX triệu</td>
+              <td>12–18 tháng</td>
+              <td>Gần vô hình, tháo lắp dễ dàng</td>
+              <td><a href="#contact" class="btn btn-gold">Đặt lịch</a></td>
+            </tr>
+            <tr>
+              <td><strong>Niềng mặt trong</strong></td>
+              <td class="price-cell">XX triệu</td>
+              <td>18–24 tháng</td>
+              <td>Hoàn toàn ẩn, bí mật tuyệt đối</td>
+              <td><a href="#contact" class="btn btn-gold">Đặt lịch</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mobile Cards -->
+        <div class="pricing-cards-mobile">
+          <div class="pricing-card-m">
+            <h3 class="method-name">Mắc cài kim loại</h3>
+            <p class="method-price">Từ XX triệu</p>
+            <p class="method-detail">⏱ 18–24 tháng</p>
+            <p class="method-detail">✦ Hiệu quả cao nhất, phù hợp mọi ca</p>
+            <a href="#contact" class="btn btn-gold">Đặt lịch tư vấn</a>
+          </div>
+          <div class="pricing-card-m">
+            <h3 class="method-name">Mắc cài sứ</h3>
+            <p class="method-price">Từ XX triệu</p>
+            <p class="method-detail">⏱ 18–24 tháng</p>
+            <p class="method-detail">✦ Thẩm mỹ hơn, ít nhìn thấy</p>
+            <a href="#contact" class="btn btn-gold">Đặt lịch tư vấn</a>
+          </div>
+          <div class="pricing-card-m">
+            <h3 class="method-name">Niềng trong suốt</h3>
+            <p class="method-price">Từ XX triệu</p>
+            <p class="method-detail">⏱ 12–18 tháng</p>
+            <p class="method-detail">✦ Gần vô hình, tháo lắp dễ dàng</p>
+            <a href="#contact" class="btn btn-gold">Đặt lịch tư vấn</a>
+          </div>
+          <div class="pricing-card-m">
+            <h3 class="method-name">Niềng mặt trong</h3>
+            <p class="method-price">Từ XX triệu</p>
+            <p class="method-detail">⏱ 18–24 tháng</p>
+            <p class="method-detail">✦ Hoàn toàn ẩn, bí mật tuyệt đối</p>
+            <a href="#contact" class="btn btn-gold">Đặt lịch tư vấn</a>
+          </div>
+        </div>
+
+        <div class="promo-box reveal">
+          <h3>Trả góp <span class="gold-highlight">0% lãi suất</span></h3>
+          <p>Chỉ từ <span class="gold-highlight">X triệu/tháng</span> — Hỗ trợ trả góp qua thẻ tín dụng và công ty tài chính</p>
+        </div>
+
+        <div class="trust-badges reveal">
+          <div class="trust-badge">
+            <span class="badge-icon">✓</span>
+            Cam kết không phát sinh
+          </div>
+          <div class="trust-badge">
+            <span class="badge-icon">★</span>
+            Bảo hành kết quả
+          </div>
+          <div class="trust-badge">
+            <span class="badge-icon">%</span>
+            Trả góp 0%
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 10 — KIẾN THỨC ======== -->
+    <section class="knowledge" id="knowledge">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">KIẾN THỨC</span>
+          <h2 class="section-heading">Hiểu đúng — Quyết định đúng</h2>
+          <p class="section-sub">Chia sẻ từ đội ngũ bác sĩ chuyên sâu chỉnh nha Pi Dentist</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <div class="blog-thumb thumb-1">
+              <span class="blog-tag">Kiến thức</span>
+            </div>
+            <div class="blog-body">
+              <h3 class="blog-title">Niềng răng người lớn: Có muộn không?</h3>
+              <p class="blog-excerpt">Nhiều người trưởng thành lo lắng rằng đã quá tuổi để niềng răng. Sự thật là chỉnh nha không giới hạn tuổi tác — chỉ cần xương và nướu khỏe mạnh.</p>
+              <a href="#" class="text-link">Đọc tiếp →</a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal delay-1">
+            <div class="blog-thumb thumb-2">
+              <span class="blog-tag">Hướng dẫn</span>
+            </div>
+            <div class="blog-body">
+              <h3 class="blog-title">So sánh 4 phương pháp chỉnh nha phổ biến nhất 2025</h3>
+              <p class="blog-excerpt">Mắc cài kim loại, sứ, niềng trong suốt, hay mặt trong — phương pháp nào phù hợp với bạn? Phân tích chi tiết ưu nhược điểm từng loại.</p>
+              <a href="#" class="text-link">Đọc tiếp →</a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal delay-2">
+            <div class="blog-thumb thumb-3">
+              <span class="blog-tag">Kiến thức</span>
+            </div>
+            <div class="blog-body">
+              <h3 class="blog-title">Niềng răng cho trẻ em: Thời điểm vàng là khi nào?</h3>
+              <p class="blog-excerpt">Bác sĩ chỉnh nha khuyên nên đưa trẻ đi khám lần đầu từ 7 tuổi. Nhưng thời điểm tối ưu để bắt đầu điều trị lại phụ thuộc vào nhiều yếu tố.</p>
+              <a href="#" class="text-link">Đọc tiếp →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="all-posts">
+          <a href="#" class="text-link text-link-navy">Xem tất cả bài viết →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SECTION 11 — CTA + FORM ======== -->
+    <section class="cta-booking" id="contact">
+      <div class="container">
+        <div class="cta-grid">
+          <div class="cta-form-side reveal">
+            <h2>Bắt đầu hành trình<br>nụ cười hoàn hảo</h2>
+            <div class="promo-badge">
+              <span class="promo-emoji">🎉</span>
+              Ưu đãi khai trương: Scan 3D miễn phí + Giảm 20% phí điều trị
+            </div>
+            <form class="booking-form" id="bookingForm" novalidate>
+              <div class="form-group">
+                <label for="fullName">Họ và tên</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Nguyễn Văn A" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" placeholder="0909 XXX XXX" required>
+              </div>
+              <div class="form-group">
+                <label for="service">Dịch vụ quan tâm</label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Chọn dịch vụ</option>
+                  <option value="mac-cai-kim-loai">Mắc cài kim loại</option>
+                  <option value="mac-cai-su">Mắc cài sứ</option>
+                  <option value="nieng-trong-suot">Niềng trong suốt</option>
+                  <option value="nieng-mat-trong">Niềng mặt trong</option>
+                  <option value="chua-biet">Chưa biết — cần tư vấn</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-gold">Đặt lịch tư vấn miễn phí</button>
+              <p class="form-note">Hoặc gọi ngay: <a href="tel:0909000000">0909 XXX XXX</a></p>
+            </form>
+          </div>
+
+          <div class="cta-info reveal-right">
+            <div class="info-block">
+              <div class="info-icon">📍</div>
+              <div>
+                <h4>Địa chỉ</h4>
+                <p>123 Đường ABC, Quận XYZ,<br>TP. Hồ Chí Minh</p>
+              </div>
+            </div>
+            <div class="info-block">
+              <div class="info-icon">🕐</div>
+              <div>
+                <h4>Giờ làm việc</h4>
+                <p>Thứ 2 – Thứ 6: 8:00 – 20:00<br>Thứ 7: 8:00 – 17:00<br>Chủ nhật: Nghỉ</p>
+              </div>
+            </div>
+            <div class="info-block">
+              <div class="info-icon">📞</div>
+              <div>
+                <h4>Hotline</h4>
+                <p>0909 XXX XXX<br>info@pidentist.vn</p>
+              </div>
+            </div>
+            <div class="map-placeholder" aria-label="Bản đồ phòng khám">
+              📍 Bản đồ sẽ được cập nhật
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-symbol">π</span>
+            <span class="logo-text">Pi Dentist</span>
+          </a>
+          <p class="footer-tagline">Kỷ nguyên mới của chỉnh nha chính xác. Chính xác như hằng số Pi — mỗi ca chỉnh nha được tính toán tỉ mỉ đến từng milimet.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Instagram">ig</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶</a>
+            <a href="#" class="social-link" aria-label="TikTok">♪</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dịch vụ</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Mắc cài kim loại</a></li>
+            <li><a href="#services">Mắc cài sứ</a></li>
+            <li><a href="#services">Niềng trong suốt</a></li>
+            <li><a href="#services">Niềng mặt trong</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Thông tin</h4>
+          <ul class="footer-links">
+            <li><a href="#philosophy">Về Pi Dentist</a></li>
+            <li><a href="#doctors">Đội ngũ bác sĩ</a></li>
+            <li><a href="#pricing">Bảng giá</a></li>
+            <li><a href="#knowledge">Kiến thức</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <ul class="footer-contact">
+            <li>
+              <span class="fc-icon">📍</span>
+              123 Đường ABC, Quận XYZ, TP.HCM
+            </li>
+            <li>
+              <span class="fc-icon">📞</span>
+              0909 XXX XXX
+            </li>
+            <li>
+              <span class="fc-icon">✉</span>
+              info@pidentist.vn
+            </li>
+            <li>
+              <span class="fc-icon">🕐</span>
+              T2 – T6: 8:00 – 20:00 | T7: 8:00 – 17:00
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 Pi Dentist. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== FLOATING ELEMENTS ======== -->
+  <div class="floating-cta" id="floatingCta">
+    <a href="#contact" class="btn btn-gold">Đặt lịch ngay</a>
+  </div>
+
+  <div class="contact-widgets" id="contactWidgets">
+    <a href="https://zalo.me/" class="widget-btn widget-zalo" aria-label="Chat Zalo" target="_blank" rel="noopener">Z</a>
+    <a href="tel:0909000000" class="widget-btn widget-phone" aria-label="Gọi điện">📞</a>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Lên đầu trang">↑</button>
+
+  <!-- Inline Scripts -->
+  <script>
+/* ========================================
+   PI DENTIST — Homepage Interactions
+   ======================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ---- Sticky Header ----
+  const header = document.getElementById('siteHeader');
+  const hero = document.getElementById('hero');
+  const heroHeight = hero ? hero.offsetHeight : 600;
+
+  function handleHeaderScroll() {
+    if (window.scrollY > 80) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+  handleHeaderScroll();
+
+  // ---- Mobile Menu ----
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu on link click
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // ---- Smooth Scroll for anchor links ----
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        const headerOffset = 80;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ---- Scroll-triggered Animations (Intersection Observer) ----
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealElements.forEach(el => el.classList.add('visible'));
+  }
+
+  // ---- Doctor Carousel ----
+  const track = document.getElementById('doctorsTrack');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const dotsContainer = document.getElementById('carouselDots');
+
+  if (track && prevBtn && nextBtn) {
+    let currentSlide = 0;
+    let slidesPerView = 3;
+
+    function getSlidesPerView() {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1200) return 2;
+      return 3;
+    }
+
+    function getTotalSlides() {
+      const cards = track.children.length;
+      return Math.max(1, cards - slidesPerView + 1);
+    }
+
+    function updateCarousel() {
+      slidesPerView = getSlidesPerView();
+      const totalSlides = getTotalSlides();
+      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+      if (currentSlide < 0) currentSlide = 0;
+
+      // Calculate offset
+      const card = track.children[0];
+      if (!card) return;
+      const gap = 32;
+      const cardWidth = card.offsetWidth + gap;
+      track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+
+      // Update dots
+      updateDots(totalSlides);
+    }
+
+    function updateDots(totalSlides) {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === currentSlide ? ' active' : '');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => {
+          currentSlide = i;
+          updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentSlide = Math.max(0, currentSlide - 1);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalSlides = getTotalSlides();
+      currentSlide = Math.min(totalSlides - 1, currentSlide + 1);
+      updateCarousel();
+    });
+
+    window.addEventListener('resize', () => updateCarousel());
+    updateCarousel();
+  }
+
+  // ---- Floating CTA & Contact Widgets ----
+  const floatingCta = document.getElementById('floatingCta');
+  const contactWidgets = document.getElementById('contactWidgets');
+  const backToTop = document.getElementById('backToTop');
+
+  function handleFloatingElements() {
+    const scrollY = window.scrollY;
+    const showAfter = heroHeight * 0.8;
+
+    if (floatingCta) {
+      floatingCta.classList.toggle('show', scrollY > showAfter);
+    }
+    if (contactWidgets) {
+      contactWidgets.classList.toggle('show', scrollY > showAfter);
+    }
+    if (backToTop) {
+      backToTop.classList.toggle('show', scrollY > 500);
+    }
+  }
+
+  window.addEventListener('scroll', handleFloatingElements, { passive: true });
+  handleFloatingElements();
+
+  // ---- Back to Top ----
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---- Booking Form ----
+  const bookingForm = document.getElementById('bookingForm');
+
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+
+      // Basic validation
+      if (!name) {
+        alert('Vui lòng nhập họ và tên');
+        document.getElementById('fullName').focus();
+        return;
+      }
+      if (!phone || phone.length < 9) {
+        alert('Vui lòng nhập số điện thoại hợp lệ');
+        document.getElementById('phone').focus();
+        return;
+      }
+      if (!service) {
+        alert('Vui lòng chọn dịch vụ quan tâm');
+        document.getElementById('service').focus();
+        return;
+      }
+
+      // Success feedback
+      const submitBtn = bookingForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '✓ Đã gửi thành công!';
+      submitBtn.style.background = '#2E7D5B';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+        bookingForm.reset();
+      }, 3000);
+    });
+  }
+
+  // ---- Focus states for form inputs ----
+  document.querySelectorAll('.form-group input, .form-group select').forEach(input => {
+    input.addEventListener('focus', () => {
+      input.parentElement.classList.add('focused');
+    });
+    input.addEventListener('blur', () => {
+      input.parentElement.classList.remove('focused');
+    });
+  });
+});
+
+  </script>
+</body>
+</html>

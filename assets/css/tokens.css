@@ -1,0 +1,35 @@
+/* Pi Dentist — Design Tokens */
+:root {
+  /* Primary — Navy */
+  --pi-navy:        #002147;
+  --pi-navy-light:  #003366;
+  --pi-navy-dark:   #001a33;
+
+  /* Accent — Gold */
+  --pi-gold:        #C9A96E;
+  --pi-gold-light:  #E8D5A8;
+  --pi-gold-hover:  #b8944f;
+
+  /* Neutrals */
+  --pi-white:       #FFFFFF;
+  --pi-off-white:   #F8F7F4;
+  --pi-light-gray:  #EDECEA;
+  --pi-text:        #1A1A1A;
+  --pi-text-soft:   #666666;
+  --pi-success:     #2E7D5B;
+
+  /* Typography */
+  --pi-font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --pi-font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing & Radius */
+  --pi-radius-card:  16px;
+  --pi-radius-btn:   6px;
+  --pi-shadow-sm:    0 2px 8px rgba(0,0,0,0.06);
+  --pi-shadow-md:    0 8px 30px rgba(0,0,0,0.08);
+  --pi-shadow-lg:    0 16px 48px rgba(0,0,0,0.12);
+  --pi-transition:   0.3s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Container */
+  --pi-container:    1200px;
+}
