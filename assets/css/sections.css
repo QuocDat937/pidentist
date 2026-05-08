@@ -1,1 +1,180 @@
-/* Pi Dentist — Sections — Phase 1 */
+/* Pi Dentist — Sections
+   Common section patterns: spacing, headers, backgrounds, rhythm
+   Ported from index.html → WordPress child theme
+   All values use CSS custom properties from tokens.css */
+
+/* ---------- Section Base Spacing ---------- */
+section,
+.pi-section {
+  padding: 100px 0;
+}
+
+/* ---------- Section Header ---------- */
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-header .section-sub {
+  margin: 0 auto;
+}
+
+.section-header .gold-line {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Section Label Variants ---------- */
+
+/* Gold label trên nền navy (section 5 Technology, section 11 CTA) */
+.section-label-gold {
+  font-family: var(--pi-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pi-gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* ---------- Section Heading Variants ---------- */
+
+/* White heading trên nền navy */
+.section-heading-white {
+  font-family: var(--pi-font-heading);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--pi-white);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+/* ---------- Section Sub Variant ---------- */
+.section-sub-white {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ---------- Background Variants ---------- */
+
+/* Navy background (section 5, 11) */
+.pi-navy-bg {
+  background: var(--pi-navy);
+  color: var(--pi-white);
+}
+
+.pi-navy-bg .section-heading {
+  color: var(--pi-white);
+}
+
+.pi-navy-bg .section-sub {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pi-navy-bg .gold-line {
+  background: var(--pi-gold);
+}
+
+/* Off-white background (section 3, 6, 8, 10) */
+.pi-off-white-bg {
+  background: var(--pi-off-white);
+}
+
+/* White background (section 2, 4, 7, 9) — default */
+.pi-white-bg {
+  background: var(--pi-white);
+}
+
+/* ---------- Gold Line Variants ---------- */
+
+/* Left-aligned gold line (for non-centered sections like Philosophy) */
+.gold-line-left {
+  width: 60px;
+  height: 2px;
+  background: var(--pi-gold);
+  margin: 24px 0 0;
+}
+
+/* ---------- CTA Center (used in Technology section) ---------- */
+.cta-center {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ---------- Check List (used in Simulation section) ---------- */
+.check-list {
+  margin-bottom: 32px;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--pi-text);
+  line-height: 1.6;
+}
+
+.check-icon {
+  color: var(--pi-success);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Navy background variant for check list */
+.pi-navy-bg .check-list li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pi-navy-bg .check-icon {
+  color: var(--pi-gold);
+}
+
+/* ---------- Compare / All Posts Link ---------- */
+.compare-link,
+.all-posts {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  section,
+  .pi-section {
+    padding: 80px 0;
+  }
+
+  .section-heading-white {
+    font-size: 36px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  section,
+  .pi-section {
+    padding: 64px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-heading-white {
+    font-size: 28px;
+  }
+
+  .section-sub-white {
+    font-size: 15px;
+  }
+}

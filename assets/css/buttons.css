@@ -1,1 +1,123 @@
-/* Pi Dentist — Buttons — Phase 1 */
+/* Pi Dentist — Buttons
+   4 button variants as defined in PROJECT_SPEC_WP.md section 2.5
+   Ported from index.html → WordPress child theme
+   All values use CSS custom properties from tokens.css */
+
+/* ---------- Base Button ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--pi-font-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: var(--pi-radius-btn);
+  border: none;
+  transition: all var(--pi-transition);
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ---------- 1. Gold (CTA chính — nền sáng) ---------- */
+.btn-gold {
+  background: var(--pi-gold);
+  color: var(--pi-navy);
+}
+
+.btn-gold:hover {
+  background: var(--pi-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 169, 110, 0.35);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(201, 169, 110, 0.25);
+}
+
+/* ---------- 2. Outline White (CTA phụ — nền navy) ---------- */
+.btn-outline-white {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  color: var(--pi-white);
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--pi-white);
+}
+
+.btn-outline-white:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- 3. Outline Navy (CTA phụ — nền sáng) ---------- */
+.btn-outline-navy {
+  background: transparent;
+  border: 1.5px solid var(--pi-navy);
+  color: var(--pi-navy);
+}
+
+.btn-outline-navy:hover {
+  background: var(--pi-navy);
+  color: var(--pi-white);
+}
+
+.btn-outline-navy:active {
+  background: var(--pi-navy-dark);
+  color: var(--pi-white);
+}
+
+/* ---------- 4. Ghost White (CTA trên nền navy, ít nổi bật) ---------- */
+.btn-ghost-white {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: var(--pi-white);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.btn-ghost-white:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-ghost-white:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Focus States (A11y) ---------- */
+.btn:focus-visible {
+  outline: 2px solid var(--pi-gold);
+  outline-offset: 3px;
+}
+
+.btn-gold:focus-visible {
+  outline-color: var(--pi-navy);
+}
+
+/* ---------- Disabled State ---------- */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn-gold:hover {
+    transform: none;
+  }
+}
