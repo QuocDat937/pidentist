@@ -1,6 +1,6 @@
 /* Pi Dentist — Pattern: Philosophy 2-column
-   Homepage section #3: giant π symbol left, brand story right.
-   Ported from index.html → spec section 8.3 Pattern 3.
+   Homepage section #3: navy rectangle with giant π left, brand story right.
+   Ported from index.html section 3 CSS → WordPress child theme.
    All values use CSS custom properties from tokens.css */
 
 /* ---------- Section Container ---------- */
@@ -19,20 +19,48 @@
   padding: 0 24px;
 }
 
-/* ---------- Visual Column (π symbol) ---------- */
+/* ---------- Visual Column — Navy rectangle with π ---------- */
 .philosophy .philosophy-visual {
   flex: 0 0 auto;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--pi-navy) 0%, var(--pi-navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Override WP .wp-block-column defaults that may conflict */
+.philosophy .philosophy-visual.wp-block-column {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: linear-gradient(135deg, var(--pi-navy) 0%, var(--pi-navy-light) 100%) !important;
+}
+
+/* π character inside navy box */
 .philosophy .pi-symbol {
   font-family: var(--pi-font-heading);
-  font-size: clamp(200px, 25vw, 350px);
+  font-size: 200px;
+  color: rgba(201, 169, 110, 0.15);
   font-weight: 700;
   line-height: 1;
-  color: var(--pi-gold);
-  opacity: 0.15;
-  display: block;
   user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom gradient overlay on navy box */
+.philosophy .philosophy-visual::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 33, 71, 0.6), transparent);
+  z-index: 0;
 }
 
 /* ---------- Content Column ---------- */
@@ -49,6 +77,7 @@
   color: var(--pi-gold);
   margin-bottom: 16px;
   display: block;
+  text-align: left;
 }
 
 .philosophy .section-heading {
@@ -58,25 +87,26 @@
   color: var(--pi-navy);
   margin: 0 0 24px;
   line-height: 1.2;
+  text-align: left;
 }
 
 .philosophy .philosophy-text {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--pi-text-soft);
-  margin: 0 0 16px;
+  margin: 0 0 28px;
 }
 
 .philosophy .text-link {
   font-size: 15px;
   font-weight: 600;
-  color: var(--pi-navy);
+  color: var(--pi-gold);
   text-decoration: none;
   transition: color var(--pi-transition);
 }
 
 .philosophy .text-link:hover {
-  color: var(--pi-gold);
+  color: var(--pi-gold-hover);
 }
 
 /* ===========================================
@@ -112,13 +142,16 @@
 
   .philosophy .philosophy-visual {
     aspect-ratio: 16 / 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
   }
 
   .philosophy .pi-symbol {
-    font-size: 150px;
+    font-size: 120px;
+  }
+
+  .philosophy .section-label,
+  .philosophy .section-heading {
+    text-align: center;
   }
 
   .philosophy .section-heading {
@@ -126,7 +159,7 @@
   }
 
   .philosophy .philosophy-text {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
