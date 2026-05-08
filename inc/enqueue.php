@@ -250,14 +250,6 @@ function pi_defer_scripts( $tag, $handle ) {
 }
 
 /* ───────────────────────────────────────────────
- * 3. EDITOR STYLES: tokens + editor.css cho Block Editor
+ * 3. EDITOR STYLES → xem inc/editor-config.php
+ *    (tokens + base + buttons + sections + patterns + editor.css)
  * ─────────────────────────────────────────────── */
-add_action( 'after_setup_theme', 'pi_editor_styles' );
-
-/**
- * Load CSS vào Block Editor admin để preview đúng design tokens.
- */
-function pi_editor_styles() {
-	add_editor_style( 'assets/css/tokens.css' );
-	add_editor_style( 'assets/css/editor.css' );
-}
