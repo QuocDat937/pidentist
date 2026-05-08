@@ -1,1 +1,108 @@
-/* Pi Dentist — Pattern: Commitments — Phase 3 */
+/* Pi Dentist — Pattern: Commitments Grid
+   Homepage section #2: 4-column grid of brand commitments.
+   Ported from index.html → spec section 8.4.
+   All values use CSS custom properties from tokens.css */
+
+/* ---------- Section Container ---------- */
+.commitments {
+  padding: 100px 0;
+  background: var(--pi-white);
+}
+
+/* ---------- Grid Layout ---------- */
+.commitments .commitments-grid {
+  max-width: var(--pi-container);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* ---------- Single Commitment Card ---------- */
+.commitments .commitment-item {
+  text-align: center;
+  padding: 32px 16px;
+  background: var(--pi-off-white);
+  border-radius: var(--pi-radius-card);
+  border: 1px solid var(--pi-light-gray);
+  transition: var(--pi-transition);
+}
+
+.commitments .commitment-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pi-shadow-md);
+  border-color: var(--pi-gold);
+}
+
+/* ---------- Icon ---------- */
+.commitments .commitment-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  color: var(--pi-gold);
+}
+
+.commitments .commitment-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Title ---------- */
+.commitments .commitment-title {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin: 0 0 12px;
+}
+
+/* ---------- Description ---------- */
+.commitments .commitment-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--pi-text-soft);
+  margin: 0;
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .commitments .commitments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .commitments {
+    padding: 80px 0;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .commitments .commitments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .commitments {
+    padding: 64px 0;
+  }
+
+  .commitments .commitment-item {
+    padding: 24px 16px;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .commitments .commitment-item {
+    transition: none;
+  }
+
+  .commitments .commitment-item:hover {
+    transform: none;
+  }
+}
