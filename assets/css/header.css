@@ -63,6 +63,13 @@
               box-shadow var(--pi-transition);
 }
 
+/* Front page: header overlays hero (fixed, transparent until scroll) */
+body.home .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
 /* Scrolled state — JS adds .scrolled when scrollY > 50 */
 .site-header.scrolled {
   background: var(--pi-navy);

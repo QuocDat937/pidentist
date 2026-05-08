@@ -1,7 +1,6 @@
 /* Pi Dentist — Hero Pattern
    Homepage hero section (Section #1): full-viewport navy gradient
-   with centered content, CTA buttons, and scroll indicator.
-   Ported from index.html → WordPress Block Pattern CSS.
+   with LEFT-ALIGNED content, CTA buttons, and scroll indicator.
    All values use CSS custom properties from tokens.css */
 
 /* ---------- Hero Container ---------- */
@@ -10,8 +9,23 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
+  padding: 0;
+}
+
+/* Remove WP group padding/constraints that conflict */
+.pi-hero.wp-block-group {
+  padding: 0 !important;
+}
+
+/* WP renders .wp-block-group__inner-container.is-layout-constrained
+   between .pi-hero and .hero-content — force it full-width */
+.pi-hero > .wp-block-group__inner-container,
+.pi-hero > .is-layout-constrained {
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100%;
 }
 
 /* ---------- Hero Background ---------- */
@@ -20,23 +34,30 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    var(--pi-navy) 0%,
-    var(--pi-navy-light) 50%,
-    var(--pi-navy-dark) 100%
+    #00274f 0%,
+    #002147 30%,
+    #00305e 60%,
+    #001a38 100%
   );
   z-index: 0;
 }
 
-/* Optional: decorative overlay pattern */
+/* Subtle radial glow — warm tone at right */
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at 30% 70%,
-    rgba(201, 169, 110, 0.08) 0%,
-    transparent 60%
-  );
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 85% 60%,
+      rgba(201, 169, 110, 0.05) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 80% at 15% 80%,
+      rgba(0, 51, 102, 0.4) 0%,
+      transparent 70%
+    );
   z-index: 1;
 }
 
@@ -44,10 +65,40 @@
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   color: var(--pi-white);
-  max-width: 800px;
+  max-width: var(--pi-container);
+  width: 100%;
   padding: 0 24px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Override WP constrained layout on hero-content wrapper */
+.hero-content.wp-block-group {
+  max-width: var(--pi-container) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* WP inner container inside hero-content — also force full-width left */
+.hero-content > .wp-block-group__inner-container,
+.hero-content > .is-layout-constrained,
+.hero-content.is-layout-constrained {
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Force ALL children inside hero-content to left-align (max 680px) */
+.hero-content.is-layout-constrained > *,
+.hero-content > .is-layout-constrained > *,
+.hero-content > .wp-block-group__inner-container > * {
+  max-width: 680px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
 /* ---------- Hero Label ---------- */
@@ -58,35 +109,40 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--pi-gold);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: block;
 }
 
 /* ---------- Hero Heading ---------- */
 .hero-heading {
   font-family: var(--pi-font-heading);
-  font-size: clamp(36px, 5vw, 68px);
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--pi-white);
-  margin: 24px 0;
+  margin: 0 0 28px;
 }
 
 /* ---------- Hero Subtitle ---------- */
 .hero-sub {
-  font-size: 20px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 600px;
-  margin: 0 auto 40px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 520px;
+  margin: 0 0 44px;
 }
 
 /* ---------- Hero CTAs ---------- */
 .hero-ctas {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+/* Override WP buttons block center alignment */
+.hero-ctas.wp-block-buttons {
+  justify-content: flex-start;
 }
 
 /* ---------- Scroll Indicator ---------- */
@@ -103,17 +159,18 @@
 }
 
 .scroll-indicator span {
-  font-size: 12px;
+  font-family: var(--pi-font-body);
+  font-size: 11px;
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .scroll-arrow {
-  width: 24px;
-  height: 24px;
-  border-right: 2px solid rgba(255, 255, 255, 0.4);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  width: 20px;
+  height: 20px;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.35);
   transform: rotate(45deg);
   animation: scrollBounce 2s ease-in-out infinite;
 }
@@ -136,8 +193,18 @@
     min-height: 90vh;
   }
 
+  .hero-content.is-layout-constrained > *,
+  .hero-content > .is-layout-constrained > *,
+  .hero-content > .wp-block-group__inner-container > * {
+    max-width: 600px !important;
+  }
+
+  .hero-heading {
+    font-size: clamp(32px, 5vw, 52px);
+  }
+
   .hero-sub {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 
@@ -147,28 +214,40 @@
 @media (max-width: 767px) {
   .pi-hero {
     min-height: 85vh;
-    padding: 80px 0 60px;
+    padding: 100px 0 80px;
+  }
+
+  .hero-content.is-layout-constrained > *,
+  .hero-content > .is-layout-constrained > *,
+  .hero-content > .wp-block-group__inner-container > * {
+    max-width: 100% !important;
   }
 
   .hero-heading {
     font-size: 36px;
-    line-height: 1.15;
+    line-height: 1.18;
+    margin-bottom: 20px;
   }
 
   .hero-sub {
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 32px;
   }
 
   .hero-ctas {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
   }
 
-  .hero-ctas .btn {
+  .hero-ctas .btn,
+  .hero-ctas .wp-block-button {
     width: 100%;
     max-width: 300px;
+  }
+
+  .hero-ctas .wp-block-button__link {
+    display: block;
     text-align: center;
   }
 
