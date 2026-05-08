@@ -101,6 +101,16 @@ function pi_enqueue_styles() {
 			);
 		}
 	}
+
+	/* --- Pattern CSS cho CPT archives/singles --- */
+	if ( is_post_type_archive( 'pi_service' ) || is_singular( 'pi_service' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-services-grid',
+			$uri . '/assets/css/patterns/services-grid.css',
+			array( 'pi-tokens', 'pi-cards' ),
+			$ver
+		);
+	}
 }
 
 /**
