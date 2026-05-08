@@ -25,6 +25,17 @@ body {
   background: var(--pi-white);
   line-height: 1.7;
   overflow-x: hidden;
+  /* Sticky footer: body fills viewport, main expands */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content grows to push footer to bottom */
+main,
+#main-content,
+.site-main {
+  flex-grow: 1;
 }
 
 img {

@@ -1,20 +1,27 @@
 <?php
 /**
  * Pi Dentist — Front Page Template
- * Renders the_content() — admin compose homepage từ Block Editor với patterns.
+ *
+ * Trang chủ: render nội dung từ Block Editor (11 sections compose bằng Block Patterns).
+ * KHÔNG hardcode layout — admin tự compose từ Block Editor.
+ *
+ * @package Pidentist
  */
+
 defined( 'ABSPATH' ) || exit;
+
 get_header();
 ?>
 
-<main id="primary" class="site-main" role="main">
-    <?php
-    while ( have_posts() ) :
-        the_post();
-        the_content();
-    endwhile;
-    ?>
+<main id="main-content" class="pi-front-page" role="main">
+	<?php
+	while ( have_posts() ) :
+		the_post();
+		the_content();
+	endwhile;
+	?>
 </main>
 
 <?php
 get_footer();
+
