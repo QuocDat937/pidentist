@@ -4,6 +4,54 @@
    All values use CSS custom properties from tokens.css */
 
 /* ===========================================
+   PROMO BANNER — above header
+   =========================================== */
+.pi-promo-banner {
+  background: var(--pi-navy-dark);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 10px 0;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pi-promo-banner .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pi-promo-banner .promo-emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.pi-promo-banner .promo-text {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.pi-promo-banner a {
+  color: var(--pi-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pi-promo-banner a:hover {
+  color: var(--pi-gold-light);
+}
+
+@media (max-width: 767px) {
+  .pi-promo-banner {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+}
+
+/* ===========================================
    SITE HEADER — Desktop-first sticky bar
    =========================================== */
 .site-header {

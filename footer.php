@@ -8,6 +8,11 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// CTA Booking — renders synced pattern before footer (skip front page, /lien-he/, 404).
+if ( function_exists( 'pi_hook_cta_booking' ) ) {
+	pi_hook_cta_booking();
+}
 ?>
 
 <footer class="site-footer" id="siteFooter" role="contentinfo">

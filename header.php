@@ -21,6 +21,13 @@ defined( 'ABSPATH' ) || exit;
 
 <a class="skip-link screen-reader-text" href="#main-content"><?php esc_html_e( 'Chuyển đến nội dung', 'pidentist' ); ?></a>
 
+<?php
+// Promo banner — renders if enabled in Customizer (Pi - Ưu đãi).
+if ( function_exists( 'pi_hook_promo_banner' ) ) {
+	pi_hook_promo_banner();
+}
+?>
+
 <header class="site-header" id="siteHeader" role="banner">
 	<div class="container">
 		<div class="header-inner">
@@ -70,3 +77,10 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- Mobile Nav Overlay -->
 <?php get_template_part( 'template-parts/header/nav-mobile' ); ?>
+
+<?php
+// Page Hero — renders on inner pages (not front page).
+if ( function_exists( 'pi_hook_page_hero' ) ) {
+	pi_hook_page_hero();
+}
+?>
