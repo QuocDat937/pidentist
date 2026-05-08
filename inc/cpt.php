@@ -118,13 +118,81 @@ function pi_register_post_types() {
 }
 
 /**
- * Đổi blog permalink base sang /kien-thuc/.
+ * Tạo Page "Trang chủ" + "Kiến thức" và cấu hình Reading settings.
+ * WordPress cần CẢ page_on_front VÀ page_for_posts để "static front page" hoạt động.
  *
- * Hooked to 'init' at priority 10.
+ * Hooked to 'admin_init' — chạy 1 lần duy nhất (option flag v2).
  */
-add_action( 'init', 'pi_blog_permalink_base', 10 );
+add_action( 'admin_init', 'pi_setup_reading_pages' );
 
-function pi_blog_permalink_base() {
-	global $wp_rewrite;
-	$wp_rewrite->permalink_structure = '/kien-thuc/%postname%/';
+function pi_setup_reading_pages() {
+
+	if ( get_option( 'pi_reading_pages_v2' ) ) {
+		return;
+	}
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	// Đánh dấu ngay để tránh race condition.
+	update_option( 'pi_reading_pages_v2', true );
+
+	// ─── 1. Tạo hoặc tìm page "Trang chủ" ────────────────────────────
+	$front_page = get_page_by_path( 'trang-chu' );
+	if ( ! $front_page ) {
+		// Thử tìm page có title "Trang chủ"
+		$front_pages = get_posts( array(
+			'post_type'      => 'page',
+			'title'          => 'Trang chủ',
+			'posts_per_page' => 1,
+			'post_status'    => 'publish',
+		) );
+		$front_page = ! empty( $front_pages ) ? $front_pages[0] : null;
+	}
+
+	if ( $front_page ) {
+		$front_page_id = $front_page->ID;
+	} else {
+		$front_page_id = wp_insert_post( array(
+			'post_title'  => 'Trang chủ',
+			'post_name'   => 'trang-chu',
+			'post_status' => 'publish',
+			'post_type'   => 'page',
+		) );
+	}
+
+	// ─── 2. Tạo hoặc tìm page "Kiến thức" ────────────────────────────
+	$blog_page = get_page_by_path( 'kien-thuc' );
+	if ( ! $blog_page ) {
+		$blog_pages = get_posts( array(
+			'post_type'      => 'page',
+			'title'          => 'Kiến thức',
+			'posts_per_page' => 1,
+			'post_status'    => 'publish',
+		) );
+		$blog_page = ! empty( $blog_pages ) ? $blog_pages[0] : null;
+	}
+
+	if ( $blog_page ) {
+		$blog_page_id = $blog_page->ID;
+	} else {
+		$blog_page_id = wp_insert_post( array(
+			'post_title'  => 'Kiến thức',
+			'post_name'   => 'kien-thuc',
+			'post_status' => 'publish',
+			'post_type'   => 'page',
+		) );
+	}
+
+	// ─── 3. Cấu hình Reading settings ─────────────────────────────────
+	if ( $front_page_id && ! is_wp_error( $front_page_id )
+		&& $blog_page_id && ! is_wp_error( $blog_page_id ) ) {
+
+		update_option( 'show_on_front', 'page' );
+		update_option( 'page_on_front', $front_page_id );
+		update_option( 'page_for_posts', $blog_page_id );
+
+		flush_rewrite_rules();
+	}
 }

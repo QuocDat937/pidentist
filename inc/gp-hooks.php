@@ -61,56 +61,48 @@ function pi_hook_page_hero() {
 		return;
 	}
 
-	// Skip 404 và search — có template riêng
+	// Skip 404 và search — có template riêng render page hero
 	if ( is_404() || is_search() ) {
 		return;
 	}
 
-	// Xác định label theo loại nội dung
+	// Skip các CPT singles — template riêng đã render page hero với params cụ thể
+	if ( is_singular( 'pi_service' ) || is_singular( 'pi_doctor' ) || is_singular( 'pi_case' ) ) {
+		return;
+	}
+
+	// Skip blog single — single.php đã render page hero
+	if ( is_singular( 'post' ) ) {
+		return;
+	}
+
+	// Skip CPT archives — archive-pi_*.php đã render page hero
+	if ( is_post_type_archive( 'pi_service' ) || is_post_type_archive( 'pi_doctor' ) || is_post_type_archive( 'pi_case' ) ) {
+		return;
+	}
+
+	// Skip blog archive — archive.php đã render page hero
+	if ( is_home() ) {
+		return;
+	}
+
+	// Skip taxonomy archives — dùng archive template của CPT tương ứng
+	if ( is_tax( 'pi_service_category' ) || is_tax( 'pi_case_tag' ) ) {
+		return;
+	}
+
+	// Xác định label theo loại nội dung còn lại (category, tag)
 	$label   = '';
 	$heading = '';
 
-	if ( is_singular( 'pi_service' ) ) {
-		$label = 'DỊCH VỤ';
-	} elseif ( is_singular( 'pi_doctor' ) ) {
-		$label = 'BÁC SĨ';
-	} elseif ( is_singular( 'pi_case' ) ) {
-		$label = 'CASE ĐIỀU TRỊ';
-	} elseif ( is_singular( 'post' ) ) {
-		$label = 'KIẾN THỨC';
-	} elseif ( is_post_type_archive( 'pi_service' ) ) {
-		$label = 'DỊCH VỤ';
-	} elseif ( is_post_type_archive( 'pi_doctor' ) ) {
-		$label = 'BÁC SĨ';
-	} elseif ( is_post_type_archive( 'pi_case' ) ) {
-		$label = 'CASE ĐIỀU TRỊ';
-	} elseif ( is_home() ) {
-		// Blog archive (/kien-thuc/)
-		$label = 'KIẾN THỨC';
-	} elseif ( is_category() || is_tag() ) {
-		$label = 'KIẾN THỨC';
-	} elseif ( is_tax( 'pi_service_category' ) ) {
-		$label = 'DỊCH VỤ';
-	} elseif ( is_tax( 'pi_case_tag' ) ) {
-		$label = 'CASE ĐIỀU TRỊ';
+	if ( is_category() || is_tag() ) {
+		$label   = 'KIẾN THỨC';
+		$heading = single_term_title( '', false );
 	} elseif ( is_page() ) {
 		// Pages tự define content qua Block Editor — không auto inject hero
 		return;
 	} else {
 		return;
-	}
-
-	// Xác định heading
-	if ( is_singular() ) {
-		$heading = get_the_title();
-	} elseif ( is_post_type_archive() ) {
-		$heading = post_type_archive_title( '', false );
-	} elseif ( is_home() ) {
-		$heading = 'Kiến thức chỉnh nha';
-	} elseif ( is_category() || is_tag() || is_tax() ) {
-		$heading = single_term_title( '', false );
-	} else {
-		$heading = get_the_archive_title();
 	}
 
 	get_template_part( 'template-parts/section/page-hero', null, array(
