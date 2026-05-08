@@ -416,4 +416,150 @@ function pi_register_block_patterns() {
 		',
 	] );
 
+	// ═══════════════════════════════════════════════
+	// PATTERN 6: Pi - Simulation CTA (2-column)
+	// ═══════════════════════════════════════════════
+	register_block_pattern( 'pi/simulation-cta', [
+		'title'       => 'Pi - Mô phỏng kết quả (CTA)',
+		'description' => 'CTA giữa trang: 3D scan visual bên trái + text + check-list bên phải',
+		'categories'  => [ 'pi-homepage', 'pi-sections' ],
+		'keywords'    => [ 'mô phỏng', 'simulation', '3D', 'scan', 'CTA' ],
+		'content'     => '
+<!-- wp:group {"className":"simulation","layout":{"type":"constrained"}} -->
+<div class="wp-block-group simulation">
+  <!-- wp:html -->
+  <div class="simulation-grid">
+    <div class="simulation-visual">
+      <span class="scan-label">3D Scan Preview</span>
+    </div>
+    <div class="simulation-content">
+      <span class="section-label">CÔNG NGHỆ DỰ ĐOÁN</span>
+      <h2 class="section-heading">Xem trước nụ cười tương lai của bạn</h2>
+      <p class="simulation-text">Với công nghệ scan kỹ thuật số và phần mềm mô phỏng AI, bạn sẽ thấy được kết quả chỉnh nha trước khi bắt đầu điều trị. Không phỏng đoán — chỉ có dữ liệu chính xác.</p>
+      <ul class="check-list">
+        <li>
+          <span class="check-icon">✓</span>
+          Scan kỹ thuật số không đau, chỉ 60 giây
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          Xem mô phỏng 3D kết quả ngay tại phòng khám
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          Lập kế hoạch điều trị cá nhân hóa từng milimet
+        </li>
+      </ul>
+      <a href="/lien-he/" class="btn btn-gold">Đặt lịch scan miễn phí</a>
+    </div>
+  </div>
+  <!-- /wp:html -->
+</div>
+<!-- /wp:group -->
+		',
+	] );
+
+	// ═══════════════════════════════════════════════
+	// PATTERN 7: Pi - Journey Timeline (5 bước)
+	// ═══════════════════════════════════════════════
+	register_block_pattern( 'pi/journey-timeline', [
+		'title'       => 'Pi - Hành trình 5 bước',
+		'description' => 'Timeline 5 bước điều trị: Tư vấn → Chẩn đoán 3D → Lập kế hoạch → Điều trị → Theo dõi',
+		'categories'  => [ 'pi-homepage', 'pi-sections' ],
+		'keywords'    => [ 'hành trình', 'journey', 'timeline', 'quy trình', '5 bước' ],
+		'content'     => '
+<!-- wp:group {"className":"journey pi-off-white-bg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group journey pi-off-white-bg">
+  <!-- wp:group {"className":"section-header","layout":{"type":"constrained"}} -->
+  <div class="wp-block-group section-header">
+    <!-- wp:paragraph {"className":"section-label"} -->
+    <p class="section-label">QUY TRÌNH</p>
+    <!-- /wp:paragraph -->
+    <!-- wp:heading {"level":2,"className":"section-heading"} -->
+    <h2 class="wp-block-heading section-heading">Hành trình đến nụ cười hoàn hảo</h2>
+    <!-- /wp:heading -->
+    <!-- wp:html -->
+    <div class="gold-line"></div>
+    <!-- /wp:html -->
+  </div>
+  <!-- /wp:group -->
+
+  <!-- wp:html -->
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="step-number">1</div>
+      <h3 class="step-title">Tư vấn miễn phí</h3>
+      <p class="step-desc">Bác sĩ phân tích tình trạng và tư vấn phương pháp phù hợp nhất</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-number">2</div>
+      <h3 class="step-title">Scan &amp; Chẩn đoán 3D</h3>
+      <p class="step-desc">Chụp CBCT, scan kỹ thuật số, phân tích dữ liệu chính xác</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-number">3</div>
+      <h3 class="step-title">Lập kế hoạch cá nhân</h3>
+      <p class="step-desc">Thiết kế lộ trình điều trị riêng, xem mô phỏng kết quả</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-number">4</div>
+      <h3 class="step-title">Bắt đầu điều trị</h3>
+      <p class="step-desc">Gắn khí cụ chỉnh nha, hướng dẫn chăm sóc chi tiết</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-number">5</div>
+      <h3 class="step-title">Theo dõi trọn đời</h3>
+      <p class="step-desc">Tái khám định kỳ, chăm sóc và duy trì kết quả vĩnh viễn</p>
+    </div>
+  </div>
+  <!-- /wp:html -->
+</div>
+<!-- /wp:group -->
+		',
+	] );
+
+	// ═══════════════════════════════════════════════
+	// PATTERN 8: Pi - Services Grid (Homepage section wrapper)
+	// ═══════════════════════════════════════════════
+	register_block_pattern( 'pi/services-grid-home', [
+		'title'       => 'Pi - Dịch vụ grid (trang chủ)',
+		'description' => 'Section dịch vụ trang chủ — section header + shortcode [pi_services_grid] render dynamic CPT cards',
+		'categories'  => [ 'pi-homepage' ],
+		'keywords'    => [ 'dịch vụ', 'services', 'grid', 'homepage' ],
+		'content'     => '
+<!-- wp:group {"className":"services pi-off-white-bg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group services pi-off-white-bg">
+  <!-- wp:group {"className":"section-header","layout":{"type":"constrained"}} -->
+  <div class="wp-block-group section-header">
+    <!-- wp:paragraph {"className":"section-label"} -->
+    <p class="section-label">DỊCH VỤ</p>
+    <!-- /wp:paragraph -->
+    <!-- wp:heading {"level":2,"className":"section-heading"} -->
+    <h2 class="wp-block-heading section-heading">Phương pháp chỉnh nha phù hợp cho bạn</h2>
+    <!-- /wp:heading -->
+    <!-- wp:paragraph {"className":"section-sub"} -->
+    <p class="section-sub">Mỗi phương pháp được tối ưu cho từng nhu cầu và lối sống khác nhau</p>
+    <!-- /wp:paragraph -->
+    <!-- wp:html -->
+    <div class="gold-line"></div>
+    <!-- /wp:html -->
+  </div>
+  <!-- /wp:group -->
+
+  <!-- wp:shortcode -->
+  [pi_services_grid]
+  <!-- /wp:shortcode -->
+
+  <!-- wp:group {"className":"compare-link","layout":{"type":"constrained"}} -->
+  <div class="wp-block-group compare-link">
+    <!-- wp:paragraph -->
+    <p><a class="text-link text-link-navy" href="/bang-gia/">So sánh các phương pháp →</a></p>
+    <!-- /wp:paragraph -->
+  </div>
+  <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+		',
+	] );
+
 }

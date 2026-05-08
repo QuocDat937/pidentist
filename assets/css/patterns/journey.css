@@ -1,0 +1,164 @@
+/* Pi Dentist — Journey Timeline (Section 8)
+   5-step horizontal timeline with connecting line
+   Reference: index.html .journey + .timeline sections */
+
+/* ---------- Section Base ---------- */
+.journey {
+  padding: 100px 0;
+  background: var(--pi-off-white);
+}
+
+/* ---------- Timeline Container ---------- */
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 20px;
+}
+
+/* Horizontal connector line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 48px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: var(--pi-gold-light);
+}
+
+/* ---------- Timeline Step ---------- */
+.timeline-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+/* ---------- Step Number Circle ---------- */
+.step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--pi-gold);
+  background: var(--pi-off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--pi-gold);
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+  transition: all var(--pi-transition);
+}
+
+.timeline-step:hover .step-number {
+  background: var(--pi-gold);
+  color: var(--pi-white);
+}
+
+/* ---------- Step Title ---------- */
+.step-title {
+  font-family: var(--pi-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin-bottom: 10px;
+}
+
+/* ---------- Step Description ---------- */
+.step-desc {
+  font-size: 13px;
+  color: var(--pi-text-soft);
+  line-height: 1.7;
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .journey {
+    padding: 80px 0;
+  }
+
+  .timeline {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline-step {
+    flex: 0 0 calc(33.333% - 30px);
+  }
+
+  .step-title {
+    font-size: 16px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .journey {
+    padding: 64px 0;
+  }
+
+  /* Vertical timeline on mobile */
+  .timeline {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 40px;
+    padding-top: 0;
+  }
+
+  /* Vertical connector line */
+  .timeline::before {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 28px;
+    right: auto;
+    width: 2px;
+    height: 100%;
+  }
+
+  .timeline-step {
+    flex: none;
+    text-align: left;
+    padding: 0 0 40px 0;
+  }
+
+  .step-number {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    margin: 0;
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .step-title {
+    font-size: 16px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+  }
+}
+
+/* ===========================================
+   REDUCED MOTION
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .step-number {
+    transition: none;
+  }
+}
