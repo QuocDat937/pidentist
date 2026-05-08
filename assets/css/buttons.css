@@ -111,6 +111,124 @@
   box-shadow: none;
 }
 
+/* ==========================================================
+   WordPress Block Editor Button Integration
+   WP renders: <div class="wp-block-button btn btn-gold">
+                  <a class="wp-block-button__link">Text</a>
+                </div>
+   We strip visual styles from the outer wrapper and apply
+   them to the inner <a> to avoid nested-button appearance.
+   ========================================================== */
+
+/* --- Reset outer wrapper when carrying .btn --- */
+.wp-block-button.btn {
+  display: inline-flex;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  cursor: default;
+}
+
+/* --- Move base .btn styles to the inner link --- */
+.wp-block-button.btn > .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--pi-font-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: var(--pi-radius-btn);
+  border: none;
+  transition: all var(--pi-transition);
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* --- 1. Gold variant on inner link --- */
+.wp-block-button.btn-gold > .wp-block-button__link {
+  background: var(--pi-gold);
+  color: var(--pi-navy);
+}
+
+.wp-block-button.btn-gold:hover > .wp-block-button__link {
+  background: var(--pi-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 169, 110, 0.35);
+}
+
+.wp-block-button.btn-gold:active > .wp-block-button__link {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(201, 169, 110, 0.25);
+}
+
+/* --- 2. Outline White variant on inner link --- */
+.wp-block-button.btn-outline-white > .wp-block-button__link {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  color: var(--pi-white);
+}
+
+.wp-block-button.btn-outline-white:hover > .wp-block-button__link {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--pi-white);
+}
+
+.wp-block-button.btn-outline-white:active > .wp-block-button__link {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- 3. Outline Navy variant on inner link --- */
+.wp-block-button.btn-outline-navy > .wp-block-button__link {
+  background: transparent;
+  border: 1.5px solid var(--pi-navy);
+  color: var(--pi-navy);
+}
+
+.wp-block-button.btn-outline-navy:hover > .wp-block-button__link {
+  background: var(--pi-navy);
+  color: var(--pi-white);
+}
+
+.wp-block-button.btn-outline-navy:active > .wp-block-button__link {
+  background: var(--pi-navy-dark);
+  color: var(--pi-white);
+}
+
+/* --- 4. Ghost White variant on inner link --- */
+.wp-block-button.btn-ghost-white > .wp-block-button__link {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: var(--pi-white);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.wp-block-button.btn-ghost-white:hover > .wp-block-button__link {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.wp-block-button.btn-ghost-white:active > .wp-block-button__link {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Focus on inner link (A11y) --- */
+.wp-block-button.btn > .wp-block-button__link:focus-visible {
+  outline: 2px solid var(--pi-gold);
+  outline-offset: 3px;
+}
+
+.wp-block-button.btn-gold > .wp-block-button__link:focus-visible {
+  outline-color: var(--pi-navy);
+}
+
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .btn {
