@@ -21,6 +21,7 @@ require_once PIDENTIST_DIR . '/inc/meta-fields.php';
 require_once PIDENTIST_DIR . '/inc/customizer.php';
 require_once PIDENTIST_DIR . '/inc/pattern-categories.php';
 require_once PIDENTIST_DIR . '/inc/block-patterns.php';
+require_once PIDENTIST_DIR . '/inc/synced-patterns-seed.php';
 require_once PIDENTIST_DIR . '/inc/editor-config.php';
 require_once PIDENTIST_DIR . '/inc/gp-hooks.php';
 require_once PIDENTIST_DIR . '/inc/floating-elements.php';
