@@ -1,1 +1,212 @@
-/* Pi Dentist — Floating Elements — Phase 1 */
+/* Pi Dentist — Floating Elements */
+/* FloatingCTA, Contact Widgets, Back to Top */
+
+/* ───────────────────────────────────────────────
+ * 1. FLOATING CTA — bottom bar
+ * ─────────────────────────────────────────────── */
+.floating-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.floating-cta.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.floating-cta .btn {
+    box-shadow: var(--pi-shadow-lg);
+    font-size: 15px;
+    padding: 14px 36px;
+    white-space: nowrap;
+}
+
+/* ───────────────────────────────────────────────
+ * 2. CONTACT WIDGETS — Zalo + Phone
+ * ─────────────────────────────────────────────── */
+.contact-widgets {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-widgets.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.widget-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: var(--pi-shadow-md);
+    transition: var(--pi-transition);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.widget-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--pi-shadow-lg);
+}
+
+.widget-btn:active {
+    transform: scale(0.95);
+}
+
+.widget-zalo {
+    background: #0068FF;
+    color: var(--pi-white);
+    font-weight: 700;
+    font-family: var(--pi-font-body);
+}
+
+.widget-phone {
+    background: var(--pi-gold);
+    color: var(--pi-navy);
+}
+
+/* ───────────────────────────────────────────────
+ * 3. BACK TO TOP
+ * ─────────────────────────────────────────────── */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--pi-navy);
+    color: var(--pi-white);
+    border: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease,
+                transform var(--pi-transition),
+                background var(--pi-transition);
+    box-shadow: var(--pi-shadow-sm);
+    z-index: 997;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    background: var(--pi-navy-light);
+    transform: translateY(-2px);
+    box-shadow: var(--pi-shadow-md);
+}
+
+.back-to-top:active {
+    transform: translateY(0);
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid var(--pi-gold);
+    outline-offset: 2px;
+}
+
+/* ───────────────────────────────────────────────
+ * 4. RESPONSIVE — Mobile
+ * ─────────────────────────────────────────────── */
+@media (max-width: 767px) {
+    /* Floating CTA: full width bar at bottom */
+    .floating-cta {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-top: 1px solid var(--pi-light-gray);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .floating-cta .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-radius: var(--pi-radius-btn);
+        padding: 14px 24px;
+    }
+
+    /* Contact widgets: above floating CTA */
+    .contact-widgets {
+        bottom: 80px;
+        right: 16px;
+    }
+
+    .widget-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    /* Back to top: above contact widgets */
+    .back-to-top {
+        bottom: 80px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* When floating CTA is showing, push elements up */
+    .floating-cta.show ~ .contact-widgets {
+        bottom: 100px;
+    }
+
+    .floating-cta.show ~ .back-to-top {
+        bottom: 100px;
+    }
+}
+
+/* ───────────────────────────────────────────────
+ * 5. REDUCED MOTION
+ * ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .floating-cta,
+    .contact-widgets,
+    .back-to-top,
+    .widget-btn {
+        transition: none;
+    }
+
+    .widget-btn:hover {
+        transform: none;
+    }
+
+    .back-to-top:hover {
+        transform: none;
+    }
+}
