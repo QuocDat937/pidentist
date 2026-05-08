@@ -1,1 +1,138 @@
-/* Pi Dentist — Pattern: Philosophy — Phase 3 */
+/* Pi Dentist — Pattern: Philosophy 2-column
+   Homepage section #3: giant π symbol left, brand story right.
+   Ported from index.html → spec section 8.3 Pattern 3.
+   All values use CSS custom properties from tokens.css */
+
+/* ---------- Section Container ---------- */
+.philosophy {
+  padding: 100px 0;
+  background: var(--pi-off-white);
+}
+
+/* ---------- 2-Column Grid ---------- */
+.philosophy .philosophy-grid {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  max-width: var(--pi-container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Visual Column (π symbol) ---------- */
+.philosophy .philosophy-visual {
+  flex: 0 0 auto;
+}
+
+.philosophy .pi-symbol {
+  font-family: var(--pi-font-heading);
+  font-size: clamp(200px, 25vw, 350px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pi-gold);
+  opacity: 0.15;
+  display: block;
+  user-select: none;
+}
+
+/* ---------- Content Column ---------- */
+.philosophy .philosophy-content {
+  flex: 1;
+}
+
+.philosophy .section-label {
+  font-family: var(--pi-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pi-gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.philosophy .section-heading {
+  font-family: var(--pi-font-heading);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+.philosophy .philosophy-text {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--pi-text-soft);
+  margin: 0 0 16px;
+}
+
+.philosophy .text-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  text-decoration: none;
+  transition: color var(--pi-transition);
+}
+
+.philosophy .text-link:hover {
+  color: var(--pi-gold);
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .philosophy {
+    padding: 80px 0;
+  }
+
+  .philosophy .philosophy-grid {
+    gap: 48px;
+  }
+
+  .philosophy .section-heading {
+    font-size: 36px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .philosophy {
+    padding: 64px 0;
+  }
+
+  .philosophy .philosophy-grid {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .philosophy .philosophy-visual {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .philosophy .pi-symbol {
+    font-size: 150px;
+  }
+
+  .philosophy .section-heading {
+    font-size: 28px;
+  }
+
+  .philosophy .philosophy-text {
+    font-size: 16px;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .philosophy .text-link {
+    transition: none;
+  }
+}

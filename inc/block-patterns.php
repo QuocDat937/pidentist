@@ -138,4 +138,53 @@ function pi_register_block_patterns() {
 		',
 	] );
 
+	// ═══════════════════════════════════════════════
+	// PATTERN 3: Pi - Philosophy 2-column
+	// ═══════════════════════════════════════════════
+	register_block_pattern( 'pi/philosophy', [
+		'title'       => 'Pi - Triết lý π (2 columns)',
+		'description' => 'Section triết lý: ký tự π lớn bên trái, text giải thích bên phải',
+		'categories'  => [ 'pi-homepage', 'pi-sections' ],
+		'keywords'    => [ 'triết lý', 'philosophy', 'pi', 'về chúng tôi' ],
+		'content'     => '
+<!-- wp:group {"className":"philosophy","layout":{"type":"constrained"}} -->
+<div class="wp-block-group philosophy">
+  <!-- wp:columns {"className":"philosophy-grid"} -->
+  <div class="wp-block-columns philosophy-grid">
+
+    <!-- wp:column {"className":"philosophy-visual"} -->
+    <div class="wp-block-column philosophy-visual">
+      <!-- wp:html -->
+      <span class="pi-symbol" aria-hidden="true">π</span>
+      <!-- /wp:html -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column {"className":"philosophy-content"} -->
+    <div class="wp-block-column philosophy-content">
+      <!-- wp:paragraph {"className":"section-label"} -->
+      <p class="section-label">VỀ PI DENTIST</p>
+      <!-- /wp:paragraph -->
+      <!-- wp:heading {"level":2,"className":"section-heading"} -->
+      <h2 class="wp-block-heading section-heading">Chính xác như hằng số π</h2>
+      <!-- /wp:heading -->
+      <!-- wp:paragraph {"className":"philosophy-text"} -->
+      <p class="philosophy-text">Pi (π) là hằng số vô tỉ, vô hạn — nhưng chính xác tuyệt đối. Pi Dentist mang triết lý đó vào từng ca chỉnh nha: mỗi milimet dịch chuyển, mỗi góc nghiêng răng đều được tính toán bằng công nghệ số hiện đại nhất.</p>
+      <!-- /wp:paragraph -->
+      <!-- wp:paragraph {"className":"philosophy-text"} -->
+      <p class="philosophy-text">Chúng tôi tin rằng một nụ cười đẹp không đến từ may mắn — mà đến từ sự chính xác trong từng bước điều trị, từ chẩn đoán đến hoàn thiện.</p>
+      <!-- /wp:paragraph -->
+      <!-- wp:paragraph -->
+      <p><a class="text-link" href="/ve-pi/">Tìm hiểu thêm về Pi →</a></p>
+      <!-- /wp:paragraph -->
+    </div>
+    <!-- /wp:column -->
+
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+		',
+	] );
+
 }
