@@ -173,13 +173,11 @@ add_shortcode( 'pi_contact_block', 'pi_contact_block_shortcode' );
 function pi_contact_block_shortcode() {
 	$phone   = get_theme_mod( 'pi_phone', '0909 XXX XXX' );
 	$email   = get_theme_mod( 'pi_email', 'info@pidentist.vn' );
-	$address = get_theme_mod( 'pi_address', '' );
+	$address = get_theme_mod( 'pi_address', '123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh' );
 	$map     = get_theme_mod( 'pi_map_embed', '' );
 
 	// Giờ làm việc.
-	$weekday  = get_theme_mod( 'pi_hours_weekday', '8:00 – 20:00' );
-	$saturday = get_theme_mod( 'pi_hours_saturday', '8:00 – 17:00' );
-	$sunday   = get_theme_mod( 'pi_hours_sunday', 'Nghỉ' );
+	$hours = get_theme_mod( 'pi_hours_weekday', '8:00 – 20:00' );
 
 	$phone_clean = preg_replace( '/[^0-9+]/', '', $phone );
 
@@ -187,63 +185,51 @@ function pi_contact_block_shortcode() {
 	?>
 	<div class="pi-contact-block">
 
-		<div class="pi-contact-item">
-			<span class="pi-contact-icon" aria-hidden="true">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-			</span>
-			<div class="pi-contact-detail">
-				<span class="pi-contact-label">Hotline</span>
-				<a href="tel:<?php echo esc_attr( $phone_clean ); ?>" class="pi-contact-value"><?php echo esc_html( $phone ); ?></a>
+		<!-- Địa chỉ -->
+		<div class="info-block">
+			<div class="info-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+			</div>
+			<div>
+				<h4>Địa chỉ</h4>
+				<p><?php echo wp_kses_post( $address ); ?></p>
 			</div>
 		</div>
 
-		<div class="pi-contact-item">
-			<span class="pi-contact-icon" aria-hidden="true">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-			</span>
-			<div class="pi-contact-detail">
-				<span class="pi-contact-label">Email</span>
-				<a href="mailto:<?php echo esc_attr( $email ); ?>" class="pi-contact-value"><?php echo esc_html( $email ); ?></a>
+		<!-- Giờ làm việc -->
+		<div class="info-block">
+			<div class="info-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+			</div>
+			<div>
+				<h4>Giờ làm việc</h4>
+				<p>Thứ 2 – Chủ nhật: <?php echo esc_html( $hours ); ?></p>
 			</div>
 		</div>
 
-		<?php if ( $address ) : ?>
-		<div class="pi-contact-item">
-			<span class="pi-contact-icon" aria-hidden="true">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-			</span>
-			<div class="pi-contact-detail">
-				<span class="pi-contact-label">Địa chỉ</span>
-				<span class="pi-contact-value"><?php echo wp_kses_post( $address ); ?></span>
+		<!-- Hotline -->
+		<div class="info-block">
+			<div class="info-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
 			</div>
-		</div>
-		<?php endif; ?>
-
-		<div class="pi-contact-item">
-			<span class="pi-contact-icon" aria-hidden="true">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-			</span>
-			<div class="pi-contact-detail">
-				<span class="pi-contact-label">Giờ làm việc</span>
-				<span class="pi-contact-value">
-					T2–T6: <?php echo esc_html( $weekday ); ?><br>
-					T7: <?php echo esc_html( $saturday ); ?><br>
-					CN: <?php echo esc_html( $sunday ); ?>
-				</span>
+			<div>
+				<h4>Hotline</h4>
+				<p>
+					<a href="tel:<?php echo esc_attr( $phone_clean ); ?>"><?php echo esc_html( $phone ); ?></a><br>
+					<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+				</p>
 			</div>
 		</div>
 
-		<?php
-		// Social links.
-		$social_html = do_shortcode( '[pi_social_links]' );
-		if ( $social_html && '<div class="pi-social-links"></div>' !== $social_html ) {
-			echo $social_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output from pi_social_links_shortcode, already escaped.
-		}
-		?>
-
+		<!-- Google Map -->
 		<?php if ( $map ) : ?>
 		<div class="pi-contact-map">
 			<?php echo $map; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Sanitized by pi_sanitize_map_embed in customizer.php. ?>
+		</div>
+		<?php else : ?>
+		<div class="map-placeholder" aria-label="Bản đồ phòng khám">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+			Bản đồ sẽ được cập nhật
 		</div>
 		<?php endif; ?>
 
