@@ -481,3 +481,21 @@ function pi_recent_posts_shortcode( $atts ) {
 
 	return ob_get_clean();
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   11. [pi_booking_form] — Custom booking form (no plugin)
+   ═══════════════════════════════════════════════════════════════════════ */
+add_shortcode( 'pi_booking_form', 'pi_booking_form_shortcode' );
+
+/**
+ * Render custom booking/consultation form.
+ * Designed for navy-background CTA section.
+ *
+ * @return string HTML form markup.
+ */
+function pi_booking_form_shortcode() {
+	ob_start();
+	get_template_part( 'template-parts/form/booking-form' );
+	return ob_get_clean();
+}

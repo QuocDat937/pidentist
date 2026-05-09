@@ -94,6 +94,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-journey'       => 'journey.css',
 			'pi-pattern-services-grid' => 'services-grid.css',
 			'pi-pattern-pricing-table' => 'pricing-table.css',
+			'pi-pattern-booking-form'  => 'booking-form.css',
 		);
 
 		foreach ( $pattern_styles as $handle => $file ) {
@@ -224,6 +225,32 @@ function pi_enqueue_scripts() {
 			$ver,
 			true
 		);
+	}
+
+	/* --- Booking Form JS (front-page or pages with [pi_booking_form]) --- */
+	if ( is_front_page() || is_page() ) {
+		wp_enqueue_script(
+			'pi-booking-form',
+			$uri . '/assets/js/booking-form.js',
+			array(),
+			$ver,
+			true
+		);
+
+		wp_localize_script( 'pi-booking-form', 'piBookingAjax', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'phone'   => esc_html( get_theme_mod( 'pi_phone', '0909 XXX XXX' ) ),
+		) );
+
+		/* Also ensure booking form CSS is loaded on pages (may have shortcode) */
+		if ( is_page() && ! is_front_page() ) {
+			wp_enqueue_style(
+				'pi-pattern-booking-form',
+				$uri . '/assets/css/patterns/booking-form.css',
+				array( 'pi-tokens' ),
+				$ver
+			);
+		}
 	}
 }
 

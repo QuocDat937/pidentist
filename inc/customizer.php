@@ -175,6 +175,27 @@ function pi_customize_register( $wp_customize ) {
 		'section'     => 'pi_map',
 		'type'        => 'textarea',
 	) );
+
+	/* ═══════════════════════════════════════════════
+	 * SECTION 5: Pi - Booking / Lead (priority 34)
+	 * ═══════════════════════════════════════════════ */
+	$wp_customize->add_section( 'pi_booking', array(
+		'title'    => 'Pi - Booking Form',
+		'priority' => 34,
+	) );
+
+	// --- Lead email ---
+	$wp_customize->add_setting( 'pi_lead_email', array(
+		'default'           => get_option( 'admin_email' ),
+		'sanitize_callback' => 'sanitize_email',
+		'transport'         => 'postMessage',
+	) );
+	$wp_customize->add_control( 'pi_lead_email', array(
+		'label'       => 'Email nhận Lead',
+		'description' => 'Khi khách đặt lịch, email thông báo sẽ gửi về địa chỉ này.',
+		'section'     => 'pi_booking',
+		'type'        => 'email',
+	) );
 }
 
 /* ───────────────────────────────────────────────

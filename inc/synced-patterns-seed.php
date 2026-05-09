@@ -60,7 +60,7 @@ function pi_seed_synced_patterns() {
       <div class="promo-badge"><span class="promo-emoji">🎉</span> Ưu đãi khai trương: Scan 3D miễn phí + Giảm 20% phí điều trị</div>
       <!-- /wp:html -->
       <!-- wp:shortcode -->
-      [fluentform id="1"]
+      [pi_booking_form]
       <!-- /wp:shortcode -->
     </div>
     <!-- /wp:column -->

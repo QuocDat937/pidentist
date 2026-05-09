@@ -1,0 +1,273 @@
+/* Pi Dentist — Booking Form
+   CTA section navy background form styles.
+   Reference: index.html CTA + BOOKING section.
+   All values use CSS custom properties from tokens.css */
+
+/* ---------- Honeypot (hidden from humans) ---------- */
+.pi-hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* ---------- Form Container ---------- */
+.pi-booking-form {
+  max-width: 540px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ---------- Form Group ---------- */
+.pi-form-group {
+  margin-bottom: 20px;
+}
+
+/* ---------- Labels ---------- */
+.pi-booking-form label {
+  display: block;
+  font-family: var(--pi-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pi-white);
+  margin-bottom: 8px;
+}
+
+.pi-required {
+  color: var(--pi-gold);
+  margin-left: 2px;
+}
+
+/* ---------- Inputs, Textarea, Select ---------- */
+.pi-booking-form input[type="text"],
+.pi-booking-form input[type="tel"],
+.pi-booking-form textarea,
+.pi-booking-form select {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--pi-font-body);
+  font-size: 15px;
+  color: var(--pi-white);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color var(--pi-transition), background var(--pi-transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.pi-booking-form input::placeholder,
+.pi-booking-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Focus state */
+.pi-booking-form input:focus,
+.pi-booking-form textarea:focus,
+.pi-booking-form select:focus {
+  border-color: var(--pi-gold);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Error state */
+.pi-booking-form .pi-input-error {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+/* ---------- Select dropdown arrow (custom) ---------- */
+.pi-booking-form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Select option styling (browser-rendered) */
+.pi-booking-form select option {
+  background: var(--pi-navy);
+  color: var(--pi-white);
+  padding: 8px;
+}
+
+/* ---------- Textarea ---------- */
+.pi-booking-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ---------- Field Error Message ---------- */
+.pi-field-error {
+  display: none;
+  font-size: 13px;
+  color: #ef4444;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ---------- Submit Button ---------- */
+.pi-booking-btn {
+  display: block;
+  width: 100%;
+  padding: 16px 32px;
+  font-family: var(--pi-font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  background: var(--pi-gold);
+  border: none;
+  border-radius: var(--pi-radius-btn);
+  cursor: pointer;
+  transition: background var(--pi-transition), transform var(--pi-transition);
+  margin-top: 8px;
+}
+
+.pi-booking-btn:hover {
+  background: var(--pi-gold-hover);
+  transform: translateY(-1px);
+}
+
+.pi-booking-btn:active {
+  transform: translateY(0);
+}
+
+/* Loading state */
+.pi-booking-btn--loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------- Form Note (phone fallback) ---------- */
+.pi-form-note {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 20px;
+}
+
+.pi-form-note a {
+  color: var(--pi-gold);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--pi-transition);
+}
+
+.pi-form-note a:hover {
+  color: var(--pi-gold-light);
+}
+
+/* ---------- Success Message ---------- */
+.pi-form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  animation: piFadeIn 0.5s ease;
+}
+
+.pi-form-success__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(46, 125, 91, 0.15);
+  color: var(--pi-success);
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.pi-form-success__text {
+  font-size: 17px;
+  color: var(--pi-white);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+/* ---------- Error Banner ---------- */
+.pi-form-error-banner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #fca5a5;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  animation: piShake 0.4s ease;
+}
+
+/* ---------- Animations ---------- */
+@keyframes piFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes piShake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .pi-booking-form {
+    max-width: 480px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  .pi-booking-form {
+    max-width: 100%;
+  }
+
+  .pi-booking-form input[type="text"],
+  .pi-booking-form input[type="tel"],
+  .pi-booking-form textarea,
+  .pi-booking-form select {
+    padding: 12px 14px;
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  .pi-booking-btn {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  .pi-form-success {
+    padding: 36px 16px;
+  }
+
+  .pi-form-success__text {
+    font-size: 15px;
+  }
+}
+
+/* ===========================================
+   REDUCED MOTION
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .pi-form-success,
+  .pi-form-error-banner {
+    animation: none;
+  }
+
+  .pi-booking-btn {
+    transition: none;
+  }
+}
