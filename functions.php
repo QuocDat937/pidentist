@@ -27,6 +27,7 @@ require_once PIDENTIST_DIR . '/inc/gp-hooks.php';
 require_once PIDENTIST_DIR . '/inc/floating-elements.php';
 require_once PIDENTIST_DIR . '/inc/shortcodes.php';
 require_once PIDENTIST_DIR . '/inc/rank-math-defaults.php';
+require_once PIDENTIST_DIR . '/inc/plugin-config.php';
 require_once PIDENTIST_DIR . '/inc/seed-data.php';
 require_once PIDENTIST_DIR . '/inc/homepage-compose.php';
 require_once PIDENTIST_DIR . '/inc/ajax/booking-form-handler.php';
