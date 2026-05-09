@@ -14,6 +14,20 @@
   gap: 32px;
 }
 
+/* ---------- Doctor Card — Enhanced ---------- */
+.doctor-card {
+  border: 1px solid var(--pi-light-gray);
+  transition: transform var(--pi-transition),
+              box-shadow var(--pi-transition),
+              border-color var(--pi-transition);
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pi-shadow-md);
+  border-color: var(--pi-gold-light);
+}
+
 /* ---------- Doctor Thumbnail ---------- */
 .doctor-thumb-link {
   display: block;
@@ -37,32 +51,42 @@
   transform: scale(1.05);
 }
 
-/* ---------- Placeholder Avatar ---------- */
+/* ---------- Placeholder Avatar (SVG) ---------- */
 .doctor-thumb-placeholder {
-  background: linear-gradient(135deg, var(--pi-navy-light), var(--pi-navy));
+  background: linear-gradient(135deg, var(--pi-navy) 0%, var(--pi-navy-light) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.doctor-avatar-icon {
-  font-size: 64px;
-  opacity: 0.6;
+.doctor-avatar-svg {
+  width: 72px;
+  height: 72px;
+  color: rgba(255, 255, 255, 0.15);
+  transition: color var(--pi-transition),
+              transform var(--pi-transition);
 }
 
-/* ---------- Doctor Body ---------- */
+.doctor-card:hover .doctor-avatar-svg {
+  color: rgba(201, 169, 110, 0.25);
+  transform: scale(1.08);
+}
+
+/* ---------- Doctor Body — Left-aligned ---------- */
 .doctor-body {
-  padding: 24px;
+  padding: 28px;
+  text-align: left;
 }
 
 /* ---------- Doctor Name ---------- */
 .doctor-name {
   font-family: var(--pi-font-heading);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: var(--pi-navy);
   line-height: 1.3;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
 .doctor-name a {
@@ -78,19 +102,18 @@
 /* ---------- Doctor Title (Chức danh) ---------- */
 .doctor-title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--pi-gold);
-  margin: 0 0 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin: 0 0 14px;
+  line-height: 1.4;
 }
 
 /* ---------- Doctor Credentials ---------- */
 .doctor-credentials {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--pi-text-soft);
-  line-height: 1.5;
-  margin: 0 0 12px;
+  line-height: 1.7;
+  margin: 0 0 18px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -268,6 +291,11 @@
 
   .doctor-name {
     font-size: 18px;
+  }
+
+  .doctor-avatar-svg {
+    width: 56px;
+    height: 56px;
   }
 
   .doctor-detail {

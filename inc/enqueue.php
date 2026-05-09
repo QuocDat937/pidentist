@@ -88,6 +88,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-hero'          => 'hero.css',
 			'pi-pattern-commitments'   => 'commitments.css',
 			'pi-pattern-philosophy'    => 'philosophy.css',
+			'pi-pattern-doctors-grid'  => 'doctors-grid.css',
 			'pi-pattern-technology'    => 'technology.css',
 			'pi-pattern-simulation'    => 'simulation.css',
 			'pi-pattern-journey'       => 'journey.css',

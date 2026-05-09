@@ -29,7 +29,10 @@ $permalink    = get_the_permalink();
 			</div>
 		<?php else : ?>
 			<div class="doctor-thumb doctor-thumb-placeholder">
-				<span class="doctor-avatar-icon" aria-hidden="true">👨‍⚕️</span>
+				<svg class="doctor-avatar-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1"/>
+					<circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1"/>
+				</svg>
 			</div>
 		<?php endif; ?>
 	</a>
