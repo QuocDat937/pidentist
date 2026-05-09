@@ -1,7 +1,14 @@
 /* Pi Dentist — Booking Form
    CTA section navy background form styles.
    Reference: index.html CTA + BOOKING section.
-   All values use CSS custom properties from tokens.css */
+   All values use CSS custom properties from tokens.css.
+   
+   DOM structure (Gutenberg synced pattern):
+   .cta-booking.wp-block-group
+     └─ .wp-block-group.is-layout-flex.is-nowrap  ← flex container (2 cols)
+          ├─ .wp-block-group (form side: h2 + promo + [pi_booking_form])
+          └─ .wp-block-group (info side: [pi_contact_block])
+*/
 
 /* ---------- Honeypot (hidden from humans) ---------- */
 .pi-hp-field {
@@ -14,10 +21,56 @@
   opacity: 0;
 }
 
+/* ---------- CTA Grid: 2-column layout ---------- */
+/* The inner flex container from Gutenberg */
+.cta-booking > .wp-block-group__inner-container > .wp-block-group.is-layout-flex,
+.cta-booking .wp-block-group.is-layout-flex.is-nowrap {
+  display: grid !important;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: var(--pi-container);
+  margin: 0 auto;
+  flex-wrap: unset;
+}
+
+/* Both child columns */
+.cta-booking .wp-block-group.is-layout-flex > .wp-block-group {
+  width: 100%;
+  min-width: 0; /* Prevent grid blowout */
+}
+
+/* CTA section heading */
+.cta-booking h2 {
+  font-family: var(--pi-font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--pi-white);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+/* Promo badge */
+.cta-booking .promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--pi-gold-light);
+  margin-bottom: 32px;
+}
+
+.promo-emoji {
+  font-size: 18px;
+}
+
 /* ---------- Form Container ---------- */
 .pi-booking-form {
-  max-width: 540px;
-  margin: 0 auto;
+  max-width: 100%;
   position: relative;
 }
 
@@ -58,6 +111,7 @@
   transition: border-color var(--pi-transition), background var(--pi-transition);
   appearance: none;
   -webkit-appearance: none;
+  box-sizing: border-box;
 }
 
 .pi-booking-form input::placeholder,
@@ -223,8 +277,13 @@
    RESPONSIVE — Tablet (max-width: 1199px)
    =========================================== */
 @media (max-width: 1199px) {
-  .pi-booking-form {
-    max-width: 480px;
+  .cta-booking > .wp-block-group__inner-container > .wp-block-group.is-layout-flex,
+  .cta-booking .wp-block-group.is-layout-flex.is-nowrap {
+    gap: 40px;
+  }
+
+  .cta-booking h2 {
+    font-size: 30px;
   }
 }
 
@@ -232,6 +291,38 @@
    RESPONSIVE — Mobile (max-width: 767px)
    =========================================== */
 @media (max-width: 767px) {
+  /* Stack columns vertically: form on top, info below */
+  .cta-booking > .wp-block-group__inner-container > .wp-block-group.is-layout-flex,
+  .cta-booking .wp-block-group.is-layout-flex.is-nowrap {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  /* Form column: bottom spacing */
+  .cta-booking .wp-block-group.is-layout-flex > .wp-block-group:first-child {
+    padding-bottom: 40px;
+  }
+
+  .cta-booking h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .cta-booking .promo-badge {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 12px;
+    margin-bottom: 28px;
+  }
+
+  /* Info column: top border separator */
+  .cta-booking .wp-block-group.is-layout-flex > .wp-block-group:last-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 40px;
+  }
+
   .pi-booking-form {
     max-width: 100%;
   }
