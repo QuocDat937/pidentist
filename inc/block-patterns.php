@@ -80,8 +80,8 @@ function pi_register_block_patterns() {
       <!-- wp:html -->
       <div class="commitment-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z" stroke="currentColor" fill="none" stroke-width="1.5"/><circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></div>
       <!-- /wp:html -->
-      <!-- wp:heading {"level":3,"className":"commitment-title"} -->
-      <h3 class="wp-block-heading commitment-title">Chỉ chuyên chỉnh nha</h3>
+      <!-- wp:heading {"level":2,"className":"commitment-title"} -->
+      <h2 class="wp-block-heading commitment-title">Chỉ chuyên chỉnh nha</h2>
       <!-- /wp:heading -->
       <!-- wp:paragraph {"className":"commitment-desc"} -->
       <p class="commitment-desc">100% tập trung vào chỉnh nha — không dàn trải, không đa khoa. Mỗi ca là một tác phẩm.</p>
@@ -94,8 +94,8 @@ function pi_register_block_patterns() {
       <!-- wp:html -->
       <div class="commitment-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></div>
       <!-- /wp:html -->
-      <!-- wp:heading {"level":3,"className":"commitment-title"} -->
-      <h3 class="wp-block-heading commitment-title">Bác sĩ đào tạo quốc tế</h3>
+      <!-- wp:heading {"level":2,"className":"commitment-title"} -->
+      <h2 class="wp-block-heading commitment-title">Bác sĩ đào tạo quốc tế</h2>
       <!-- /wp:heading -->
       <!-- wp:paragraph {"className":"commitment-desc"} -->
       <p class="commitment-desc">Đội ngũ bác sĩ được đào tạo tại các trung tâm chỉnh nha hàng đầu thế giới.</p>
@@ -108,8 +108,8 @@ function pi_register_block_patterns() {
       <!-- wp:html -->
       <div class="commitment-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5"/></svg></div>
       <!-- /wp:html -->
-      <!-- wp:heading {"level":3,"className":"commitment-title"} -->
-      <h3 class="wp-block-heading commitment-title">Công nghệ số 100%</h3>
+      <!-- wp:heading {"level":2,"className":"commitment-title"} -->
+      <h2 class="wp-block-heading commitment-title">Công nghệ số 100%</h2>
       <!-- /wp:heading -->
       <!-- wp:paragraph {"className":"commitment-desc"} -->
       <p class="commitment-desc">CBCT 3D, scan kỹ thuật số, phần mềm AI lập kế hoạch — chính xác đến từng milimet.</p>
@@ -122,8 +122,8 @@ function pi_register_block_patterns() {
       <!-- wp:html -->
       <div class="commitment-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></div>
       <!-- /wp:html -->
-      <!-- wp:heading {"level":3,"className":"commitment-title"} -->
-      <h3 class="wp-block-heading commitment-title">Theo dõi trọn đời</h3>
+      <!-- wp:heading {"level":2,"className":"commitment-title"} -->
+      <h2 class="wp-block-heading commitment-title">Theo dõi trọn đời</h2>
       <!-- /wp:heading -->
       <!-- wp:paragraph {"className":"commitment-desc"} -->
       <p class="commitment-desc">Cam kết đồng hành từ ngày đầu đến khi hoàn tất — và theo dõi kết quả trọn đời.</p>

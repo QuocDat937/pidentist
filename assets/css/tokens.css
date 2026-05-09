@@ -9,6 +9,7 @@
   --pi-gold:        #C9A96E;
   --pi-gold-light:  #E8D5A8;
   --pi-gold-hover:  #b8944f;
+  --pi-gold-a11y:   #A8854A;  /* WCAG AA ≥ 4.5:1 on white/off-white */
 
   /* Neutrals */
   --pi-white:       #FFFFFF;
@@ -17,6 +18,7 @@
   --pi-text:        #1A1A1A;
   --pi-text-soft:   #666666;
   --pi-success:     #2E7D5B;
+  --pi-footer-text: #8a9bad;  /* WCAG AA on navy-dark #001a33 */
 
   /* Typography */
   --pi-font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;

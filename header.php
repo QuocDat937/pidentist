@@ -33,7 +33,7 @@ if ( function_exists( 'pi_hook_promo_banner' ) ) {
 		<div class="header-inner">
 
 			<!-- Logo -->
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> trang chủ">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="π <?php echo esc_attr( get_bloginfo( 'name' ) ); ?> trang chủ">
 				<span class="logo-symbol">π</span>
 				<span class="logo-text">Pi Dentist</span>
 			</a>

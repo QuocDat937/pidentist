@@ -409,7 +409,14 @@ section,
   border: none;
   background: var(--pi-light-gray);
   cursor: pointer;
-  padding: 0;
+  padding: 8px;
+  background-clip: content-box;
+  box-sizing: content-box;
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     background var(--pi-transition),
     width var(--pi-transition),
@@ -481,6 +488,9 @@ section,
   .pi-carousel-dot {
     width: 6px;
     height: 6px;
+    padding: 9px;
+    min-width: 24px;
+    min-height: 24px;
   }
 
   .pi-carousel-dot.active {

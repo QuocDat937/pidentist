@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> trang chủ">
+<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="π <?php echo esc_attr( get_bloginfo( 'name' ) ); ?> trang chủ">
 	<span class="logo-symbol">π</span>
 	<span class="logo-text"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
 </a>

@@ -125,7 +125,7 @@ p {
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--pi-gold);
+  color: var(--pi-gold-a11y);
   margin-bottom: 16px;
   display: block;
 }
@@ -158,7 +158,7 @@ p {
 .text-link {
   font-weight: 600;
   font-size: 15px;
-  color: var(--pi-gold);
+  color: var(--pi-gold-a11y);
   display: inline-flex;
   align-items: center;
   gap: 6px;

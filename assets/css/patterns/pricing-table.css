@@ -85,7 +85,7 @@
 
 .pricing-table .price-cell {
   font-weight: 600;
-  color: var(--pi-gold);
+  color: var(--pi-gold-a11y);
   font-size: 16px;
   white-space: nowrap;
 }
@@ -136,7 +136,7 @@
 .pricing-card-m .method-price {
   font-size: 18px;
   font-weight: 600;
-  color: var(--pi-gold);
+  color: var(--pi-gold-a11y);
   margin-bottom: 8px;
 }
 
@@ -178,7 +178,7 @@
 }
 
 .installment-box .gold-highlight {
-  color: var(--pi-gold);
+  color: var(--pi-gold-a11y);
   font-weight: 600;
 }
 
