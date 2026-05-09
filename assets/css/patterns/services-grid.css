@@ -8,10 +8,11 @@
 }
 
 /* ---------- Grid Layout ---------- */
+/* Mobile-first: 1 column base */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 32px;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 /* ---------- Service Thumbnail ---------- */
@@ -111,41 +112,30 @@
 }
 
 /* ===========================================
-   RESPONSIVE — Tablet (max-width: 1199px)
+   RESPONSIVE — Tablet (min-width: 768px)
    =========================================== */
-@media (max-width: 1199px) {
-  .services-archive {
-    padding: 64px 0;
-  }
-
+@media (min-width: 768px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
+
+  .services-archive {
+    padding: 64px 0;
+  }
 }
 
 /* ===========================================
-   RESPONSIVE — Mobile (max-width: 767px)
+   RESPONSIVE — Laptop / Desktop (min-width: 1024px)
+   Force 4 columns — all services on 1 row
    =========================================== */
-@media (max-width: 767px) {
-  .services-archive {
-    padding: 48px 0;
-  }
-
+@media (min-width: 1024px) {
   .services-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
   }
 
-  .service-body {
-    padding: 20px;
-  }
-
-  .service-name {
-    font-size: 18px;
-  }
-
-  .service-price {
-    font-size: 16px;
+  .services-archive {
+    padding: 80px 0;
   }
 }
