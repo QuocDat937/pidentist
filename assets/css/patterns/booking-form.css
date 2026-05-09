@@ -22,9 +22,12 @@
 }
 
 /* ---------- CTA Grid: 2-column layout ---------- */
-/* The inner flex container from Gutenberg */
+/* Gutenberg wp:columns outputs .wp-block-columns; wp:group flex outputs .is-layout-flex */
 .cta-booking > .wp-block-group__inner-container > .wp-block-group.is-layout-flex,
-.cta-booking .wp-block-group.is-layout-flex.is-nowrap {
+.cta-booking .wp-block-group.is-layout-flex.is-nowrap,
+.cta-booking .wp-block-columns.cta-grid,
+.cta-booking > .wp-block-columns,
+.cta-booking .wp-block-columns {
   display: grid !important;
   grid-template-columns: 1.2fr 1fr;
   gap: 60px;
@@ -35,7 +38,8 @@
 }
 
 /* Both child columns */
-.cta-booking .wp-block-group.is-layout-flex > .wp-block-group {
+.cta-booking .wp-block-group.is-layout-flex > .wp-block-group,
+.cta-booking .wp-block-columns > .wp-block-column {
   width: 100%;
   min-width: 0; /* Prevent grid blowout */
 }
@@ -360,7 +364,10 @@
    =========================================== */
 @media (max-width: 1199px) {
   .cta-booking > .wp-block-group__inner-container > .wp-block-group.is-layout-flex,
-  .cta-booking .wp-block-group.is-layout-flex.is-nowrap {
+  .cta-booking .wp-block-group.is-layout-flex.is-nowrap,
+  .cta-booking .wp-block-columns.cta-grid,
+  .cta-booking > .wp-block-columns,
+  .cta-booking .wp-block-columns {
     gap: 40px;
   }
 
@@ -375,13 +382,17 @@
 @media (max-width: 767px) {
   /* Stack columns vertically: form on top, info below */
   .cta-booking > .wp-block-group__inner-container > .wp-block-group.is-layout-flex,
-  .cta-booking .wp-block-group.is-layout-flex.is-nowrap {
+  .cta-booking .wp-block-group.is-layout-flex.is-nowrap,
+  .cta-booking .wp-block-columns.cta-grid,
+  .cta-booking > .wp-block-columns,
+  .cta-booking .wp-block-columns {
     grid-template-columns: 1fr !important;
     gap: 0 !important;
   }
 
   /* Form column: bottom spacing */
-  .cta-booking .wp-block-group.is-layout-flex > .wp-block-group:first-child {
+  .cta-booking .wp-block-group.is-layout-flex > .wp-block-group:first-child,
+  .cta-booking .wp-block-columns > .wp-block-column:first-child {
     padding-bottom: 40px;
   }
 
@@ -400,7 +411,8 @@
   }
 
   /* Info column: top border separator */
-  .cta-booking .wp-block-group.is-layout-flex > .wp-block-group:last-child {
+  .cta-booking .wp-block-group.is-layout-flex > .wp-block-group:last-child,
+  .cta-booking .wp-block-columns > .wp-block-column:last-child {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     padding-top: 40px;
   }

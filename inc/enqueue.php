@@ -227,8 +227,8 @@ function pi_enqueue_scripts() {
 		);
 	}
 
-	/* --- Booking Form JS (front-page or pages with [pi_booking_form]) --- */
-	if ( is_front_page() || is_page() ) {
+	/* --- Booking Form JS (loads on ALL pages — CTA Booking pattern injected via GP hook) --- */
+	if ( ! is_404() ) {
 		wp_enqueue_script(
 			'pi-booking-form',
 			$uri . '/assets/js/booking-form.js',
@@ -242,8 +242,8 @@ function pi_enqueue_scripts() {
 			'phone'   => esc_html( get_theme_mod( 'pi_phone', '0909 XXX XXX' ) ),
 		) );
 
-		/* Also ensure booking form CSS is loaded on pages (may have shortcode) */
-		if ( is_page() && ! is_front_page() ) {
+		/* Booking form CSS — needed on all pages that show CTA booking */
+		if ( ! is_front_page() ) {
 			wp_enqueue_style(
 				'pi-pattern-booking-form',
 				$uri . '/assets/css/patterns/booking-form.css',

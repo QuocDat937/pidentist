@@ -140,7 +140,11 @@ function pi_hook_cta_booking() {
 	// Render synced pattern từ DB (post_type = wp_block)
 	$pattern = get_page_by_path( 'pi-cta-booking', OBJECT, 'wp_block' );
 	if ( $pattern ) {
-		echo do_blocks( $pattern->post_content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block content is already sanitized by WP
+		// do_blocks() xử lý block markup, do_shortcode() xử lý [pi_booking_form] + [pi_contact_block]
+		// bên trong <!-- wp:html --> blocks.
+		$content = do_blocks( $pattern->post_content );
+		$content = do_shortcode( $content );
+		echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block content is already sanitized by WP
 	}
 }
 
