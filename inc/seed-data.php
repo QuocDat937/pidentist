@@ -122,7 +122,7 @@ function pi_seed_test_data() {
 				'_pi_service_duration'     => '18-30 tháng',
 				'_pi_service_suitable_for' => 'Người cần thẩm mỹ tuyệt đối',
 				'_pi_service_thumb_color'  => 'lingual',
-				'_pi_service_is_featured'  => false,
+				'_pi_service_is_featured'  => true,
 			),
 			'category' => 'Mặt trong',
 		),

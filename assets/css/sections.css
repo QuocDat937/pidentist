@@ -5,7 +5,14 @@
 
 /* ---------- Section Base Spacing ---------- */
 section,
-.pi-section {
+.pi-section,
+.wp-block-group.services,
+.wp-block-group.commitments,
+.wp-block-group.philosophy,
+.wp-block-group.technology,
+.wp-block-group.simulation,
+.wp-block-group.journey,
+.wp-block-group.pricing {
   padding: 100px 0;
 }
 
@@ -221,7 +228,14 @@ section,
    =========================================== */
 @media (max-width: 1199px) {
   section,
-  .pi-section {
+  .pi-section,
+  .wp-block-group.services,
+  .wp-block-group.commitments,
+  .wp-block-group.philosophy,
+  .wp-block-group.technology,
+  .wp-block-group.simulation,
+  .wp-block-group.journey,
+  .wp-block-group.pricing {
     padding: 80px 0;
   }
 
@@ -239,7 +253,14 @@ section,
    =========================================== */
 @media (max-width: 767px) {
   section,
-  .pi-section {
+  .pi-section,
+  .wp-block-group.services,
+  .wp-block-group.commitments,
+  .wp-block-group.philosophy,
+  .wp-block-group.technology,
+  .wp-block-group.simulation,
+  .wp-block-group.journey,
+  .wp-block-group.pricing {
     padding: 64px 0;
   }
 

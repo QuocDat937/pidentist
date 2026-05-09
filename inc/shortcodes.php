@@ -286,8 +286,13 @@ function pi_services_grid_shortcode( $atts ) {
 	$query = new WP_Query( array(
 		'post_type'      => 'pi_service',
 		'posts_per_page' => absint( $atts['count'] ),
-		'meta_key'       => '_pi_service_is_featured',
-		'meta_value'     => '1',
+		'meta_query'     => array(
+			array(
+				'key'     => '_pi_service_is_featured',
+				'value'   => array( '1', 1, true ),
+				'compare' => 'IN',
+			),
+		),
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
 		'post_status'    => 'publish',
