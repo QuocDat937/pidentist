@@ -215,7 +215,7 @@ function pi_register_block_patterns() {
   </div>
   <!-- /wp:group -->
 
-  <!-- wp:group {"className":"tech-grid","layout":{"type":"grid","columnCount":3}} -->
+  <!-- wp:group {"className":"tech-grid","layout":{"type":"default"}} -->
   <div class="wp-block-group tech-grid">
 
     <!-- wp:group {"className":"tech-card"} -->
