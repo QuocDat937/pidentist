@@ -391,16 +391,16 @@ function pi_doctors_carousel_shortcode( $atts ) {
 					?>
 				</div>
 
-				<!-- Navigation arrows (JS sẽ populate) -->
-				<button class="pi-carousel-prev" aria-label="Bác sĩ trước" type="button">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg>
-				</button>
-				<button class="pi-carousel-next" aria-label="Bác sĩ tiếp theo" type="button">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg>
-				</button>
-
-				<!-- Dots (JS sẽ populate) -->
-				<div class="pi-carousel-dots" role="tablist" aria-label="Carousel navigation"></div>
+				<!-- Navigation: [←] [dots] [→] — below cards -->
+				<div class="pi-carousel-nav">
+					<button class="pi-carousel-prev" aria-label="Bác sĩ trước" type="button">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="15 18 9 12 15 6"/></svg>
+					</button>
+					<div class="pi-carousel-dots" role="tablist" aria-label="Carousel navigation"></div>
+					<button class="pi-carousel-next" aria-label="Bác sĩ tiếp theo" type="button">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="9 18 15 12 9 6"/></svg>
+					</button>
+				</div>
 			</div>
 
 			<div class="compare-link">

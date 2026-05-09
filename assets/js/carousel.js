@@ -256,6 +256,8 @@
 
     // ─── Arrows State ──────────────────────────────────
     function updateArrows() {
+      var navWrap = container.querySelector('.pi-carousel-nav');
+
       // Always enabled for wrap-around, but add visual hints
       if (prevBtn) {
         prevBtn.classList.toggle('pi-carousel-btn-disabled', cards.length <= visibleCount);
@@ -264,15 +266,9 @@
         nextBtn.classList.toggle('pi-carousel-btn-disabled', cards.length <= visibleCount);
       }
 
-      // Hide arrows entirely if not enough cards
-      if (cards.length <= visibleCount) {
-        if (prevBtn) prevBtn.style.display = 'none';
-        if (nextBtn) nextBtn.style.display = 'none';
-        if (dotsWrap) dotsWrap.style.display = 'none';
-      } else {
-        if (prevBtn) prevBtn.style.display = '';
-        if (nextBtn) nextBtn.style.display = '';
-        if (dotsWrap) dotsWrap.style.display = '';
+      // Hide entire nav bar if not enough cards
+      if (navWrap) {
+        navWrap.style.display = cards.length <= visibleCount ? 'none' : '';
       }
     }
 

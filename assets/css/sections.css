@@ -272,13 +272,13 @@ section,
 /* ===========================================================
    CAROUSEL — Pi Carousel Component
    Used in doctors section (homepage #4) and archive-pi_doctor
+   Layout: track + nav bar [←] [dots] [→] below cards
    =========================================================== */
 
 /* --- Container --- */
 .pi-carousel-container {
   position: relative;
   overflow: hidden;
-  padding: 0 0 48px; /* space for dots */
 }
 
 /* --- Track --- */
@@ -303,46 +303,39 @@ section,
   flex-shrink: 0;
 }
 
-/* --- Navigation Arrows --- */
+/* --- Navigation Bar: [←] [dots] [→] --- */
+.pi-carousel-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+/* --- Arrow Buttons --- */
 .pi-carousel-prev,
 .pi-carousel-next {
-  position: absolute;
-  top: calc(50% - 24px); /* offset for dots space */
-  transform: translateY(-50%);
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--pi-navy);
-  color: var(--pi-gold);
-  border: 2px solid var(--pi-navy-light);
+  border: 1.5px solid var(--pi-navy);
+  background: transparent;
+  color: var(--pi-navy);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2;
+  flex-shrink: 0;
   transition:
     background var(--pi-transition),
-    border-color var(--pi-transition),
-    box-shadow var(--pi-transition),
-    opacity var(--pi-transition);
-  box-shadow: var(--pi-shadow-md);
-  opacity: 0.9;
-}
-
-.pi-carousel-prev {
-  left: -4px;
-}
-
-.pi-carousel-next {
-  right: -4px;
+    color var(--pi-transition),
+    border-color var(--pi-transition);
 }
 
 .pi-carousel-prev:hover,
 .pi-carousel-next:hover {
-  background: var(--pi-navy-light);
-  border-color: var(--pi-gold);
-  opacity: 1;
-  box-shadow: var(--pi-shadow-lg);
+  background: var(--pi-navy);
+  color: var(--pi-white);
 }
 
 .pi-carousel-prev:focus-visible,
@@ -353,28 +346,29 @@ section,
 
 .pi-carousel-prev svg,
 .pi-carousel-next svg {
-  stroke: var(--pi-gold);
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
 }
 
 /* Hidden when not enough cards */
 .pi-carousel-btn-disabled {
-  display: none;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 /* --- Dots --- */
 .pi-carousel-dots {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding-top: 24px;
+  gap: 8px;
 }
 
 .pi-carousel-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   border: none;
   background: var(--pi-light-gray);
@@ -382,19 +376,18 @@ section,
   padding: 0;
   transition:
     background var(--pi-transition),
-    transform var(--pi-transition),
-    box-shadow var(--pi-transition);
+    width var(--pi-transition),
+    border-radius var(--pi-transition);
 }
 
 .pi-carousel-dot:hover {
   background: var(--pi-gold-light);
-  transform: scale(1.2);
 }
 
 .pi-carousel-dot.active {
   background: var(--pi-gold);
-  transform: scale(1.3);
-  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.25);
+  width: 24px;
+  border-radius: 4px;
 }
 
 .pi-carousel-dot:focus-visible {
@@ -406,12 +399,9 @@ section,
    CAROUSEL — Responsive Tablet (max-width: 1199px)
    =========================================== */
 @media (max-width: 1199px) {
-  .pi-carousel-prev {
-    left: 4px;
-  }
-
-  .pi-carousel-next {
-    right: 4px;
+  .pi-carousel-nav {
+    margin-top: 36px;
+    gap: 14px;
   }
 
   .pi-carousel-prev,
@@ -422,8 +412,8 @@ section,
 
   .pi-carousel-prev svg,
   .pi-carousel-next svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -431,39 +421,34 @@ section,
    CAROUSEL — Responsive Mobile (max-width: 767px)
    =========================================== */
 @media (max-width: 767px) {
-  .pi-carousel-container {
-    padding-bottom: 40px;
+  .pi-carousel-nav {
+    margin-top: 28px;
+    gap: 12px;
   }
 
   .pi-carousel-prev,
   .pi-carousel-next {
     width: 36px;
     height: 36px;
-    top: calc(50% - 20px);
   }
 
   .pi-carousel-prev svg,
   .pi-carousel-next svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .pi-carousel-prev {
-    left: 2px;
-  }
-
-  .pi-carousel-next {
-    right: 2px;
+    width: 14px;
+    height: 14px;
   }
 
   .pi-carousel-dots {
-    gap: 8px;
-    padding-top: 20px;
+    gap: 6px;
   }
 
   .pi-carousel-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .pi-carousel-dot.active {
+    width: 20px;
   }
 }
 
