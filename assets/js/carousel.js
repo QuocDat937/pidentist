@@ -92,29 +92,45 @@
 
     // ─── Touch / Mouse Drag ────────────────────────────
     let isDragging = false;
+    let hasDragged = false; // true when user actually moved beyond threshold
     let startX = 0;
     let startScrollLeft = 0;
     let dragDelta = 0;
     const DRAG_THRESHOLD = 40; // px min drag to change slide
+    const CLICK_THRESHOLD = 15; // px — below this, treat as click, not drag
 
     // Touch events
     track.addEventListener('touchstart', onDragStart, { passive: true });
     track.addEventListener('touchmove', onDragMove, { passive: false });
     track.addEventListener('touchend', onDragEnd, { passive: true });
 
-    // Mouse events
+    // Mouse events — NOTE: no e.preventDefault() on mousedown
+    // so that <a> tags can receive normal click events.
     track.addEventListener('mousedown', onMouseDown);
+
+    // Capture click events AFTER drag to suppress link navigation.
+    track.addEventListener('click', function (e) {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        hasDragged = false;
+      }
+    }, true); // use capture phase
 
     function onMouseDown(e) {
       // Ignore right-click
       if (e.button !== 0) return;
-      e.preventDefault();
+      // Do NOT call e.preventDefault() here — allows <a> clicks to work
       onDragStart(e);
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     }
 
     function onMouseMove(e) {
+      if (isDragging && Math.abs(dragDelta) > CLICK_THRESHOLD) {
+        // Only once we know it is a real drag, prevent text selection
+        e.preventDefault();
+      }
       onDragMove(e);
     }
 
@@ -126,11 +142,14 @@
 
     function onDragStart(e) {
       isDragging = true;
+      hasDragged = false;
       dragDelta = 0;
       startX = getPointerX(e);
       startScrollLeft = getCurrentTranslateX();
       track.style.transition = 'none';
-      track.classList.add('is-dragging');
+      // NOTE: do NOT add is-dragging here — wait until real drag detected
+      // Adding it here triggers CSS pointer-events:none on all children,
+      // which blocks normal <a> click events.
       stopAutoPlay();
     }
 
@@ -139,8 +158,19 @@
       const x = getPointerX(e);
       dragDelta = x - startX;
 
+      // Mark as real drag once beyond click threshold
+      if (Math.abs(dragDelta) > CLICK_THRESHOLD) {
+        hasDragged = true;
+      }
+
+      // Only add is-dragging class (CSS pointer-events:none) once we are
+      // sure user is performing a real carousel drag, not just a sloppy click.
+      if (Math.abs(dragDelta) > DRAG_THRESHOLD) {
+        track.classList.add('is-dragging');
+      }
+
       // Prevent vertical scroll while swiping horizontally
-      if (e.cancelable && Math.abs(dragDelta) > 10) {
+      if (e.cancelable && Math.abs(dragDelta) > CLICK_THRESHOLD) {
         e.preventDefault();
       }
 
