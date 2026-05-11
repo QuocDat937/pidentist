@@ -246,6 +246,17 @@ function pi_enqueue_scripts() {
 		);
 	}
 
+	/* --- Service TOC JS (CHỈ single pi_service) --- */
+	if ( is_singular( 'pi_service' ) ) {
+		wp_enqueue_script(
+			'pi-service-toc',
+			$uri . '/assets/js/service-toc.js',
+			array(),
+			$ver,
+			true
+		);
+	}
+
 	/* --- Booking Form JS (loads on ALL pages — CTA Booking pattern injected via GP hook) --- */
 	if ( ! is_404() ) {
 		wp_enqueue_script(

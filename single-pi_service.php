@@ -3,7 +3,7 @@
  * Pi Dentist — Single: Dịch vụ (pi_service)
  *
  * Chi tiết 1 dịch vụ chỉnh nha tại /dich-vu/{slug}/.
- * Layout: Page Hero → Quick Info → Content → Pros/Cons → FAQ
+ * Layout: Page Hero → Quick Info → TOC + Content → Pros/Cons → FAQ
  *         → Related Doctors → Related Cases → CTA Booking.
  *
  * @package Pidentist
@@ -22,6 +22,7 @@ while ( have_posts() ) :
 	$price_from   = get_post_meta( $service_id, '_pi_service_price_from', true );
 	$duration     = get_post_meta( $service_id, '_pi_service_duration', true );
 	$suitable_for = get_post_meta( $service_id, '_pi_service_suitable_for', true );
+	$slug         = get_post_field( 'post_name', $service_id );
 ?>
 
 <main class="pi-single pi-single-service" id="main-content">
@@ -75,16 +76,24 @@ while ( have_posts() ) :
 				</div>
 			<?php endif; ?>
 
-			<?php // ─── Main Content (Editor content) ───────────────── ?>
-			<div class="service-description prose reveal">
-				<?php the_content(); ?>
-			</div>
+			<?php
+			// ─── Render hardcoded content for specific service slugs ──
+			$template_file = 'template-parts/service/' . $slug;
+			$found = locate_template( $template_file . '.php' );
+
+			if ( $found ) :
+				// Service-specific detailed template exists
+				get_template_part( $template_file );
+			else :
+				// Fallback: render Block Editor content
+			?>
+				<div class="service-description prose reveal">
+					<?php the_content(); ?>
+				</div>
+			<?php endif; ?>
 
 			<?php
 			// ─── Pros / Cons Grid ─────────────────────────────────────
-			// Content authors can add advantages/disadvantages via
-			// the Block Editor. We also support a structured approach
-			// using post meta (serialised JSON arrays) if available.
 			$advantages    = get_post_meta( $service_id, '_pi_service_advantages', true );
 			$disadvantages = get_post_meta( $service_id, '_pi_service_disadvantages', true );
 
