@@ -305,16 +305,12 @@ Sau khi migrate, một số plugins cần reconnect:
 - Page Optimization: CSS/JS/HTML minify ON
 - Image Optimization: WebP ON
 
-### D. WPS Hide Login:
-- Confirm /dang-nhap-pi/ hoạt động
-- Bookmark URL mới!
-
-### E. Rank Math:
+### D. Rank Math:
 - Verify sitemap: /sitemap_index.xml
 - Local SEO: verify business info
 - Schema: test qua Google Rich Results Test
 
-### F. Fluent Forms:
+### E. Fluent Forms:
 - Test submit form → email nhận được
 - reCAPTCHA: add keys (Google reCAPTCHA v3)
 ```

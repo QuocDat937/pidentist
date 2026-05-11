@@ -205,7 +205,7 @@ Viết code trong `inc/enqueue.php` hoặc file mới:
 
 ## PROMPT 4.5 — Cấu hình Wordfence + 2FA + Security hardening
 
-```
+
 Tham chiếu PROJECT_SPEC_WP.md section 15.
 
 ### A. Wordfence config:
@@ -243,11 +243,7 @@ Copy TẤT CẢ code từ PROJECT_SPEC_WP.md section 15.4:
 9. Disable Application Passwords
 10. (Optional) Limit login IP
 
-### C. WPS Hide Login:
-- Login URL: /dang-nhap-pi/
-- Redirect /wp-login.php → 404
-
-### D. wp-config.php additions (hướng dẫn thêm thủ công):
+### C. wp-config.php additions (hướng dẫn thêm thủ công):
 FORCE_SSL_ADMIN = true
 DISALLOW_FILE_EDIT = true
 WP_POST_REVISIONS = 5

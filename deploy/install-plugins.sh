@@ -47,8 +47,6 @@ echo "  ✓ Redis Object Cache"
 wp plugin install nginx-helper --activate
 echo "  ✓ Nginx Helper"
 
-wp plugin install wps-hide-login --activate
-echo "  ✓ WPS Hide Login"
 
 echo ""
 
