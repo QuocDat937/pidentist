@@ -21,6 +21,7 @@ function pi_editor_config_styles() {
 
 	// Load tokens + base + components + tất cả pattern CSS để editor render đúng
 	add_editor_style( [
+		'assets/css/fonts.css',
 		'assets/css/tokens.css',
 		'assets/css/base.css',
 		'assets/css/buttons.css',

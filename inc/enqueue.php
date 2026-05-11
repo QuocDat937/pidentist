@@ -34,30 +34,19 @@ function pi_enqueue_styles() {
 		$ver
 	);
 
-	/* --- Google Fonts: Playfair Display + Inter --- */
-	$fonts_url = add_query_arg(
-		array(
-			'family'  => implode( '&family=', array(
-				'Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400',
-				'Inter:wght@300;400;500;600;700',
-			) ),
-			'display' => 'swap',
-		),
-		'https://fonts.googleapis.com/css2'
-	);
-
+	/* --- Self-hosted Fonts: Inter + Playfair Display (woff2) --- */
 	wp_enqueue_style(
-		'pi-google-fonts',
-		$fonts_url,
-		array(),
-		null // Google Fonts URL tự version — không append ?ver=
+		'pi-fonts',
+		$uri . '/assets/css/fonts.css',
+		array( 'generatepress-parent' ),
+		$ver
 	);
 
 	/* --- Design Tokens (load TRƯỚC mọi CSS con) --- */
 	wp_enqueue_style(
 		'pi-tokens',
 		$uri . '/assets/css/tokens.css',
-		array( 'generatepress-parent' ),
+		array( 'generatepress-parent', 'pi-fonts' ),
 		$ver
 	);
 
@@ -281,6 +270,29 @@ function pi_defer_scripts( $tag, $handle ) {
 }
 
 /* ───────────────────────────────────────────────
- * 3. EDITOR STYLES → xem inc/editor-config.php
+ * 3. PRELOAD FONTS — inject <link rel="preload"> vào <head>
+ *    Preload 2 critical fonts: Inter regular (body) + Playfair Display 600 (headings)
+ * ─────────────────────────────────────────────── */
+add_action( 'wp_head', 'pi_preload_fonts', 1 );
+
+/**
+ * Preload critical font files để giảm FOIT/FOUT.
+ * Chỉ preload 2 file quan trọng nhất — browser sẽ tự tải weights khác khi cần.
+ */
+function pi_preload_fonts() {
+	$fonts = array(
+		'/assets/fonts/inter-v20-latin-vietnamese-regular.woff2',
+		'/assets/fonts/playfair-display-v40-latin-vietnamese-600.woff2',
+	);
+	foreach ( $fonts as $font ) {
+		printf(
+			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
+			esc_url( get_stylesheet_directory_uri() . $font )
+		);
+	}
+}
+
+/* ───────────────────────────────────────────────
+ * 4. EDITOR STYLES → xem inc/editor-config.php
  *    (tokens + base + buttons + sections + patterns + editor.css)
  * ─────────────────────────────────────────────── */
