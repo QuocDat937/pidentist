@@ -1,0 +1,590 @@
+/* Pi Dentist — About Page (Về Pi)
+   Styles for /ve-pi/ page: philosophy, values, team, stats sections.
+   All values use CSS custom properties from tokens.css */
+
+/* ═══════════════════════════════════════════════
+   SECTION 1: Philosophy — "Chính xác như hằng số π"
+   Background: var(--pi-off-white)
+   ═══════════════════════════════════════════════ */
+
+.about-philosophy {
+  background: var(--pi-off-white);
+}
+
+/* Two-column grid: visual (left) + content (right) */
+.about-philosophy__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Decorative π box */
+.about-philosophy__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-philosophy__pi-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(135deg, var(--pi-navy), var(--pi-navy-light));
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.about-philosophy__pi-symbol {
+  font-family: var(--pi-font-heading);
+  font-size: clamp(120px, 15vw, 220px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.12);
+  user-select: none;
+  line-height: 1;
+}
+
+.about-philosophy__pi-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.2) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Content side */
+.about-philosophy__content .section-heading {
+  margin-bottom: 8px;
+}
+
+.about-philosophy__content .gold-line-left {
+  margin-bottom: 32px;
+}
+
+.about-philosophy__desc {
+  font-size: 16px;
+  color: var(--pi-text-soft);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Feature items (Tại sao tên Pi? / Ý nghĩa Logo) */
+.about-philosophy__features {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.about-philosophy__feature-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.about-philosophy__feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--pi-navy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pi-gold);
+}
+
+.about-philosophy__feature-item h3 {
+  font-family: var(--pi-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.about-philosophy__feature-item p {
+  font-size: 15px;
+  color: var(--pi-text-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════
+   SECTION 2: Values — "Ba giá trị nền tảng"
+   Background: var(--pi-white)
+   ═══════════════════════════════════════════════ */
+
+.about-values {
+  background: var(--pi-white);
+}
+
+.about-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.about-values__card {
+  background: var(--pi-white);
+  border: 1px solid var(--pi-light-gray);
+  border-radius: var(--pi-radius-card);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all var(--pi-transition);
+}
+
+.about-values__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pi-shadow-md);
+  border-color: var(--pi-gold-light);
+}
+
+.about-values__icon-wrap {
+  width: 64px;
+  height: 64px;
+  background: var(--pi-navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--pi-white);
+  transition: background var(--pi-transition);
+}
+
+.about-values__card:hover .about-values__icon-wrap {
+  background: var(--pi-gold);
+  color: var(--pi-navy);
+}
+
+.about-values__card h3 {
+  font-family: var(--pi-font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin-bottom: 12px;
+}
+
+.about-values__card p {
+  font-size: 15px;
+  color: var(--pi-text-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════
+   SECTION 3: Team — "Đội ngũ bác sĩ chuyên sâu"
+   Background: var(--pi-off-white)
+   ═══════════════════════════════════════════════ */
+
+.about-team {
+  background: var(--pi-off-white);
+}
+
+.about-team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.about-team__card {
+  background: var(--pi-white);
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  box-shadow: var(--pi-shadow-sm);
+  transition: transform var(--pi-transition),
+              box-shadow var(--pi-transition);
+}
+
+.about-team__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pi-shadow-md);
+}
+
+/* Photo */
+.about-team__photo-link {
+  display: block;
+}
+
+.about-team__photo {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--pi-light-gray);
+}
+
+.about-team__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--pi-transition);
+}
+
+.about-team__card:hover .about-team__photo img {
+  transform: scale(1.05);
+}
+
+.about-team__photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--pi-off-white), var(--pi-light-gray));
+}
+
+.about-team__photo-placeholder .doctor-avatar-svg {
+  width: 64px;
+  height: 64px;
+  color: var(--pi-text-soft);
+  opacity: 0.5;
+}
+
+/* Info */
+.about-team__info {
+  padding: 24px;
+}
+
+.about-team__name {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.about-team__name a {
+  color: inherit;
+  transition: color var(--pi-transition);
+}
+
+.about-team__name a:hover {
+  color: var(--pi-gold);
+}
+
+.about-team__title {
+  font-size: 14px;
+  color: var(--pi-text-soft);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Specialties list */
+.about-team__specialties {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-team__specialties li {
+  font-size: 14px;
+  color: var(--pi-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-team__spec-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--pi-gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* CTA below grid */
+.about-team__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+
+/* ═══════════════════════════════════════════════
+   SECTION 4: Stats — "Con số ấn tượng"
+   Background: var(--pi-navy)
+   ═══════════════════════════════════════════════ */
+
+.about-stats {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative circles */
+.about-stats__decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.about-stats__circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.about-stats__circle--1 {
+  width: 500px;
+  height: 500px;
+  top: -200px;
+  right: -100px;
+}
+
+.about-stats__circle--2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -80px;
+}
+
+.about-stats .section-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stats grid */
+.about-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-stats__item {
+  text-align: center;
+}
+
+.about-stats__number {
+  display: block;
+  font-family: var(--pi-font-heading);
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--pi-gold);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.about-stats__plus {
+  font-size: 40px;
+  color: var(--pi-gold);
+}
+
+.about-stats__label {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Tablet (max-width: 1199px)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1199px) {
+
+  /* Philosophy */
+  .about-philosophy__grid {
+    gap: 40px;
+  }
+
+  .about-philosophy__pi-box {
+    max-width: 320px;
+  }
+
+  .about-philosophy__pi-symbol {
+    font-size: 140px;
+  }
+
+  /* Values */
+  .about-values__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .about-values__card {
+    padding: 32px 24px;
+  }
+
+  /* Team */
+  .about-team__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* Stats */
+  .about-stats__grid {
+    gap: 32px;
+  }
+
+  .about-stats__number {
+    font-size: 48px;
+  }
+
+  .about-stats__plus {
+    font-size: 34px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Mobile (max-width: 767px)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Philosophy: stack vertical */
+  .about-philosophy__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-philosophy__visual {
+    order: -1;
+  }
+
+  .about-philosophy__pi-box {
+    max-width: 240px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+  }
+
+  .about-philosophy__pi-symbol {
+    font-size: 100px;
+  }
+
+  .about-philosophy__desc {
+    font-size: 15px;
+  }
+
+  .about-philosophy__feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .about-philosophy__feature-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-philosophy__feature-item h3 {
+    font-size: 17px;
+  }
+
+  .about-philosophy__feature-item p {
+    font-size: 14px;
+  }
+
+  /* Values: single column */
+  .about-values__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-values__card {
+    padding: 28px 24px;
+  }
+
+  .about-values__icon-wrap {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+  }
+
+  .about-values__card h3 {
+    font-size: 20px;
+  }
+
+  /* Team: single column */
+  .about-team__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-team__photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  .about-team__info {
+    padding: 20px;
+  }
+
+  .about-team__name {
+    font-size: 18px;
+  }
+
+  .about-team__cta {
+    margin-top: 36px;
+  }
+
+  /* Stats: 2x2 grid */
+  .about-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+
+  .about-stats__number {
+    font-size: 40px;
+  }
+
+  .about-stats__plus {
+    font-size: 28px;
+  }
+
+  .about-stats__label {
+    font-size: 14px;
+  }
+
+  /* Decorative circles */
+  .about-stats__circle--1 {
+    width: 300px;
+    height: 300px;
+    top: -120px;
+    right: -60px;
+  }
+
+  .about-stats__circle--2 {
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    left: -50px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════
+   A11Y — Reduced Motion
+   ═══════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .about-values__card,
+  .about-team__card {
+    transition: none;
+  }
+
+  .about-values__card:hover,
+  .about-team__card:hover {
+    transform: none;
+  }
+
+  .about-values__icon-wrap {
+    transition: none;
+  }
+
+  .about-team__photo img {
+    transition: none;
+  }
+
+  .about-team__card:hover .about-team__photo img {
+    transform: none;
+  }
+}

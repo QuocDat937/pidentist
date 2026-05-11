@@ -198,6 +198,16 @@ function pi_enqueue_styles() {
 			$ver
 		);
 	}
+
+	/* --- About Page CSS (trang Về Pi /ve-pi/) --- */
+	if ( is_page( 've-pi' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-about-page',
+			$uri . '/assets/css/patterns/about-page.css',
+			array( 'pi-tokens', 'pi-sections', 'pi-cards', 'pi-buttons' ),
+			$ver
+		);
+	}
 }
 
 /**
