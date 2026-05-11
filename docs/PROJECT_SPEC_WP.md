@@ -3802,12 +3802,6 @@ EOF
 
 ### 15.7 Login URL rename
 
-**Plugin:** [WPS Hide Login](https://wordpress.org/plugins/wps-hide-login/) (free, lightweight)
-
-```
-WP Admin → Settings → WPS Hide Login:
-- Login URL: https://pidentist.vn/dang-nhap-pi/
-- Redirection URL: https://pidentist.vn/404 (hoặc trang giả)
 ```
 
 **Lưu ý:** Bookmark URL mới ngay khi đổi! Quên URL = mất quyền truy cập (phải SSH disable plugin).
@@ -3859,7 +3853,6 @@ Export: CSV monthly để compliance
 
 ```
 ✅ Wordfence Free installed + cấu hình firewall + 2FA
-✅ Login URL renamed (WPS Hide Login)
 ✅ XML-RPC disabled (code + Nginx)
 ✅ wp-config.php có DISALLOW_FILE_EDIT, FORCE_SSL_ADMIN
 ✅ Database prefix đổi từ wp_ → pi_
@@ -6422,7 +6415,6 @@ Toàn bộ dự án Pi Dentist v1.0 dự kiến **10–15 ngày làm việc** (�
 ✅ Nginx Helper: configured
 ✅ Wordfence: scan đầu tiên hoàn tất, 2FA bật cho admin
 ✅ UpdraftPlus: kết nối Google Drive, backup đầu tiên thành công
-✅ WPS Hide Login: URL đổi thành /dang-nhap-pi/
 ✅ inc/security.php: hardening code applied
 ```
 
