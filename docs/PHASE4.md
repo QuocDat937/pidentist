@@ -315,6 +315,4 @@ Viết file `inc/roles.php` (thêm require vào functions.php):
 - [ ] LiteSpeed Cache active
 - [ ] Redis Object Cache connected
 - [ ] Wordfence scan: 0 critical
-- [ ] Login URL /dang-nhap-pi/ hoạt động
-- [ ] /wp-login.php redirect 404
 - [ ] UpdraftPlus backup thành công
