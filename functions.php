@@ -29,6 +29,7 @@ require_once PIDENTIST_DIR . '/inc/shortcodes.php';
 require_once PIDENTIST_DIR . '/inc/rank-math-defaults.php';
 require_once PIDENTIST_DIR . '/inc/plugin-config.php';
 require_once PIDENTIST_DIR . '/inc/security.php';
+require_once PIDENTIST_DIR . '/inc/roles.php';
 require_once PIDENTIST_DIR . '/inc/seed-data.php';
 require_once PIDENTIST_DIR . '/inc/homepage-compose.php';
 require_once PIDENTIST_DIR . '/inc/ajax/booking-form-handler.php';

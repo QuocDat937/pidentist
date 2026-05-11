@@ -287,6 +287,7 @@ Copy từ spec section 18.9:
 ## PROMPT 5.9 — Reconnect plugins trên production
 
 ```
+
 Sau khi migrate, một số plugins cần reconnect:
 
 ### A. UpdraftPlus:
