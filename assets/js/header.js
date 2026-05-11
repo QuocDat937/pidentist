@@ -38,6 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ─── 2b. Mobile Nav Close Button (×) ───
+  const mobileNavClose = document.getElementById('mobileNavClose');
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', () => {
+      closeMobileNav();
+    });
+  }
+
   // ─── 3. Close mobile nav on link click ───
   const mobileNav = document.getElementById('mobileNav');
   if (mobileNav) {

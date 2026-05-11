@@ -7,38 +7,19 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-// Social URLs from Customizer
-$social_links = array(
-	'facebook'  => array(
-		'url'   => get_theme_mod( 'pi_facebook_url', '#' ),
-		'label' => 'Facebook',
-		'icon'  => 'f',
-	),
-	'instagram' => array(
-		'url'   => get_theme_mod( 'pi_instagram_url', '#' ),
-		'label' => 'Instagram',
-		'icon'  => '📷',
-	),
-	'youtube'   => array(
-		'url'   => get_theme_mod( 'pi_youtube_url', '#' ),
-		'label' => 'YouTube',
-		'icon'  => '▶',
-	),
-	'tiktok'    => array(
-		'url'   => get_theme_mod( 'pi_tiktok_url', '#' ),
-		'label' => 'TikTok',
-		'icon'  => '♪',
-	),
-	'zalo'      => array(
-		'url'   => get_theme_mod( 'pi_zalo_url', '#' ),
-		'label' => 'Zalo',
-		'icon'  => 'Z',
-	),
-);
 ?>
 <div class="mobile-nav-overlay" id="mobileNav" aria-hidden="true">
 	<div class="mobile-nav-inner">
+
+		<!-- Mobile Header: Close button only (logo already in site header) -->
+		<div class="mobile-nav-header">
+			<button class="mobile-nav-close" id="mobileNavClose" aria-label="<?php esc_attr_e( 'Đóng menu', 'pidentist' ); ?>">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+		</div>
 
 		<?php
 		// Mobile menu — fallback to primary if 'mobile' location not assigned
@@ -61,21 +42,7 @@ $social_links = array(
 
 		<!-- Mobile CTA -->
 		<div class="mobile-nav-cta">
-			<a href="<?php echo esc_url( home_url( '/lien-he/' ) ); ?>" class="btn btn-gold"><?php esc_html_e( 'Đặt lịch tư vấn', 'pidentist' ); ?></a>
-		</div>
-
-		<!-- Social Icons -->
-		<div class="mobile-nav-social">
-			<?php foreach ( $social_links as $key => $social ) :
-				if ( ! empty( $social['url'] ) && '#' !== $social['url'] ) : ?>
-					<a href="<?php echo esc_url( $social['url'] ); ?>"
-					   aria-label="<?php echo esc_attr( $social['label'] ); ?>"
-					   target="_blank"
-					   rel="noopener noreferrer">
-						<span aria-hidden="true"><?php echo esc_html( $social['icon'] ); ?></span>
-					</a>
-				<?php endif;
-			endforeach; ?>
+			<a href="<?php echo esc_url( home_url( '/lien-he/' ) ); ?>" class="btn btn-gold"><?php esc_html_e( 'Đặt lịch ngay', 'pidentist' ); ?></a>
 		</div>
 
 	</div>
