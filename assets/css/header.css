@@ -304,48 +304,6 @@ body.mobile-nav-open {
   overflow: hidden;
 }
 
-/* ---------- Mobile Nav Header (Close only) ---------- */
-.mobile-nav-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 20px 24px;
-  flex-shrink: 0;
-}
-
-/* Offset for WP Admin Bar when logged in */
-.admin-bar .mobile-nav-overlay {
-  top: 32px;
-  height: calc(100% - 32px);
-}
-
-@media (max-width: 782px) {
-  .admin-bar .mobile-nav-overlay {
-    top: 46px;
-    height: calc(100% - 46px);
-  }
-}
-
-.mobile-nav-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--pi-white);
-  opacity: 0.8;
-  transition: opacity var(--pi-transition);
-}
-
-.mobile-nav-close:hover,
-.mobile-nav-close:focus-visible {
-  opacity: 1;
-}
-
 /* ---------- Mobile Nav Inner ---------- */
 .mobile-nav-inner {
   display: flex;
