@@ -132,6 +132,11 @@ function pi_hook_cta_booking() {
 		return;
 	}
 
+	// Trang bảng giá có CTA riêng trong template
+	if ( is_page( 'bang-gia' ) ) {
+		return;
+	}
+
 	// 404 không cần CTA
 	if ( is_404() ) {
 		return;

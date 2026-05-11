@@ -1,0 +1,508 @@
+/* Pi Dentist — Pricing Page (/bang-gia/)
+   Dedicated styles for the standalone pricing page template.
+   Desktop table (6 cols with rowspan), mobile cards, included grid,
+   installment navy box, and CTA section.
+   Reference: pi-dentist2103.vercel.app/vi/bang-gia */
+
+/* ===========================================
+   SECTION BASE — Pricing Detail
+   =========================================== */
+.pricing-detail {
+  background: var(--pi-off-white);
+}
+
+/* ===========================================
+   DESKTOP TABLE
+   =========================================== */
+.pricing-page-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pricing-page-table {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--pi-light-gray);
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  background: var(--pi-white);
+}
+
+.pricing-page-table thead {
+  background: var(--pi-navy);
+}
+
+.pricing-page-table th {
+  padding: 18px 24px;
+  font-family: var(--pi-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pi-white);
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.pricing-page-table tbody tr {
+  transition: background var(--pi-transition);
+}
+
+.pricing-page-table tbody tr:hover {
+  background: var(--pi-off-white);
+}
+
+/* Method group separator — subtle top border */
+.pricing-page-table tbody tr.method-first-row td {
+  border-top: 2px solid var(--pi-light-gray);
+}
+
+.pricing-page-table tbody tr:first-child td {
+  border-top: none;
+}
+
+.pricing-page-table td {
+  padding: 18px 24px;
+  font-size: 15px;
+  color: var(--pi-text);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--pi-light-gray);
+}
+
+.pricing-page-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Method name cell (rowspan) */
+.pricing-page-table .method-name-cell {
+  font-family: var(--pi-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pi-navy);
+  vertical-align: middle;
+  min-width: 200px;
+  border-right: 1px solid var(--pi-light-gray);
+}
+
+.pricing-page-table .method-link {
+  color: var(--pi-navy);
+  text-decoration: none;
+  transition: color var(--pi-transition);
+}
+
+.pricing-page-table .method-link:hover {
+  color: var(--pi-gold-hover);
+  text-decoration: underline;
+}
+
+/* Price cells */
+.pricing-page-table .price-cell {
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* Level badges */
+.level-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.level-nhe {
+  color: #2E7D5B;
+  border-color: #2E7D5B;
+  background: rgba(46, 125, 91, 0.08);
+}
+
+.level-tb {
+  color: var(--pi-gold-hover);
+  border-color: var(--pi-gold);
+  background: rgba(201, 169, 110, 0.08);
+}
+
+.level-kho {
+  color: #c0392b;
+  border-color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+}
+
+/* Button in table */
+.pricing-page-table .btn-sm {
+  padding: 8px 20px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ===========================================
+   MOBILE CARDS — hidden on desktop
+   =========================================== */
+.pricing-page-cards-mobile {
+  display: none;
+}
+
+.pricing-m-card {
+  background: var(--pi-white);
+  border: 1px solid var(--pi-light-gray);
+  border-radius: var(--pi-radius-card);
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: all var(--pi-transition);
+}
+
+.pricing-m-card:hover {
+  border-color: var(--pi-gold-light);
+  box-shadow: var(--pi-shadow-sm);
+}
+
+.pricing-m-card__header {
+  background: var(--pi-navy);
+  padding: 20px 24px;
+  color: var(--pi-white);
+}
+
+.pricing-m-card__title {
+  font-family: var(--pi-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.pricing-m-card__title a {
+  color: var(--pi-white);
+  text-decoration: none;
+}
+
+.pricing-m-card__duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pricing-m-card__duration svg {
+  flex-shrink: 0;
+}
+
+.pricing-m-card__body {
+  padding: 20px 24px;
+}
+
+.pricing-m-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--pi-light-gray);
+}
+
+.pricing-m-card__row:last-child {
+  border-bottom: none;
+}
+
+.pricing-m-card__price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pi-gold-hover);
+}
+
+.pricing-m-card__cta {
+  display: block;
+  margin: 0 24px 24px;
+  text-align: center;
+}
+
+/* ===========================================
+   INCLUDED SECTION — Chi phí bao gồm
+   =========================================== */
+.pricing-included {
+  background: var(--pi-off-white);
+}
+
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.included-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--pi-white);
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--pi-text);
+  box-shadow: var(--pi-shadow-sm);
+  transition: box-shadow var(--pi-transition);
+}
+
+.included-item:hover {
+  box-shadow: var(--pi-shadow-md);
+}
+
+/* Last item centered spanning 2 cols */
+.included-item--center {
+  grid-column: 1 / -1;
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.included-check {
+  color: var(--pi-success);
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(46, 125, 91, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===========================================
+   INSTALLMENT SECTION — Trả góp
+   =========================================== */
+.pricing-installment {
+  background: var(--pi-off-white);
+}
+
+.installment-navy-box {
+  background: var(--pi-navy);
+  border-radius: var(--pi-radius-card);
+  padding: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--pi-white);
+}
+
+.installment-navy-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.installment-navy-header h3 {
+  font-family: var(--pi-font-heading);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--pi-white);
+  margin-bottom: 12px;
+}
+
+.gold-text {
+  color: var(--pi-gold);
+}
+
+.installment-navy-header p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Installment Table */
+.installment-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.installment-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.installment-table thead {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.installment-table th {
+  padding: 16px 24px;
+  font-family: var(--pi-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pi-white);
+  text-align: left;
+  letter-spacing: 0.3px;
+}
+
+.installment-table td {
+  padding: 16px 24px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: middle;
+}
+
+.installment-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.installment-table td em {
+  color: var(--pi-gold-light);
+  font-style: italic;
+}
+
+.installment-note {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* ===========================================
+   CTA SECTION — bottom
+   =========================================== */
+.pricing-cta {
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.pricing-cta-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.pricing-cta-text {
+  font-family: var(--pi-font-heading);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--pi-white);
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.pricing-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===========================================
+   RESPONSIVE — Tablet (max-width: 1199px)
+   =========================================== */
+@media (max-width: 1199px) {
+  .pricing-page-table th,
+  .pricing-page-table td {
+    padding: 14px 18px;
+  }
+
+  .pricing-page-table .method-name-cell {
+    font-size: 16px;
+    min-width: 160px;
+  }
+
+  .installment-navy-box {
+    padding: 36px;
+  }
+
+  .installment-navy-header h3 {
+    font-size: 24px;
+  }
+
+  .pricing-cta-text {
+    font-size: 22px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   =========================================== */
+@media (max-width: 767px) {
+  /* Hide desktop table, show mobile cards */
+  .pricing-page-table-wrap {
+    display: none;
+  }
+
+  .pricing-page-cards-mobile {
+    display: block;
+  }
+
+  /* Included grid — single column */
+  .included-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .included-item--center {
+    max-width: none;
+  }
+
+  .included-item {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+
+  .included-check {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  /* Installment box */
+  .installment-navy-box {
+    padding: 28px 20px;
+  }
+
+  .installment-navy-header h3 {
+    font-size: 22px;
+  }
+
+  .installment-navy-header p {
+    font-size: 15px;
+  }
+
+  .installment-table th,
+  .installment-table td {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  /* CTA */
+  .pricing-cta {
+    padding: 64px 20px;
+  }
+
+  .pricing-cta-text {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .pricing-cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pricing-cta-buttons .btn {
+    text-align: center;
+  }
+}
+
+/* ===========================================
+   REDUCED MOTION
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .pricing-page-table tbody tr,
+  .pricing-m-card,
+  .included-item {
+    transition: none;
+  }
+}

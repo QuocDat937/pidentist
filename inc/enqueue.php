@@ -188,6 +188,16 @@ function pi_enqueue_styles() {
 			$ver
 		);
 	}
+
+	/* --- Pricing Page CSS (trang Bảng giá /bang-gia/) --- */
+	if ( is_page( 'bang-gia' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-pricing-page',
+			$uri . '/assets/css/patterns/pricing-page.css',
+			array( 'pi-tokens', 'pi-sections', 'pi-buttons' ),
+			$ver
+		);
+	}
 }
 
 /**
