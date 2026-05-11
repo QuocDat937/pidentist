@@ -178,6 +178,16 @@ function pi_enqueue_styles() {
 			$ver
 		);
 	}
+
+	/* --- Contact Page CSS (trang Liên hệ /lien-he/) --- */
+	if ( is_page( 'lien-he' ) ) {
+		wp_enqueue_style(
+			'pi-pattern-contact-page',
+			$uri . '/assets/css/patterns/contact-page.css',
+			array( 'pi-tokens', 'pi-sections', 'pi-pattern-booking-form' ),
+			$ver
+		);
+	}
 }
 
 /**
