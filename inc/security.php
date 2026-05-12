@@ -143,9 +143,9 @@ function pi_restrict_rest_api( $result ) {
 	$public_routes = array(
 		'/wp/v2/posts',        // Blog feed.
 		'/wp/v2/pages',        // Page content.
-		'/wp/v2/pi_service',   // Service feed.
-		'/wp/v2/pi_doctor',    // Doctor feed.
-		'/wp/v2/pi_case',      // Case feed.
+		'/wp/v2/services',     // Service feed (rest_base).
+		'/wp/v2/doctors',      // Doctor feed (rest_base).
+		'/wp/v2/cases',        // Case feed (rest_base).
 		'/wp/v2/categories',   // Category taxonomy.
 
 		'/rankmath/',          // Rank Math SEO.
