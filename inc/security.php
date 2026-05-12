@@ -123,7 +123,6 @@ function pi_disable_rest_users( $endpoints ) {
  * 15.4.7 Restrict REST API cho user chưa login
  * Cho phép public routes cần thiết:
  *   - posts, pi_service, pi_doctor, pi_case (cho JS fetch/block editor)
- *   - fluent-form/ (form submit)
  *   - rank-math (SEO sitemap ping)
  * ─────────────────────────────────────────────── */
 add_filter( 'rest_authentication_errors', 'pi_restrict_rest_api' );
@@ -148,7 +147,7 @@ function pi_restrict_rest_api( $result ) {
 		'/wp/v2/pi_doctor',    // Doctor feed.
 		'/wp/v2/pi_case',      // Case feed.
 		'/wp/v2/categories',   // Category taxonomy.
-		'/fluent-form/',       // Fluent Forms submit.
+
 		'/rankmath/',          // Rank Math SEO.
 	);
 

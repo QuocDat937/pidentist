@@ -15,8 +15,8 @@ echo " Pi Dentist — Plugin Stack Install"
 echo "══════════════════════════════════════════"
 echo ""
 
-# ── 1. Main Plugins (6) ──────────────────────
-echo "▸ Installing 6 main plugins..."
+# ── 1. Main Plugins (5) ──────────────────────
+echo "▸ Installing 5 main plugins..."
 
 wp plugin install custom-post-type-ui --activate
 echo "  ✓ Custom Post Type UI"
@@ -24,8 +24,7 @@ echo "  ✓ Custom Post Type UI"
 wp plugin install seo-by-rank-math --activate
 echo "  ✓ Rank Math SEO"
 
-wp plugin install fluentform --activate
-echo "  ✓ Fluent Forms"
+
 
 wp plugin install litespeed-cache --activate
 echo "  ✓ LiteSpeed Cache"
@@ -38,8 +37,8 @@ echo "  ✓ UpdraftPlus Backup"
 
 echo ""
 
-# ── 2. Supplementary Plugins (3) ─────────────
-echo "▸ Installing 3 supplementary plugins..."
+# ── 2. Supplementary Plugins (2) ─────────────
+echo "▸ Installing 2 supplementary plugins..."
 
 wp plugin install redis-cache --activate
 echo "  ✓ Redis Object Cache"
@@ -63,11 +62,10 @@ echo "  ✓ Rewrite rules flushed"
 
 echo ""
 echo "══════════════════════════════════════════"
-echo " ✅ All 9 plugins installed and active!"
+echo " ✅ All 7 plugins installed and active!"
 echo "══════════════════════════════════════════"
 echo ""
 echo "Next steps:"
 echo "  1. Check WP Admin → No PHP errors"
-echo "  2. Verify sidebar menus: Rank Math, Fluent Forms, etc."
-echo "  3. Run: bash deploy/configure-wps-hide-login.sh (if needed)"
+echo "  2. Verify sidebar menus: Rank Math, etc."
 echo ""
