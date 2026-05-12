@@ -220,21 +220,70 @@ function pi_handle_booking_submit() {
 
 
 /* ═══════════════════════════════════════════════════════════════
- * 4. Helper: Get client IP
+ * 4. Helper: Get client IP (hardened)
+ *
+ * - Only trusts CF-Connecting-IP when REMOTE_ADDR is a Cloudflare IP.
+ * - X-Forwarded-For is NOT trusted (easily spoofable).
+ * - Fallback: REMOTE_ADDR (cannot be spoofed at TCP level).
  * ═══════════════════════════════════════════════════════════════ */
 function pi_get_client_ip() {
-	$headers = array(
-		'HTTP_CF_CONNECTING_IP', // Cloudflare
-		'HTTP_X_FORWARDED_FOR',
-		'REMOTE_ADDR',
+
+	$remote_addr = isset( $_SERVER['REMOTE_ADDR'] )
+		? sanitize_text_field( $_SERVER['REMOTE_ADDR'] )
+		: '0.0.0.0';
+
+	// If request comes from Cloudflare, trust CF-Connecting-IP.
+	// Ref: https://www.cloudflare.com/ips-v4/
+	if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] )
+		&& pi_ip_in_cloudflare_range( $remote_addr ) ) {
+		return sanitize_text_field( trim( $_SERVER['HTTP_CF_CONNECTING_IP'] ) );
+	}
+
+	// Fallback: always use REMOTE_ADDR.
+	return $remote_addr;
+}
+
+/**
+ * Check if an IP belongs to Cloudflare's IPv4 ranges.
+ *
+ * @param string $ip IP address to check.
+ * @return bool True if IP is in a Cloudflare range.
+ */
+function pi_ip_in_cloudflare_range( $ip ) {
+	// Cloudflare IPv4 ranges (updated 2024-12).
+	// Source: https://www.cloudflare.com/ips-v4/
+	$cf_ranges = array(
+		'173.245.48.0/20',
+		'103.21.244.0/22',
+		'103.22.200.0/22',
+		'103.31.4.0/22',
+		'141.101.64.0/18',
+		'108.162.192.0/18',
+		'190.93.240.0/20',
+		'188.114.96.0/20',
+		'197.234.240.0/22',
+		'198.41.128.0/17',
+		'162.158.0.0/15',
+		'104.16.0.0/13',
+		'104.24.0.0/14',
+		'172.64.0.0/13',
+		'131.0.72.0/22',
 	);
 
-	foreach ( $headers as $header ) {
-		if ( ! empty( $_SERVER[ $header ] ) ) {
-			$ip = explode( ',', $_SERVER[ $header ] );
-			return sanitize_text_field( trim( $ip[0] ) );
+	$ip_long = ip2long( $ip );
+	if ( false === $ip_long ) {
+		return false;
+	}
+
+	foreach ( $cf_ranges as $cidr ) {
+		list( $subnet, $mask ) = explode( '/', $cidr );
+		$subnet_long = ip2long( $subnet );
+		$mask_long   = -1 << ( 32 - (int) $mask );
+		if ( ( $ip_long & $mask_long ) === ( $subnet_long & $mask_long ) ) {
+			return true;
 		}
 	}
 
-	return '0.0.0.0';
+	return false;
 }
+
