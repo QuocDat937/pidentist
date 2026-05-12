@@ -1,0 +1,46 @@
+# Pi Dentist — Auto Deploy to Hosting via FTP
+# Trigger: push to main branch
+# Action: sync theme files to shared hosting via FTP
+#
+# Required GitHub Secrets:
+#   FTP_SERVER   - FTP hostname (e.g., ftp.pidentist.vn)
+#   FTP_USERNAME - FTP username
+#   FTP_PASSWORD - FTP password
+#   REMOTE_PATH  - Remote path (e.g., /public_html/wp-content/themes/pidentist/)
+
+name: 🚀 Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy theme via FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.REMOTE_PATH }}
+          # Exclude files not needed on production
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .gitignore
+            .gitattributes
+            .editorconfig
+            **/.vscode/**
+            **/node_modules/**
+            **/docs/**
+            **/deploy/**
+            **/*.md
+            .github/**
