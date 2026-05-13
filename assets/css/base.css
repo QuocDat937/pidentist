@@ -230,7 +230,8 @@ p {
 }
 
 /* ---------- Skip to Content (A11y) ---------- */
-.skip-to-content {
+.skip-to-content,
+.skip-link {
   position: absolute;
   left: -9999px;
   top: auto;
@@ -240,7 +241,8 @@ p {
   z-index: 9999;
 }
 
-.skip-to-content:focus {
+.skip-to-content:focus,
+.skip-link:focus {
   position: fixed;
   left: 16px;
   top: 16px;
@@ -252,9 +254,11 @@ p {
   font-size: 14px;
   font-weight: 600;
   border-radius: var(--pi-radius-btn);
-  z-index: 9999;
+  z-index: 99999;
   outline: 2px solid var(--pi-gold);
   outline-offset: 2px;
+  clip: auto;
+  white-space: nowrap;
 }
 
 /* ---------- Focus Visible ---------- */

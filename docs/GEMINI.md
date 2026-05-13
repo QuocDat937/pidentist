@@ -43,8 +43,8 @@
 - Lazy load khi có thể (carousel chỉ load ở front-page hoặc archive doctor)
 
 ### 2.5 Plugin Minimalism
-- Chỉ **6 plugins chính**: Custom Post Type UI, Rank Math, Fluent Forms, LiteSpeed Cache, Wordfence, UpdraftPlus
-- **3 plugins bổ trợ**: Redis Cache, Nginx Helper, WPS Hide Login
+- Chỉ **6 plugins chính**: Custom Post Type UI, Rank Math, LiteSpeed Cache, Wordfence, UpdraftPlus
+- **3 plugins bổ trợ**: Redis Cache, Nginx Helper
 - **KHÔNG** cài thêm plugin ngoài danh sách trên mà không có lý do rõ ràng
 - KHÔNG Yoast, KHÔNG WPForms, KHÔNG Elementor, KHÔNG bloat plugins
 
@@ -363,7 +363,6 @@ Permalinks: `/%postname%/`
 - Remove WP version từ headers/scripts
 - DISALLOW_FILE_EDIT trong wp-config
 - Block author enumeration (`/?author=N` → 403)
-- Hide login errors: trả generic message
 - Disable REST API `/wp/v2/users` endpoint
 - Security headers: X-Content-Type-Options, X-Frame-Options, CSP, Referrer-Policy
 - Disable Application Passwords
