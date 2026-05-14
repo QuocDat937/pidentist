@@ -44,9 +44,12 @@
 }
 
 /* ---------- Tech Grid ---------- */
-/* Override WP block editor inline grid (columnCount:3) with higher specificity */
+/* Override WP block editor inline grid (columnCount:3) with higher specificity.
+   WP may wrap children in .wp-block-group__inner-container — apply grid to both. */
 .tech-grid,
-.wp-block-group.tech-grid {
+.wp-block-group.tech-grid,
+.tech-grid > .wp-block-group__inner-container,
+.wp-block-group.tech-grid > .wp-block-group__inner-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
@@ -116,7 +119,9 @@
   }
 
   .tech-grid,
-  .wp-block-group.tech-grid {
+  .wp-block-group.tech-grid,
+  .tech-grid > .wp-block-group__inner-container,
+  .wp-block-group.tech-grid > .wp-block-group__inner-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
@@ -139,7 +144,9 @@
   }
 
   .tech-grid,
-  .wp-block-group.tech-grid {
+  .wp-block-group.tech-grid,
+  .tech-grid > .wp-block-group__inner-container,
+  .wp-block-group.tech-grid > .wp-block-group__inner-container {
     grid-template-columns: 1fr;
     gap: 20px;
   }
