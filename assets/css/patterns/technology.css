@@ -45,8 +45,9 @@
 
 /* ---------- Tech Grid ---------- */
 /* WP Block Editor wraps group children in .wp-block-group__inner-container
-   with is-layout-flow (flex column). We must override that to grid.
-   Apply grid to BOTH .tech-grid (no wrapper case) AND __inner-container (wrapper case). */
+   with is-layout-flow (flex column). Strategy:
+   - .tech-grid itself uses grid (fallback when no WP wrapper)
+   - When WP inner wrapper exists, parent becomes block, inner wrapper becomes grid */
 .tech-grid,
 .wp-block-group.tech-grid {
   display: grid;
@@ -54,7 +55,12 @@
   gap: 32px;
 }
 
-/* When WP adds inner wrapper, grid the wrapper instead */
+/* When WP adds inner wrapper: parent → block, inner → grid */
+.tech-grid:has(> .wp-block-group__inner-container),
+.wp-block-group.tech-grid:has(> .wp-block-group__inner-container) {
+  display: block !important;
+}
+
 .tech-grid > .wp-block-group__inner-container,
 .wp-block-group.tech-grid > .wp-block-group__inner-container,
 .tech-grid > .wp-block-group__inner-container.is-layout-flow,
