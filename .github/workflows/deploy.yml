@@ -1,6 +1,6 @@
-# Pi Dentist — Auto Deploy to Hosting via FTP
-# Trigger: push to main branch
-# Action: sync theme files to shared hosting via FTP
+# Pi Dentist — Backup Deploy via FTP (Manual Only)
+# PRIMARY DEPLOY: DirectAdmin Git (auto pull via webhook)
+# This workflow is kept as BACKUP — only runs when manually triggered.
 #
 # Required GitHub Secrets:
 #   FTP_SERVER   - FTP hostname (e.g., ftp.pidentist.vn)
@@ -8,12 +8,11 @@
 #   FTP_PASSWORD - FTP password
 #   REMOTE_PATH  - Remote path (e.g., /public_html/wp-content/themes/pidentist/)
 
-name: 🚀 Deploy to Production
+name: 🔧 Backup Deploy (FTP Manual)
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    # Manual trigger only — go to Actions tab → click "Run workflow"
 
 jobs:
   deploy:
