@@ -44,15 +44,25 @@
 }
 
 /* ---------- Tech Grid ---------- */
-/* Override WP block editor inline grid (columnCount:3) with higher specificity.
-   WP may wrap children in .wp-block-group__inner-container — apply grid to both. */
+/* WP Block Editor wraps group children in .wp-block-group__inner-container
+   with is-layout-flow (flex column). We must override that to grid.
+   Apply grid to BOTH .tech-grid (no wrapper case) AND __inner-container (wrapper case). */
 .tech-grid,
-.wp-block-group.tech-grid,
-.tech-grid > .wp-block-group__inner-container,
-.wp-block-group.tech-grid > .wp-block-group__inner-container {
+.wp-block-group.tech-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+}
+
+/* When WP adds inner wrapper, grid the wrapper instead */
+.tech-grid > .wp-block-group__inner-container,
+.wp-block-group.tech-grid > .wp-block-group__inner-container,
+.tech-grid > .wp-block-group__inner-container.is-layout-flow,
+.wp-block-group.tech-grid > .wp-block-group__inner-container.is-layout-flow {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 32px !important;
+  flex-direction: unset !important;
 }
 
 /* ---------- Tech Card ---------- */
@@ -119,11 +129,17 @@
   }
 
   .tech-grid,
-  .wp-block-group.tech-grid,
-  .tech-grid > .wp-block-group__inner-container,
-  .wp-block-group.tech-grid > .wp-block-group__inner-container {
+  .wp-block-group.tech-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+
+  .tech-grid > .wp-block-group__inner-container,
+  .wp-block-group.tech-grid > .wp-block-group__inner-container,
+  .tech-grid > .wp-block-group__inner-container.is-layout-flow,
+  .wp-block-group.tech-grid > .wp-block-group__inner-container.is-layout-flow {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
   }
 
   .tech-card {
@@ -144,11 +160,17 @@
   }
 
   .tech-grid,
-  .wp-block-group.tech-grid,
-  .tech-grid > .wp-block-group__inner-container,
-  .wp-block-group.tech-grid > .wp-block-group__inner-container {
+  .wp-block-group.tech-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .tech-grid > .wp-block-group__inner-container,
+  .wp-block-group.tech-grid > .wp-block-group__inner-container,
+  .tech-grid > .wp-block-group__inner-container.is-layout-flow,
+  .wp-block-group.tech-grid > .wp-block-group__inner-container.is-layout-flow {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 
   .tech-card {
