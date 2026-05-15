@@ -91,14 +91,7 @@ defined( 'ABSPATH' ) || exit;
 		<li>
 			<span class="fc-icon" aria-hidden="true">🕐</span>
 			<span>
-				<?php
-				/* translators: %s: working hours */
-				printf( esc_html__( 'T2 – T6: %s', 'pidentist' ), esc_html( $hours_weekday ) );
-				?>
-				<br>
-				<?php
-				printf( esc_html__( 'T7: %s', 'pidentist' ), esc_html( $hours_saturday ) );
-				?>
+				<?php esc_html_e( 'Thứ 2 – Chủ nhật: 8:00 – 20:00', 'pidentist' ); ?>
 			</span>
 		</li>
 	</ul>
