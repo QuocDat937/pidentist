@@ -234,9 +234,8 @@ function pi_contact_block_shortcode() {
 			?>
 		</div>
 		<?php else : ?>
-		<div class="map-placeholder" aria-label="Bản đồ phòng khám">
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-			Bản đồ sẽ được cập nhật
+		<div class="pi-contact-map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.394718041498!2d106.69916081534101!3d10.780114492318544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4670702e31%3A0xa5777fb3853960e!2zQuG7h25oIHZp4buHbiBOaGFuIGtob2EgVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBZIETGsOG7o2M!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ vị trí Pi Dentist"></iframe>
 		</div>
 		<?php endif; ?>
 

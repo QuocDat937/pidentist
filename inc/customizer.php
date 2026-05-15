@@ -166,7 +166,7 @@ function pi_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'pi_map_embed', array(
-		'default'           => '',
+		'default'           => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.394718041498!2d106.69916081534101!3d10.780114492318544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4670702e31%3A0xa5777fb3853960e!2zQuG7h25oIHZp4buHbiBOaGFuIGtob2EgVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBZIETGsOG7o2M!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ vị trí Pi Dentist"></iframe>',
 		'sanitize_callback' => 'pi_sanitize_map_embed',
 	) );
 	$wp_customize->add_control( 'pi_map_embed', array(
