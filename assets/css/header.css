@@ -316,7 +316,7 @@ body.mobile-nav-open {
 /* ---------- Mobile Nav Menu ---------- */
 .mobile-nav-menu {
   list-style: none;
-  padding: 8px 0 0;
+  padding: 72px 0 0;
   margin: 0;
   flex: 1;
 }
