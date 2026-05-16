@@ -169,11 +169,12 @@ add_filter( 'generate_logo_output', 'pi_hook_logo_output' );
 function pi_hook_logo_output( $logo_output ) {
 	return sprintf(
 		'<a href="%1$s" class="logo" rel="home" aria-label="%2$s trang chủ">
-			<span class="logo-symbol">π</span>
+			<img src="%3$s" alt="%2$s" class="logo-symbol" width="40" height="40">
 			<span class="logo-text">%2$s</span>
 		</a>',
 		esc_url( home_url( '/' ) ),
-		esc_attr( get_bloginfo( 'name' ) )
+		esc_attr( get_bloginfo( 'name' ) ),
+		esc_url( get_stylesheet_directory_uri() . '/logo-white.svg' )
 	);
 }
 

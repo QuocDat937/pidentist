@@ -1,0 +1,8 @@
+
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  
+  <path d="M 0 0&#xA;           L 110 0&#xA;           A 50 50 0 0 1 160 50&#xA;           L 160 160&#xA;           L 50 160&#xA;           A 50 50 0 0 1 0 110&#xA;           Z" fill="#FFFFFF"></path>
+
+  
+  <text x="80" y="120" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="120" font-weight="700" fill="#C9A96E">π</text>
+</svg>

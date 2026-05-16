@@ -99,10 +99,11 @@ body.home .site-header {
 }
 
 .logo-symbol {
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--pi-gold);
-  line-height: 1;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
   transition: transform var(--pi-transition);
 }
 
@@ -434,7 +435,8 @@ body.mobile-nav-open {
 
   /* Smaller logo on mobile */
   .logo-symbol {
-    font-size: 30px;
+    width: 34px;
+    height: 34px;
   }
 
   .logo-text {
@@ -451,7 +453,8 @@ body.mobile-nav-open {
   }
 
   .logo-symbol {
-    font-size: 28px;
+    width: 30px;
+    height: 30px;
   }
 
   .logo-text {

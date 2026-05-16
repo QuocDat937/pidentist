@@ -33,8 +33,8 @@ if ( function_exists( 'pi_hook_promo_banner' ) ) {
 		<div class="header-inner">
 
 			<!-- Logo -->
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="π <?php echo esc_attr( get_bloginfo( 'name' ) ); ?> trang chủ">
-				<span class="logo-symbol">π</span>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> trang chủ">
+				<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/logo-white.svg' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo-symbol" width="40" height="40">
 				<span class="logo-text">Pi Dentist</span>
 			</a>
 

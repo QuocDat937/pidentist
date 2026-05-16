@@ -27,7 +27,8 @@
 }
 
 .footer-brand .logo-symbol {
-  color: var(--pi-gold);
+  width: 40px;
+  height: 40px;
 }
 
 .footer-brand .logo-text {
