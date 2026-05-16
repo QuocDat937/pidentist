@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) || exit;
  * ─────────────────────────────────────────────── */
 add_action( 'wp_enqueue_scripts', 'pi_enqueue_styles', 20 );
 add_action( 'wp_enqueue_scripts', 'pi_enqueue_scripts', 20 );
+add_action( 'wp_enqueue_scripts', 'pi_dequeue_jquery', 99 );
 
 /**
  * Enqueue tất cả stylesheets.
@@ -71,29 +72,14 @@ function pi_enqueue_styles() {
 		);
 	}
 
-	/* --- Pattern CSS (CHỈ front-page) --- */
+	/* --- Pattern CSS (CHỈ front-page) — BUNDLED để giảm render-blocking --- */
 	if ( is_front_page() ) {
-		$pattern_styles = array(
-			'pi-pattern-hero'          => 'hero.css',
-			'pi-pattern-commitments'   => 'commitments.css',
-			'pi-pattern-philosophy'    => 'philosophy.css',
-			'pi-pattern-doctors-grid'  => 'doctors-grid.css',
-			'pi-pattern-technology'    => 'technology.css',
-			'pi-pattern-simulation'    => 'simulation.css',
-			'pi-pattern-journey'       => 'journey.css',
-			'pi-pattern-services-grid' => 'services-grid.css',
-			'pi-pattern-pricing-table' => 'pricing-table.css',
-			'pi-pattern-booking-form'  => 'booking-form.css',
+		wp_enqueue_style(
+			'pi-pattern-front-page-bundle',
+			$uri . '/assets/css/patterns/front-page-bundle.css',
+			array( 'pi-tokens' ),
+			$ver
 		);
-
-		foreach ( $pattern_styles as $handle => $file ) {
-			wp_enqueue_style(
-				$handle,
-				$uri . '/assets/css/patterns/' . $file,
-				array( 'pi-tokens' ),
-				$ver
-			);
-		}
 	}
 
 	/* --- Pattern CSS cho CPT archives/singles --- */
@@ -166,10 +152,12 @@ function pi_enqueue_styles() {
 		);
 	}
 
-	/* --- Blog, Search, 404, Page CSS --- */
+	/* --- Blog, Search, 404, Page CSS (trừ front-page — đã có bundle) --- */
 	if (
-		is_home() || is_archive() || is_singular( 'post' ) ||
-		is_search() || is_404() || is_page()
+		! is_front_page() && (
+			is_home() || is_archive() || is_singular( 'post' ) ||
+			is_search() || is_404() || is_page()
+		)
 	) {
 		wp_enqueue_style(
 			'pi-pattern-blog',
@@ -388,6 +376,35 @@ function pi_async_gtag( $tag, $handle ) {
 }
 
 /* ───────────────────────────────────────────────
- * 5. EDITOR STYLES → xem inc/editor-config.php
+ * 5. DEQUEUE jQuery — Theme dùng Vanilla JS only
+ *    jQuery + jQuery Migrate gây render-blocking (~34 KiB).
+ *    Chỉ dequeue ở frontend, giữ nguyên cho admin.
+ *    Priority 99 để chạy SAU tất cả plugins đã enqueue.
+ * ─────────────────────────────────────────────── */
+
+/**
+ * Gỡ jQuery và jQuery Migrate khỏi frontend.
+ *
+ * Theme Pi Dentist dùng 100% Vanilla JS — jQuery không cần thiết.
+ * Nếu plugin nào cần jQuery ở frontend → cần review lại.
+ */
+function pi_dequeue_jquery() {
+	// Chỉ xử lý ở frontend — admin cần jQuery cho Gutenberg/plugins.
+	if ( is_admin() ) {
+		return;
+	}
+
+	wp_dequeue_script( 'jquery' );
+	wp_deregister_script( 'jquery' );
+
+	wp_dequeue_script( 'jquery-core' );
+	wp_deregister_script( 'jquery-core' );
+
+	wp_dequeue_script( 'jquery-migrate' );
+	wp_deregister_script( 'jquery-migrate' );
+}
+
+/* ───────────────────────────────────────────────
+ * 6. EDITOR STYLES → xem inc/editor-config.php
  *    (tokens + base + buttons + sections + patterns + editor.css)
  * ─────────────────────────────────────────────── */
