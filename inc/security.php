@@ -149,6 +149,8 @@ function pi_restrict_rest_api( $result ) {
 		'/wp/v2/categories',   // Category taxonomy.
 
 		'/rankmath/',          // Rank Math SEO.
+
+		'/litespeed/',         // LiteSpeed Cache — QUIC.cloud callbacks (Image Optimization, etc.).
 	);
 
 	$current_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
