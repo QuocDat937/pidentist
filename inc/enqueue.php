@@ -334,6 +334,60 @@ function pi_preload_fonts() {
 }
 
 /* ───────────────────────────────────────────────
- * 4. EDITOR STYLES → xem inc/editor-config.php
+ * 4. GOOGLE ANALYTICS — GA4 (gtag.js)
+ *    Measurement ID: G-932C89X43Z
+ *    - Chỉ load ở front-end (KHÔNG load trong admin)
+ *    - Async load để không block rendering
+ * ─────────────────────────────────────────────── */
+add_action( 'wp_enqueue_scripts', 'pi_enqueue_ga4', 5 );
+
+/**
+ * Enqueue Google Analytics 4 (gtag.js).
+ * Priority 5 để load SỚM trong <head> (trước CSS/JS khác).
+ */
+function pi_enqueue_ga4() {
+	// Không load GA trong admin hoặc khi user đang preview.
+	if ( is_admin() || is_preview() ) {
+		return;
+	}
+
+	$ga_id = 'G-932C89X43Z';
+
+	// Load gtag.js library.
+	wp_enqueue_script(
+		'pi-gtag',
+		'https://www.googletagmanager.com/gtag/js?id=' . $ga_id,
+		array(),
+		null, // Không version — Google tự quản lý cache.
+		false // Trong <head>, không phải footer.
+	);
+
+	// Config inline script.
+	wp_add_inline_script(
+		'pi-gtag',
+		"window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $ga_id ) . "');"
+	);
+}
+
+/**
+ * Thêm `async` attribute cho gtag.js script (thay vì defer).
+ * Google khuyến nghị async cho gtag.js.
+ */
+add_filter( 'script_loader_tag', 'pi_async_gtag', 10, 2 );
+
+function pi_async_gtag( $tag, $handle ) {
+	if ( 'pi-gtag' !== $handle ) {
+		return $tag;
+	}
+	// Thay defer bằng async nếu WP đã thêm defer.
+	$tag = str_replace( ' defer', '', $tag );
+	if ( strpos( $tag, 'async' ) === false ) {
+		$tag = str_replace( ' src=', ' async src=', $tag );
+	}
+	return $tag;
+}
+
+/* ───────────────────────────────────────────────
+ * 5. EDITOR STYLES → xem inc/editor-config.php
  *    (tokens + base + buttons + sections + patterns + editor.css)
  * ─────────────────────────────────────────────── */
