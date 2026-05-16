@@ -14,6 +14,7 @@ define( 'PIDENTIST_URI', get_stylesheet_directory_uri() );
 // 2. Require modules — thứ tự QUAN TRỌNG
 require_once PIDENTIST_DIR . '/inc/theme-supports.php';
 require_once PIDENTIST_DIR . '/inc/enqueue.php';
+require_once PIDENTIST_DIR . '/inc/critical-css.php';
 require_once PIDENTIST_DIR . '/inc/menus.php';
 require_once PIDENTIST_DIR . '/inc/cpt.php';
 require_once PIDENTIST_DIR . '/inc/taxonomies.php';
