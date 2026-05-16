@@ -14,6 +14,8 @@
     pointer-events: none;
     transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
                 transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Hide on desktop — only show on mobile (<768px) */
+    display: none;
 }
 
 .floating-cta.show {
@@ -139,6 +141,7 @@
 @media (max-width: 767px) {
     /* Floating CTA: full width bar at bottom */
     .floating-cta {
+        display: block;
         bottom: 0;
         left: 0;
         right: 0;
