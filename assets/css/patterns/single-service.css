@@ -121,7 +121,8 @@
 
 /* ---------- Content Sections ---------- */
 .service-content-section {
-  margin-bottom: 56px;
+  padding: 0;
+  margin-bottom: 48px;
   scroll-margin-top: 90px;
 }
 
