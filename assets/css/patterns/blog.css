@@ -216,6 +216,8 @@
 .post-content {
   margin-bottom: 48px;
   max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .post-content img {
