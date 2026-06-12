@@ -13,6 +13,23 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Version cho asset dựa trên filemtime → tự động cache-bust mỗi lần deploy.
+ *
+ * Git pull/FTP upload làm thay đổi mtime → ?ver= mới → browser + LiteSpeed
+ * tải file mới ngay, không cần bump version thủ công.
+ *
+ * @param string $relative Đường dẫn tương đối từ theme root (VD: '/assets/css/tokens.css').
+ * @return string Version string (filemtime hoặc PIDENTIST_VERSION fallback).
+ */
+function pi_asset_ver( $relative ) {
+	$file = PIDENTIST_DIR . $relative;
+	if ( file_exists( $file ) ) {
+		return (string) filemtime( $file );
+	}
+	return PIDENTIST_VERSION;
+}
+
 /* ───────────────────────────────────────────────
  * 1. FRONT-END: CSS & JS
  * ─────────────────────────────────────────────── */
@@ -28,11 +45,12 @@ function pi_enqueue_styles() {
 	$uri = PIDENTIST_URI;
 
 	/* --- Parent theme (GeneratePress) --- */
+	$parent_style = get_template_directory() . '/style.css';
 	wp_enqueue_style(
 		'generatepress-parent',
 		get_template_directory_uri() . '/style.css',
 		array(),
-		$ver
+		file_exists( $parent_style ) ? (string) filemtime( $parent_style ) : $ver
 	);
 
 	/* --- Self-hosted Fonts: Inter + Playfair Display (woff2) --- */
@@ -40,7 +58,7 @@ function pi_enqueue_styles() {
 		'pi-fonts',
 		$uri . '/assets/css/fonts.css',
 		array( 'generatepress-parent' ),
-		$ver
+		pi_asset_ver( '/assets/css/fonts.css' )
 	);
 
 	/* --- Design Tokens (load TRƯỚC mọi CSS con) --- */
@@ -48,7 +66,7 @@ function pi_enqueue_styles() {
 		'pi-tokens',
 		$uri . '/assets/css/tokens.css',
 		array( 'generatepress-parent', 'pi-fonts' ),
-		$ver
+		pi_asset_ver( '/assets/css/tokens.css' )
 	);
 
 	/* --- Core CSS chain (tất cả depend vào pi-tokens) --- */
@@ -68,7 +86,7 @@ function pi_enqueue_styles() {
 			$handle,
 			$uri . '/assets/css/' . $file,
 			array( 'pi-tokens' ),
-			$ver
+			pi_asset_ver( '/assets/css/' . $file )
 		);
 	}
 
@@ -78,7 +96,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-front-page-bundle',
 			$uri . '/assets/css/patterns/front-page-bundle.css',
 			array( 'pi-tokens' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/front-page-bundle.css' )
 		);
 	}
 
@@ -88,7 +106,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-services-grid',
 			$uri . '/assets/css/patterns/services-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/services-grid.css' )
 		);
 	}
 
@@ -97,7 +115,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-single-service',
 			$uri . '/assets/css/patterns/single-service.css',
 			array( 'pi-tokens', 'pi-sections', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/single-service.css' )
 		);
 	}
 
@@ -106,7 +124,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-doctors-grid',
 			$uri . '/assets/css/patterns/doctors-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/doctors-grid.css' )
 		);
 	}
 
@@ -115,7 +133,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-cases-grid',
 			$uri . '/assets/css/patterns/cases-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/cases-grid.css' )
 		);
 	}
 
@@ -126,13 +144,13 @@ function pi_enqueue_styles() {
 			'pi-pattern-services-grid',
 			$uri . '/assets/css/patterns/services-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/services-grid.css' )
 		);
 		wp_enqueue_style(
 			'pi-pattern-cases-grid',
 			$uri . '/assets/css/patterns/cases-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/cases-grid.css' )
 		);
 	}
 
@@ -142,13 +160,13 @@ function pi_enqueue_styles() {
 			'pi-pattern-doctors-grid',
 			$uri . '/assets/css/patterns/doctors-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/doctors-grid.css' )
 		);
 		wp_enqueue_style(
 			'pi-pattern-cases-grid',
 			$uri . '/assets/css/patterns/cases-grid.css',
 			array( 'pi-tokens', 'pi-cards' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/cases-grid.css' )
 		);
 	}
 
@@ -163,7 +181,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-blog',
 			$uri . '/assets/css/patterns/blog.css',
 			array( 'pi-tokens', 'pi-cards', 'pi-sections' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/blog.css' )
 		);
 	}
 
@@ -173,7 +191,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-contact-page',
 			$uri . '/assets/css/patterns/contact-page.css',
 			array( 'pi-tokens', 'pi-sections', 'pi-pattern-booking-form' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/contact-page.css' )
 		);
 	}
 
@@ -183,7 +201,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-pricing-page',
 			$uri . '/assets/css/patterns/pricing-page.css',
 			array( 'pi-tokens', 'pi-sections', 'pi-buttons' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/pricing-page.css' )
 		);
 	}
 
@@ -193,7 +211,7 @@ function pi_enqueue_styles() {
 			'pi-pattern-about-page',
 			$uri . '/assets/css/patterns/about-page.css',
 			array( 'pi-tokens', 'pi-sections', 'pi-cards', 'pi-buttons' ),
-			$ver
+			pi_asset_ver( '/assets/css/patterns/about-page.css' )
 		);
 	}
 }
@@ -218,7 +236,7 @@ function pi_enqueue_scripts() {
 			$handle,
 			$uri . '/assets/js/' . $file,
 			array(),
-			$ver,
+			pi_asset_ver( '/assets/js/' . $file ),
 			true // in footer
 		);
 	}
@@ -229,7 +247,7 @@ function pi_enqueue_scripts() {
 			'pi-carousel',
 			$uri . '/assets/js/carousel.js',
 			array(),
-			$ver,
+			pi_asset_ver( '/assets/js/carousel.js' ),
 			true
 		);
 	}
@@ -240,7 +258,7 @@ function pi_enqueue_scripts() {
 			'pi-service-toc',
 			$uri . '/assets/js/service-toc.js',
 			array(),
-			$ver,
+			pi_asset_ver( '/assets/js/service-toc.js' ),
 			true
 		);
 	}
@@ -251,7 +269,7 @@ function pi_enqueue_scripts() {
 			'pi-booking-form',
 			$uri . '/assets/js/booking-form.js',
 			array(),
-			$ver,
+			pi_asset_ver( '/assets/js/booking-form.js' ),
 			true
 		);
 
@@ -266,7 +284,7 @@ function pi_enqueue_scripts() {
 				'pi-pattern-booking-form',
 				$uri . '/assets/css/patterns/booking-form.css',
 				array( 'pi-tokens' ),
-				$ver
+				pi_asset_ver( '/assets/css/patterns/booking-form.css' )
 			);
 		}
 	}

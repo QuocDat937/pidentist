@@ -1,0 +1,32 @@
+# ════════════════════════════════════════════════════════════════
+# Pi Dentist — Security rules cho .htaccess (root site)
+#
+# CÁCH DÙNG:
+#   1. Mở DirectAdmin → File Manager → public_html/.htaccess
+#   2. Paste toàn bộ block bên dưới vào CUỐI file
+#      (SAU block "# END WordPress" và block LiteSpeed Cache nếu có)
+#   3. Lưu lại, rồi test:
+#      - https://pidentist.vn/readme.html         → phải ra 404
+#      - https://pidentist.vn/license.txt          → phải ra 404
+#      - .../themes/pidentist/GEMINI.md            → phải ra 404
+#      - .../themes/pidentist/docs/PROJECT_SPEC_WP.md → phải ra 404
+#   4. Trang chủ + wp-admin vẫn hoạt động bình thường.
+#
+# LiteSpeed đọc .htaccess y như Apache nên rules này chạy được ngay.
+# ════════════════════════════════════════════════════════════════
+
+# BEGIN Pi Dentist Security
+
+# --- Mục 5: Chặn file lộ version WordPress ---
+RedirectMatch 404 ^/readme\.html$
+RedirectMatch 404 ^/license\.txt$
+
+# --- Mục 1: Chặn file/folder nội bộ của theme (docs, deploy, *.md, *.sh) ---
+# DirectAdmin Git deploy pull nguyên repo nên các file này đang nằm trên server.
+RedirectMatch 404 ^/wp-content/themes/pidentist/(docs|deploy)(/|$)
+RedirectMatch 404 ^/wp-content/themes/pidentist/.*\.(md|sh)$
+
+# --- Chặn truy cập file .git nếu lỡ nằm trong webroot ---
+RedirectMatch 404 /\.git
+
+# END Pi Dentist Security

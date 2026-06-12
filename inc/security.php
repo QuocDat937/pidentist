@@ -37,21 +37,13 @@ add_filter( 'xmlrpc_methods', '__return_empty_array' );
 remove_action( 'wp_head', 'wp_generator' );
 add_filter( 'the_generator', '__return_empty_string' );
 
-add_filter( 'style_loader_src', 'pi_remove_version_query', 9999 );
-add_filter( 'script_loader_src', 'pi_remove_version_query', 9999 );
-
-/**
- * Xoá ?ver= query string khỏi CSS/JS URLs.
- *
- * @param string $src URL nguồn.
- * @return string URL đã xoá version.
+/*
+ * NOTE (2026-06): Đã GỠ filter xóa ?ver= khỏi CSS/JS.
+ * Lý do: xóa ?ver= làm mất cache busting — deploy CSS/JS mới nhưng
+ * browser/LiteSpeed vẫn serve file cũ → vỡ layout cho khách cũ.
+ * Lợi ích bảo mật của việc ẩn ?ver= gần như bằng 0 (version giờ là
+ * filemtime, không lộ WP version). Xem pi_asset_ver() trong enqueue.php.
  */
-function pi_remove_version_query( $src ) {
-	if ( strpos( $src, 'ver=' ) ) {
-		$src = remove_query_arg( 'ver', $src );
-	}
-	return $src;
-}
 
 /* ───────────────────────────────────────────────
  * 15.4.3 Disable file editing trong Admin (Plugins/Themes editor)
@@ -187,6 +179,12 @@ function pi_security_headers() {
 	header( 'X-Frame-Options: SAMEORIGIN' );
 	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(self)' );
+
+	// HSTS — bắt buộc browser dùng HTTPS trong 1 năm (chỉ gửi khi đang HTTPS).
+	// KHÔNG thêm 'preload' vội — chỉ thêm khi chắc chắn 100% mọi subdomain đều HTTPS vĩnh viễn.
+	if ( is_ssl() ) {
+		header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains' );
+	}
 
 	// Content Security Policy — adjust theo embed thực tế.
 	// Fonts self-hosted → không cần fonts.googleapis.com/fonts.gstatic.com.

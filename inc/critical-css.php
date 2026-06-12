@@ -33,16 +33,18 @@ function pi_inline_critical_css() {
 		return;
 	}
 
-	$cache_key = 'pi_critical_css_' . PIDENTIST_VERSION;
+	$file = PIDENTIST_DIR . '/assets/css/critical.css';
+
+	if ( ! file_exists( $file ) ) {
+		return;
+	}
+
+	// Key theo filemtime → deploy file mới là cache tự invalidate ngay,
+	// không cần chờ 24h hoặc bump PIDENTIST_VERSION thủ công.
+	$cache_key = 'pi_critical_css_' . filemtime( $file );
 	$css       = get_transient( $cache_key );
 
 	if ( false === $css ) {
-		$file = PIDENTIST_DIR . '/assets/css/critical.css';
-
-		if ( ! file_exists( $file ) ) {
-			return;
-		}
-
 		$css = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents — local file.
 
 		if ( empty( $css ) ) {

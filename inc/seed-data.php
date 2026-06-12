@@ -10,13 +10,27 @@
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'admin_init', 'pi_seed_test_data' );
-
-/**
- * Cleanup: Xóa duplicate posts do seed chạy 2 lần (admin_init race condition).
- * Chạy 1 lần rồi tự xóa flag.
+/*
+ * SAFETY (2026-06): Seed + cleanup CHỈ chạy ngoài production.
+ * Lý do: pi_cleanup_duplicate_seed() XÓA VĨNH VIỄN post trùng title —
+ * nếu chạy trên production và sau này có 2 bài viết thật trùng tên,
+ * 1 bài sẽ bị xóa không vào thùng rác. Production đã seed xong
+ * (flag pi_seed_data_v1 + pi_seed_cleanup_done trong DB) nên không cần nữa.
+ *
+ * Lưu ý: wp_get_environment_type() mặc định trả 'production' nếu
+ * WP_ENVIRONMENT_TYPE chưa define — muốn seed ở môi trường local mới,
+ * thêm vào wp-config.php local: define( 'WP_ENVIRONMENT_TYPE', 'local' );
  */
-add_action( 'admin_init', 'pi_cleanup_duplicate_seed', 5 );
+if ( 'production' !== wp_get_environment_type() ) {
+
+	add_action( 'admin_init', 'pi_seed_test_data' );
+
+	/**
+	 * Cleanup: Xóa duplicate posts do seed chạy 2 lần (admin_init race condition).
+	 * Chạy 1 lần rồi tự xóa flag.
+	 */
+	add_action( 'admin_init', 'pi_cleanup_duplicate_seed', 5 );
+}
 
 function pi_cleanup_duplicate_seed() {
 
